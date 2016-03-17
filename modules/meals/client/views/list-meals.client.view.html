@@ -6,16 +6,20 @@
     <a data-ng-repeat="meal in vm.meals"
        data-ui-sref="meals.view({ mealId: meal._id })"
        class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span data-ng-bind="meal.created | date:'mediumDate'"></span>
-        by
-        <span data-ng-if="meal.user" data-ng-bind="meal.user.displayName"></span>
-        <span data-ng-if="!meal.user">Deleted User</span>
-      </small>
+
       <h4 class="list-group-item-heading" data-ng-bind="meal.name"></h4>
+
     </a>
   </div>
+
+  <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading">-->
+      <!--<h3 class="panel-title">Panel title</h3>-->
+    <!--</div>-->
+    <!--<div class="panel-body">-->
+      <!--Panel content-->
+    <!--</div>-->
+  <!--</div>-->
   <div class="alert alert-warning text-center" data-ng-if="vm.meals.$resolved && !vm.meals.length">
     No Meals yet, why don't you <a data-ui-sref="meals.create">create one</a>?
   </div>

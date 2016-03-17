@@ -36,7 +36,7 @@
       Menus.addSubMenuItem('topbar','courses', { });
       // Add the dropdown create item
       Menus.addSubMenuItem('topbar', 'courses', {
-        title: 'Courses List',
+        title: 'Course List',
         state: 'courses.list',
         roles: ['user']
       });

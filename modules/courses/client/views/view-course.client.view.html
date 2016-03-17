@@ -1,13 +1,15 @@
 <section>
   <div class="pull-right"
        data-ng-show="vm.course.isCurrentUserOwner">
-    <span ng-if="vm.course.enabled" class="label label-success">Enabled</span>
-    <span ng-if="!vm.course.enabled" class="label label-warning">Disabled</span>
+    <h4>
+      <span ng-if="vm.course.enabled" class="label label-success">Enabled</span>
+      <span ng-if="!vm.course.enabled" class="label label-warning">Disabled</span>
 
-    <a class="btn btn-info"
-       data-ui-sref="courses.edit({ courseId: vm.course._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
+      <a class="btn btn-primary"
+         data-ui-sref="courses.edit({ courseId: vm.course._id })">
+        <i class="glyphicon glyphicon-edit"></i>
+      </a>
+    </h4>
     <!--<a class="btn btn-primary" data-ng-click="vm.remove()">-->
       <!--<i class="glyphicon glyphicon-trash"></i>-->
     <!--</a>-->

@@ -18,9 +18,11 @@
         <!--<span data-ng-if="menuItem.user" data-ng-bind="menuItem.user.displayName"></span>-->
         <!--<span data-ng-if="!menuItem.user">Deleted User</span>-->
       <!--</small>-->
-      <h4 class="list-group-item-heading" data-ng-bind="menuItem.name"></h4>
-      <small class="list-group-item-text" data-ng-bind="menuItem.description">
-      </small>
+      <h4 class="list-group-item-heading">
+        {{menuItem.name}}
+        <small><span class="label label-info">{{menuItem.course.name}}</span></small>
+      </h4>
+      <small class="list-group-item-text" data-ng-bind="menuItem.description"></small>
     </a>
   </div>
   <div class="alert alert-warning text-center" data-ng-if="vm.menuItems.$resolved && !vm.menuItems.length">

@@ -21,6 +21,15 @@
 .left-gap-small {
   margin-left: 10px;
 }
+
+.left-gap-tiny {
+  margin-left: 2px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -43,7 +52,12 @@
 #logo {
   font-size: 1.7em;
   color: #EFA200;
-// text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.splash {
+  background-color: #EFA200;
   letter-spacing: -1px;
   font-weight: bold;
 }

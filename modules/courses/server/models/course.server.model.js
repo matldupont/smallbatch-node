@@ -31,7 +31,8 @@ var CourseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'MenuItem'
       },
-      name: String
+      name: String,
+      description: String
     }
   ],
   created: {
