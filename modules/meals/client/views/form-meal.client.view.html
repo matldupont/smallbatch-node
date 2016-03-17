@@ -1,0 +1,66 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.meal._id ? 'Edit Meal' : 'New Meal'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.mealForm" class="form-horizontal" ng-submit="vm.save(vm.form.mealForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.meal.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.mealForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Meal name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="description">Description</label>
+          <textarea name="description" rows="10" type="text" ng-model="vm.meal.description" id="description" class="form-control" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="enabled">Enabled</label>
+          <checkbox class="btn" ng-class="{ 'btn-success': vm.meal.enabled == true, 'btn-warning': vm.meal.enabled == false }" ng-model="vm.meal.enabled" id="enabled" name="enabled"></checkbox>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Courses</label>
+          <!--<div class="top-gap" ng-if="!vm.addingCourse">-->
+            <!--<button type="button" class="btn btn-primary" data-ng-click="vm.addingCourse = true;">Add Course</button>-->
+          <!--</div>-->
+          <div class="row top-gap" >
+            <div class="col-xs-9 col-sm-7 bottom-gap-small">
+              <select class="form-control" name="course" id="course"
+                      ng-options="course.name for course in vm.courses | unusedCourses: vm.meal.courses track by course._id "
+                      ng-model="vm.newCourseObj"></select>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-md-1 bottom-gap-small">
+              <input type="number" ng-model="vm.newCourseQuantity" class="form-control" placeholder="Quantity">
+            </div>
+            <div class="col-xs-1">
+              <button type="button" class="btn btn-primary" data-ng-click="vm.addCourse()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </button>
+              <!--<button type="button" class="btn btn-danger" data-ng-click="vm.addingCourse = false;">-->
+                <!--<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>-->
+              <!--</button>-->
+            </div>
+          </div>
+          <div class="list-group top-gap">
+            <div data-ng-repeat="course in vm.meal.courses"
+               class="list-group-item col-sm-7">
+              <strong>{{course.name}}</strong>
+              <button type="button" data-ng-click="vm.removeCourse($index)" class="btn btn-xs btn-danger pull-right left-gap-small"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+              <button type="button" ng-disabled="course.quantity == 0" data-ng-click="course.quantity = course.quantity - 1;" class="btn btn-xs btn-warning pull-right"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+              <button type="button" data-ng-click="course.quantity = course.quantity + 1;" class="btn btn-xs btn-success pull-right left-gap-small" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+              <span class="pull-right" ><strong>x{{course.quantity}}</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.meal._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

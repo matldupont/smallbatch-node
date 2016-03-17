@@ -1,0 +1,29 @@
+<section>
+  <div class="page-header">
+    <h1>Menu Items</h1>
+  </div>
+  <div>
+    <a ui-sref="menuitems.create">
+      <button class="btn btn-primary">Add Menu Item</button>
+    </a>
+  </div>
+  <div class="list-group content">
+    <a data-ng-repeat="menuItem in vm.menuItems"
+       data-ui-sref="menuitems.view({ menuItemId: menuItem._id })"
+       class="list-group-item">
+      <!--<small class="list-group-item-text">-->
+        <!--Posted on-->
+        <!--<span data-ng-bind="menuItem.created | date:'mediumDate'"></span>-->
+        <!--by-->
+        <!--<span data-ng-if="menuItem.user" data-ng-bind="menuItem.user.displayName"></span>-->
+        <!--<span data-ng-if="!menuItem.user">Deleted User</span>-->
+      <!--</small>-->
+      <h4 class="list-group-item-heading" data-ng-bind="menuItem.name"></h4>
+      <small class="list-group-item-text" data-ng-bind="menuItem.description">
+      </small>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.menuItems.$resolved && !vm.menuItems.length">
+    No Menu Items yet, why don't you <a data-ui-sref="menuitems.create">create one</a>?
+  </div>
+</section>

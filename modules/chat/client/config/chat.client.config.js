@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular
-    .module('chat')
-    .run(menuConfig);
+  //angular
+  //  .module('chat')
+    //.run(menuConfig);
 
   menuConfig.$inject = ['Menus'];
 

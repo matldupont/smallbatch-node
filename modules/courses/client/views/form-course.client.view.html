@@ -1,0 +1,41 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.course._id ? 'Edit Course' : 'New Course'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.courseForm" class="form-horizontal" ng-submit="vm.save(vm.form.courseForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.course.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.courseForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Course name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="description">Description</label>
+          <textarea name="description" rows="10" type="text" ng-model="vm.course.description" id="description" class="form-control" placeholder="Description"></textarea>
+          <!--<div ng-messages="vm.form.courseForm.description.$error" role="alert">-->
+            <!--<p class="help-block error-text" ng-message="required">Course description is required.</p>-->
+          <!--</div>-->
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="enabled">Enabled</label>
+          <checkbox class="btn" ng-class="{ 'btn-success': vm.course.enabled == true, 'btn-warning': vm.course.enabled == false }" ng-model="vm.course.enabled" id="enabled" name="enabled"></checkbox>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info">{{vm.course._id ? 'Update' : 'Create'}}</button>
+          <a ui-sref="courses.list">
+            <button class="btn btn-default">Cancel</button>
+          </a>
+          <a ng-if="vm.course._id" class="btn btn-danger" data-ng-click="vm.remove()">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -6,7 +6,7 @@ module.exports = {
       css: [
         // bower:css
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+       // 'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
         // endbower
       ],
       js: [
@@ -14,6 +14,7 @@ module.exports = {
         'public/lib/angular/angular.min.js',
         'public/lib/angular-animate/angular-animate.min.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
+        'public/lib/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
         'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
         'public/lib/angular-messages/angular-messages.min.js',
         'public/lib/angular-mocks/angular-mocks.js',

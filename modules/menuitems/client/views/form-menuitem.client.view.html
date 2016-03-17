@@ -1,0 +1,61 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.menuItem._id ? 'Edit Menu Item' : 'New Menu Item'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.menuItemForm" class="form-horizontal" ng-submit="vm.save(vm.form.menuItemForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.menuItem.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.menuItemForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Menu Item name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="description">Description</label>
+          <textarea name="description" rows="10" type="text" ng-model="vm.menuItem.description" id="description" class="form-control" placeholder="Description"></textarea>
+          <!--<div ng-messages="vm.form.courseForm.description.$error" role="alert">-->
+          <!--<p class="help-block error-text" ng-message="required">Course description is required.</p>-->
+          <!--</div>-->
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="course">Course</label>
+          <select class="form-control" name="course" id="course" ng-model="vm.menuItem.course.id" required>
+            <option ng-repeat="course in vm.courses" value="{{course._id}}">{{course.name}}</option>
+          </select>
+
+          <!--<input name="name" type="text" ng-model="vm.menuItem.course" id="course" class="form-control" placeholder="Name" required>-->
+          <div ng-messages="vm.form.menuItemForm.course.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Menu Item Course is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="enabled">Enabled</label>
+          <checkbox class="btn" ng-class="{ 'btn-success': vm.menuItem.enabled == true, 'btn-warning': vm.menuItem.enabled == false }" ng-model="vm.menuItem.enabled" id="enabled" name="enabled"></checkbox>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info">{{vm.menuItem._id ? 'Update' : 'Create'}}</button>
+          <a ui-sref="menuitems.list">
+            <button class="btn btn-default">Cancel</button>
+          </a>
+
+          <a ng-if="vm.menuItem._id" class="btn btn-danger" data-ng-click="vm.remove()">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+
+          <a ng-if="vm.courseId" ui-sref="courses.view({courseId: vm.courseId})" class="pull-right">
+            <button class="btn btn-warning">Back to {{vm.courseName}}</button>
+          </a>
+          <a ng-if="!vm.courseId" ui-sref="menuitems.list" class="pull-right">
+            <button class="btn btn-warning">Back to All Menu Items</button>
+          </a>
+        </div>
+
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

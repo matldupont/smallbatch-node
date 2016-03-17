@@ -1,0 +1,30 @@
+<section>
+  <div class="pull-right"
+       data-ng-show="vm.menuItem.isCurrentUserOwner">
+    <span ng-if="vm.menuItem.enabled" class="label label-success">Enabled</span>
+    <span ng-if="!vm.menuItem.enabled" class="label label-warning">Disabled</span>
+    <a class="btn btn-info"
+       data-ui-sref="menuitems.edit({ menuItemId: vm.menuItem._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <!--<a class="btn btn-primary" data-ng-click="vm.remove()">-->
+    <!--<i class="glyphicon glyphicon-trash"></i>-->
+    <!--</a>-->
+  </div>
+  <div class="page-header">
+    <h1 data-ng-bind="vm.menuItem.name"></h1>
+    <h4 data-ng-bind="vm.menuItem.course.name"></h4>
+  </div>
+
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span data-ng-bind="vm.menuItem.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-if="vm.menuItem.user"
+            data-ng-bind="vm.menuItem.user.displayName"></span>
+      <span data-ng-if="!vm.menuItem.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="vm.menuItem.content"></p>
+</section>
