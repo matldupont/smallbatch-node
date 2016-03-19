@@ -62,9 +62,13 @@
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">{{vm.meal._id ? 'Update' : 'Create'}}</button>
-          <a ui-sref="meals.list">
+          <a ng-if="vm.meal._id" ui-sref="meals.view({mealId: vm.meal._id})">
             <button class="btn btn-default">Cancel</button>
           </a>
+          <a ng-if="!vm.meal._id" ui-sref="meals.list">
+            <button class="btn btn-default">Cancel</button>
+          </a>
+
 
           <a ng-if="vm.meal._id" class="btn btn-danger" data-ng-click="vm.remove()">
             <i class="glyphicon glyphicon-trash"></i>

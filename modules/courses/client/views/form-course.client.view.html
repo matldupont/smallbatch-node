@@ -28,7 +28,10 @@
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-info">{{vm.course._id ? 'Update' : 'Create'}}</button>
-          <a ui-sref="courses.list">
+          <a ng-if="vm.course._id" ui-sref="courses.view({courseId: vm.course._id})" >
+            <button class="btn btn-default">Cancel</button>
+          </a>
+          <a ng-if="!vm.course._id" ui-sref="courses.list" >
             <button class="btn btn-default">Cancel</button>
           </a>
           <a ng-if="vm.course._id" class="btn btn-danger" data-ng-click="vm.remove()">

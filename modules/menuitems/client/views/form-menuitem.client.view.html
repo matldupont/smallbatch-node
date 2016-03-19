@@ -42,19 +42,19 @@
         </div>
         <div class="form-group top-gap">
           <button type="submit" class="btn btn-info">{{vm.menuItem._id ? 'Update' : 'Create'}}</button>
-          <a ui-sref="menuitems.list">
+
+          <a ng-if="vm.menuItem._id" ui-sref="menuitems.view({menuItemId: vm.menuItem._id})">
+            <button class="btn btn-default">Cancel</button>
+          </a>
+          <a ng-if="!vm.menuItem._id && vm.courseId" ui-sref="courses.view({courseId: vm.courseId})">
+            <button class="btn btn-default">Cancel</button>
+          </a>
+          <a ng-if="!vm.menuItem._id && !vm.courseId" ui-sref="menuitems.list" >
             <button class="btn btn-default">Cancel</button>
           </a>
 
           <a ng-if="vm.menuItem._id" class="btn btn-danger" data-ng-click="vm.remove()">
             <i class="glyphicon glyphicon-trash"></i>
-          </a>
-
-          <a ng-if="vm.courseId" ui-sref="courses.view({courseId: vm.courseId})" class="pull-right">
-            <button class="btn btn-warning">Back to {{vm.courseName}}</button>
-          </a>
-          <a ng-if="!vm.courseId" ui-sref="menuitems.list" class="pull-right">
-            <button class="btn btn-warning">Back to All Menu Items</button>
           </a>
         </div>
 

@@ -5,10 +5,23 @@
   <div class="list-group">
     <a data-ng-repeat="meal in vm.meals"
        data-ui-sref="meals.view({ mealId: meal._id })"
-       class="list-group-item">
+       class="list-group-item col-sm-3 left-gap bottom-gap-small">
 
       <h4 class="list-group-item-heading" data-ng-bind="meal.name"></h4>
-
+      <small>
+        {{meal.description}}
+      </small>
+      <div class="panel panel-default top-gap-small">
+        <div class="panel-body">
+          <ul class="no-padding">
+            <li data-ng-repeat="course in meal.courses" class="no-decoration"><strong>{{course.quantity}}x {{course.name}}<ng-pluralize count="course.quantity"
+                                                                                                                   when="{'0': 'Nobody is viewing.',
+                     'one': '',
+                     'other': 's'}">
+            </ng-pluralize></strong></li>
+          </ul>
+        </div>
+      </div>
     </a>
   </div>
 

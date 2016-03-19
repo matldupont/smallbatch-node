@@ -1,10 +1,15 @@
 <section>
   <div class="pull-right"
-       data-ng-show="vm.meal.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       data-ui-sref="meals.edit({ mealId: vm.meal._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
+       >
+    <h4>
+      <span ng-if="vm.meal.enabled" class="label label-success">Enabled</span>
+      <span ng-if="!vm.meal.enabled" class="label label-warning">Disabled</span>
+      <a class="btn btn-primary"
+         data-ui-sref="meals.edit({ mealId: vm.meal._id })">
+        <i class="glyphicon glyphicon-edit"></i>
+      </a>
+    </h4>
+
   </div>
   <div class="page-header">
     <h1 data-ng-bind="vm.meal.name"></h1>
