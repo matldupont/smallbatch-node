@@ -45,7 +45,7 @@
           courseResolve: getCourse
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['admin'],
           pageTitle: 'Edit Course {{ courseResolve.name }}'
         }
       })

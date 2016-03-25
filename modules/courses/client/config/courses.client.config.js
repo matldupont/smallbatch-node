@@ -29,16 +29,19 @@
       angular.forEach(courses, function(course) {
         Menus.addSubMenuItem('topbar','courses', {
           title: course.name,
-          state: 'courses.view({ courseId: "' + course._id + '" })'
+          state: 'courses.view({ courseId: "' + course._id + '" })',
+          roles: ['user']
         });
       });
       //Add separator
-      Menus.addSubMenuItem('topbar','courses', { });
+      Menus.addSubMenuItem('topbar','courses', {
+        roles: ['admin']
+      });
       // Add the dropdown create item
       Menus.addSubMenuItem('topbar', 'courses', {
         title: 'Course List',
         state: 'courses.list',
-        roles: ['user']
+        roles: ['admin']
       });
 
     });

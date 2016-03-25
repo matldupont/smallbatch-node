@@ -36,7 +36,7 @@
 
 .no-decoration {
   list-style-type: none;
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .undecorated-link:hover {

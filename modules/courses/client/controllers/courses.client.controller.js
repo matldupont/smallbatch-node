@@ -53,5 +53,13 @@
         vm.error = res.data.message;
       }
     }
+
+    if (Authentication.user) {
+      var match = Authentication.user.roles.filter(function(role) {
+        return role === 'admin';
+      });
+
+      vm.isAdmin = match.length > 0;
+    }
   }
 })();

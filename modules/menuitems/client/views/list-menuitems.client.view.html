@@ -2,12 +2,12 @@
   <div class="page-header">
     <h1>Menu Items</h1>
   </div>
-  <div>
+  <div ng-if="vm.isAdmin" class="bottom-gap">
     <a ui-sref="menuitems.create">
       <button class="btn btn-primary">Add Menu Item</button>
     </a>
   </div>
-  <div class="list-group content">
+  <div class="list-group">
     <a data-ng-repeat="menuItem in vm.menuItems"
        data-ui-sref="menuitems.view({ menuItemId: menuItem._id })"
        class="list-group-item">

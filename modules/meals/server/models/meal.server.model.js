@@ -35,6 +35,11 @@ var MealSchema = new Schema({
       quantity: Number
     }
   ],
+  price: {
+    type: Number,
+    default: 0,
+    required: 'Please set a Meal Price'
+  },
   created: {
     type: Date,
     default: Date.now

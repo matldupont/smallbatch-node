@@ -1,6 +1,5 @@
 <section>
-  <div class="pull-right"
-       >
+  <div class="pull-right" ng-if="vm.isAdmin">
     <h4>
       <span ng-if="vm.meal.enabled" class="label label-success">Enabled</span>
       <span ng-if="!vm.meal.enabled" class="label label-warning">Disabled</span>
@@ -12,10 +11,26 @@
 
   </div>
   <div class="page-header">
-    <h1 data-ng-bind="vm.meal.name"></h1>
+    <h1 >{{vm.meal.name}} <small>{{vm.meal.price | currency}}</small></h1>
+    <a ui-sref="order.create({ mealId: vm.meal._id })"><button class="btn btn-primary">Order Now</button></a>
   </div>
 
-  <small>
+  <div class="panel panel-default">
+    <div class="panel-heading" >
+      {{vm.meal.description}}
+    </div>
+    <div class="panel-body">
+      <ul class="no-padding">
+        <li data-ng-repeat="course in vm.meal.courses" class="no-decoration"><strong>{{course.quantity}}x {{course.name}}<ng-pluralize count="course.quantity"
+                                                                                                                                    when="{'0': 'Nobody is viewing.',
+                     'one': '',
+                     'other': 's'}">
+        </ng-pluralize></strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <small ng-if="vm.isAdmin">
     <em class="text-muted">
       Posted on
       <span data-ng-bind="vm.meal.created | date:'mediumDate'"></span>

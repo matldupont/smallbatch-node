@@ -30,6 +30,9 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
+      <li>
+        <a ui-sref="order.view"><span class="glyphicon glyphicon-shopping-cart"></span>{{currentOrder.meals.length + currentOrder.meals.menuItems.length}}</a>
+      </li>
       <li class="dropdown" uib-dropdown>
         <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
           <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
@@ -41,7 +44,7 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a href="/api/auth/signout" target="_self">Signout</a>
+            <a data-ng-click="logout()" >Signout</a>
           </li>
         </ul>
       </li>

@@ -2,12 +2,19 @@
   <div class="page-header">
     <h1>Meals</h1>
   </div>
+  <div ng-if="vm.isAdmin" class="bottom-gap">
+    <a ui-sref="meals.create">
+      <button class="btn btn-primary">Add Meal</button>
+    </a>
+  </div>
   <div class="list-group">
     <a data-ng-repeat="meal in vm.meals"
        data-ui-sref="meals.view({ mealId: meal._id })"
        class="list-group-item col-sm-3 left-gap bottom-gap-small">
 
+      <h5 class="pull-right list-group-item-heading"><span class="label label-info">${{meal.price}}</span></h5>
       <h4 class="list-group-item-heading" data-ng-bind="meal.name"></h4>
+
       <small>
         {{meal.description}}
       </small>

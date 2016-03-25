@@ -32,7 +32,7 @@
           mealResolve: newMeal
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['admin'],
           pageTitle : 'Meals Create'
         }
       })
@@ -45,7 +45,7 @@
           mealResolve: getMeal
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['admin'],
           pageTitle: 'Edit Meal {{ mealResolve.name }}'
         }
       })

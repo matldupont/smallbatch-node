@@ -5,9 +5,9 @@
     .module('meals')
     .run(menuConfig);
 
-  menuConfig.$inject = ['Menus'];
+  menuConfig.$inject = ['Menus', 'MealsService'];
 
-  function menuConfig(Menus) {
+  function menuConfig(Menus, MealsService) {
     // Set top bar menu items
     Menus.addMenuItem('topbar', {
       title: 'Meals',
@@ -18,15 +18,32 @@
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'meals', {
-      title: 'List Meals',
+      title: 'All Meals',
       state: 'meals.list'
     });
 
-    // Add the dropdown create item
-    Menus.addSubMenuItem('topbar', 'meals', {
-      title: 'Create Meal',
-      state: 'meals.create',
-      roles: ['user']
+    //Add separator
+    Menus.addSubMenuItem('topbar', 'meals', { });
+    MealsService.query(function(result) {
+      var meals = result;
+      angular.forEach(meals, function(meal) {
+        Menus.addSubMenuItem('topbar','meals', {
+          title: meal.name,
+          state: 'meals.view({ mealId: "' + meal._id + '" })',
+          roles: ['user']
+        });
+      });
+      //Add separator
+      Menus.addSubMenuItem('topbar','meals', {
+        roles: ['admin']
+      });
+
+      // Add the dropdown create item
+      Menus.addSubMenuItem('topbar', 'meals', {
+        title: 'Create Meal',
+        state: 'meals.create',
+        roles: ['admin']
+      });
     });
   }
 })();

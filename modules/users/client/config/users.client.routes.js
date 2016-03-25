@@ -82,6 +82,9 @@
           pageTitle: 'Signin'
         }
       })
+      //.state('authentication.signout', {
+      //  url: '/api/auth/signout'
+      //})
       .state('password', {
         abstract: true,
         url: '/password',

@@ -20,6 +20,15 @@
             <textarea name="description" rows="10" type="text" ng-model="vm.meal.description" id="description" class="form-control" placeholder="Description"></textarea>
           </div>
         </div>
+        <div class="form-group" show-errors>
+          <label class="control-label col-sm-2" for="price">Price ($0.00)</label>
+          <div class="col-sm-2">
+            <input name="price" type="text" ng-model="vm.meal.price" id="price" class="form-control" placeholder="Price" required>
+          </div>
+          <div ng-messages="vm.form.mealForm.price.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Meal Price is required.</p>
+          </div>
+        </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="enabled">Enabled</label>
           <div class="col-sm-1">
@@ -31,13 +40,13 @@
           <!--<div class="top-gap" ng-if="!vm.addingCourse">-->
             <!--<button type="button" class="btn btn-primary" data-ng-click="vm.addingCourse = true;">Add Course</button>-->
           <!--</div>-->
-          <div class="row top-gap col-sm-11 col-sm-offset-1 no-padding" >
-            <div class="col-xs-9 col-sm-7 bottom-gap-small no-padding">
+          <div class="row top-gap  col-sm-11 col-md-9 col-xs-offset-1 col-md-offset-2 no-padding" >
+            <div class="col-xs-7 col-sm-9 col-md-7  bottom-gap-small no-padding">
               <select class="form-control" name="course" id="course"
                       ng-options="course.name for course in vm.courses | unusedCourses: vm.meal.courses track by course._id "
                       ng-model="vm.newCourseObj"></select>
             </div>
-            <div class="col-xs-3 col-sm-2 col-md-1 bottom-gap-small">
+            <div class="col-xs-3 col-sm-2 col-md-2 bottom-gap-small">
               <input type="number" ng-model="vm.newCourseQuantity" class="form-control" placeholder="Quantity">
             </div>
             <div class="col-xs-1">

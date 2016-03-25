@@ -45,7 +45,7 @@
           menuItemResolve: getMenuItem
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['admin'],
           pageTitle: 'Edit {{ menuItemResolve.name }}'
         }
       })

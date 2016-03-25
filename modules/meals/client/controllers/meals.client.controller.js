@@ -19,7 +19,6 @@
     vm.save = save;
     vm.addCourse = addCourse;
     vm.removeCourse = removeCourse;
-    //vm.addingCourse = false;
     vm.newCourseQuantity = 1;
 
     if (!vm.meal._id) {
@@ -75,6 +74,14 @@
       function errorCallback(res) {
         vm.error = res.data.message;
       }
+    }
+
+    if (Authentication.user) {
+      var match = Authentication.user.roles.filter(function(role) {
+        return role === 'admin';
+      });
+
+      vm.isAdmin = match.length > 0;
     }
   }
 })();

@@ -20,6 +20,7 @@ module.exports = {
         'public/lib/angular-mocks/angular-mocks.js',
         'public/lib/angular-resource/angular-resource.min.js',
         'public/lib/angular-ui-router/release/angular-ui-router.min.js',
+        'public/lib/angular-cookies/angular-cookies.min.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         // endbower
       ]
