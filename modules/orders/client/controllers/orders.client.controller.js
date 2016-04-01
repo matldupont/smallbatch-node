@@ -2,9 +2,9 @@
   'use strict';
 
   // Orders controller
-  angular
-    .module('orders')
-    .controller('OrdersController', OrdersController);
+  //angular
+  //  .module('orders')
+  //  .controller('OrdersController', OrdersController);
 
   OrdersController.$inject = ['$scope', '$state', 'Authentication', 'orderResolve'];
 

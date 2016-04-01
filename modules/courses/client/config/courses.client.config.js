@@ -23,7 +23,9 @@
     });
 
     //Add separator
-    Menus.addSubMenuItem('topbar', 'courses', { });
+    Menus.addSubMenuItem('topbar', 'courses', {
+      roles: ['admin']
+    });
     CoursesService.query(function(result) {
       var courses = result;
       angular.forEach(courses, function(course) {
@@ -37,6 +39,7 @@
       Menus.addSubMenuItem('topbar','courses', {
         roles: ['admin']
       });
+
       // Add the dropdown create item
       Menus.addSubMenuItem('topbar', 'courses', {
         title: 'Course List',

@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular
-    .module('orders')
-    .controller('OrdersListController', OrdersListController);
+  //angular
+  //  .module('orders')
+  //  .controller('OrdersListController', OrdersListController);
 
   OrdersListController.$inject = ['OrdersService'];
 

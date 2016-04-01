@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular
-    .module('orders')
-    .config(routeConfig);
+  //angular
+  //  .module('orders')
+  //  .config(routeConfig);
 
   routeConfig.$inject = ['$stateProvider'];
 

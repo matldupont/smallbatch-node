@@ -23,7 +23,9 @@
     });
 
     //Add separator
-    Menus.addSubMenuItem('topbar', 'meals', { });
+    Menus.addSubMenuItem('topbar', 'meals', {
+      roles: ['admin']
+    });
     MealsService.query(function(result) {
       var meals = result;
       angular.forEach(meals, function(meal) {
