@@ -24,7 +24,7 @@
 
     //Add separator
     Menus.addSubMenuItem('topbar', 'meals', {
-      roles: ['admin']
+      roles: ['admin','user']
     });
     MealsService.query(function(result) {
       var meals = result;

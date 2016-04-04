@@ -10,9 +10,9 @@
     </h4>
 
   </div>
-  <div class="page-header">
+  <div class="page-header" >
     <h1 >{{vm.meal.name}} <small>{{vm.meal.price | currency}}</small></h1>
-    <a ui-sref="order.create({ mealId: vm.meal._id })"><button class="btn btn-primary">Order Now</button></a>
+    <a ui-sref="order.create({ mealId: vm.meal._id })" ng-if="!vm.isAdmin"><button class="btn btn-primary">Order Now</button></a>
   </div>
 
   <div class="panel panel-default">

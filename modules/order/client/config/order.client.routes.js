@@ -60,6 +60,18 @@
           data:{
             pageTitle: 'Order'
           }
+        })
+        .state('order.checkout', {
+            url: '/checkout',
+            templateUrl: 'modules/order/client/views/view-checkout.client.view.html',
+            controller: 'OrderController',
+            controllerAs: 'vm',
+            //resolve: {
+            //  orderResolve: getOrder
+            //},
+            data:{
+                pageTitle: 'Checkout'
+            }
         });
   }
 

@@ -13,6 +13,7 @@ module.exports = {
         // bower:js
         'public/lib/angular/angular.min.js',
         'public/lib/angular-animate/angular-animate.min.js',
+        'public/lib/angular-payments/lib/angular-payments.min.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
         'public/lib/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
         'public/lib/angular-file-upload/dist/angular-file-upload.min.js',

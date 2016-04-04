@@ -14,13 +14,15 @@ module.exports = {
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-animate/angular-animate.js',
+        'public/lib/angular-payments/lib/angular-payments.js',
         'public/lib/angular-messages/angular-messages.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-cookies/angular-cookies.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
         'public/lib/angular-file-upload/dist/angular-file-upload.js',
-        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js'
+        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'https://js.stripe.com/v2/'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

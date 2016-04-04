@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function () {
   // Init module configuration options
   var applicationModuleName = 'smallbatch-node';
-  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ui.checkbox', 'angularFileUpload', 'ngCookies'];
+  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ui.checkbox', 'angularFileUpload', 'ngCookies', 'angularPayments'];
 
   // Add a new vertical module
   var registerModule = function (moduleName, dependencies) {

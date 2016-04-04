@@ -3,9 +3,9 @@
 //Start by defining the main module and adding the module dependencies
 angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
-// Setting HTML5 Location Mode
+// Setting HTML5 Location Mode and Stripe Key
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider', '$httpProvider',
-  function ($locationProvider, $httpProvider) {
+  function ($locationProvider, $httpProvider, $window) {
     $locationProvider.html5Mode(true).hashPrefix('!');
 
     $httpProvider.interceptors.push('authInterceptor');

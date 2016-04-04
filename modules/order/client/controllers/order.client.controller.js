@@ -4,8 +4,10 @@
   // Courses controller
   angular
       .module('order')
-      .controller('OrderController', OrderController);
-
+      .controller('OrderController', OrderController)
+  .config(function() {
+    window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
+  });
   OrderController.$inject = ['$scope', '$state', 'Authentication', 'OrderService', 'MealsService', 'MenuItemsService'];
 
   function OrderController ($scope, $state, Authentication, OrderService, MealsService, MenuItemsService) {
@@ -17,6 +19,7 @@
     vm.order = OrderService.currentOrder;
     vm.mealOrder = {};
     vm.addToOrder = addToOrder;
+    $scope.stripeCallback = stripeCallback;
     //vm.remove = remove;
     //vm.save = save;
 
@@ -71,7 +74,13 @@
       }
     }
 
-
+    function stripeCallback(code, result) {
+      if (result.error) {
+        window.alert('it failed! error: ' + result.error.message);
+      } else {
+        window.alert('success! token: ' + result.id);
+      }
+    }
 
     //// Remove existing Course
     //function remove() {
