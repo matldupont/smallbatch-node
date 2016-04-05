@@ -5,9 +5,9 @@
       .module('order')
       .service('OrderService', OrderService);
 
-  OrderService.$inject = ['$cookies', '$resource'];
+  OrderService.$inject = ['$cookies', '$resource', '$http'];
 
-  function OrderService($cookies, $resource) {
+  function OrderService($cookies, $resource, $http) {
     var Orders = $resource('/api/order/:orderId', { orderId:'@id' }, {
       'update': { method:'PUT' }
     });
@@ -90,6 +90,14 @@
       return total;
     }
 
+    function processOrder(stripeToken) {
+      console.log(currentOrder)
+      $http.post('/api/order/process/' + currentOrder._id, { stripeToken : stripeToken }).then(function(result) {
+        console.log("processed!!");
+        console.log(result);
+      });
+    }
+
     if (!currentOrder) {
       initOrder();
     }
@@ -99,7 +107,8 @@
       initOrder: initOrder,
       clearOrder: clearOrder,
       addMealToOrder: addMealToOrder,
-      addMenuItemToOrder: addMenuItemToOrder
+      addMenuItemToOrder: addMenuItemToOrder,
+      processOrder: processOrder
     };
   }
 })();

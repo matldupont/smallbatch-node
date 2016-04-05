@@ -115,3 +115,29 @@ exports.orderByID = function(req, res, next, id) {
     next();
   });
 };
+
+exports.processOrder = function(req, res) {
+
+
+  console.log(req.params);
+  Order.findById(req.params.orderId).exec(function (err, order) {
+    console.log(order);
+    var stripe = require("stripe")("sk_test_y950B9vXrkhtbBYm9moxlewk");
+    var stripeToken = req.body.stripeToken;
+
+    var charge = stripe.charges.create({
+      amount: order.total * 100, // amount in cents, again
+      currency: "cad",
+      source: stripeToken,
+      description: "Order #" + order._id
+    }, function(err, charge) {
+      if (err && err.type === 'StripeCardError') {
+        // The card has been declined
+      }
+    });
+  });
+// (Assuming you're using express - expressjs.com)
+// Get the credit card details submitted by the form
+
+  res.jsonp({processed: true});
+};

@@ -78,7 +78,8 @@
       if (result.error) {
         window.alert('it failed! error: ' + result.error.message);
       } else {
-        window.alert('success! token: ' + result.id);
+        //window.alert('success! token: ' + result.id);
+        OrderService.processOrder(result.id);
       }
     }
 
