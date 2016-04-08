@@ -20,7 +20,9 @@
     </div>
   <!--</div>-->
   <div class="col-xs-7 col-sm-offset-2 top-gap">
-    <a ui-sref="order.checkout"><button class="btn btn-primary pull-right">Checkout</button></a>
+    <!--<a ui-sref="order.checkout">-->
+      <button data-ng-click="doCheckout(vm.order)" class="btn btn-primary pull-right">Checkout</button>
+    <!--</a>-->
   </div>
   <!--{{vm.order.meals}}-->
     <!--<div>{{vm.order.meals}}</div>-->

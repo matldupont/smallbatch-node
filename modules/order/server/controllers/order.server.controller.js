@@ -117,11 +117,7 @@ exports.orderByID = function(req, res, next, id) {
 };
 
 exports.processOrder = function(req, res) {
-
-
-  console.log(req.params);
   Order.findById(req.params.orderId).exec(function (err, order) {
-    console.log(order);
     var stripe = require("stripe")("sk_test_y950B9vXrkhtbBYm9moxlewk");
     var stripeToken = req.body.stripeToken;
 

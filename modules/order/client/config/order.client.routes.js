@@ -5,9 +5,9 @@
       .module('order')
       .config(routeConfig);
 
-  routeConfig.$inject = ['$stateProvider'];
+  routeConfig.$inject = ['$stateProvider', 'StripeCheckoutProvider'];
 
-  function routeConfig($stateProvider) {
+  function routeConfig($stateProvider, StripeCheckoutProvider) {
     $stateProvider
         .state('order', {
           abstract: true,
@@ -54,10 +54,12 @@
           templateUrl: 'modules/order/client/views/view-order.client.view.html',
           controller: 'OrderController',
           controllerAs: 'vm',
-          //resolve: {
-          //  orderResolve: getOrder
-          //},
+            resolve: {
+                // checkout.js isn't fetched until this is resolved.
+                stripe: StripeCheckoutProvider.load
+            },
           data:{
+              roles: ['user'],
             pageTitle: 'Order'
           }
         })
@@ -70,6 +72,7 @@
             //  orderResolve: getOrder
             //},
             data:{
+                roles: ['user'],
                 pageTitle: 'Checkout'
             }
         });

@@ -91,7 +91,6 @@
     }
 
     function processOrder(stripeToken) {
-      console.log(currentOrder)
       $http.post('/api/order/process/' + currentOrder._id, { stripeToken : stripeToken }).then(function(result) {
         console.log("processed!!");
         console.log(result);

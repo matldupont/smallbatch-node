@@ -5,12 +5,25 @@
   angular
       .module('order')
       .controller('OrderController', OrderController)
-  .config(function() {
-    window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
-  });
-  OrderController.$inject = ['$scope', '$state', 'Authentication', 'OrderService', 'MealsService', 'MenuItemsService'];
+  .config(function(StripeCheckoutProvider) {
+      StripeCheckoutProvider.defaults({
+          key: "pk_test_InlAsQrc8SCJqufg8KA4MV2z"
+        });
+    //window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
+  }).run(function($log, StripeCheckout) {
+        // You can set defaults here, too.
+        StripeCheckout.defaults({
+          opened: function() {
+           // $log.debug("Stripe Checkout opened");
+          },
+          closed: function() {
+           // $log.debug("Stripe Checkout closed");
+          }
+        });
+      });
+  OrderController.$inject = ['$scope', '$state', 'Authentication', 'OrderService', 'MealsService', 'MenuItemsService', 'StripeCheckout'];
 
-  function OrderController ($scope, $state, Authentication, OrderService, MealsService, MenuItemsService) {
+  function OrderController ($scope, $state, Authentication, OrderService, MealsService, MenuItemsService, StripeCheckout) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -20,6 +33,7 @@
     vm.mealOrder = {};
     vm.addToOrder = addToOrder;
     $scope.stripeCallback = stripeCallback;
+    //$scope.stripeCheckout = stripeCheckout;
     //vm.remove = remove;
     //vm.save = save;
 
@@ -82,6 +96,53 @@
         OrderService.processOrder(result.id);
       }
     }
+
+    var handler = StripeCheckout.configure({
+      name: "SmallBatch",
+      token: function(token, args) {
+        console.log(token);
+        //$log.debug("Got stripe token: " + token.id);
+      }
+    });
+    $scope.doCheckout = function(order) {console.log("DO CHECKOUT");console.log(order);
+      var options = {
+        description: "Order #" + order._id,
+        amount: order.total * 100
+      };
+      // The default handler API is enhanced by having open()
+      // return a promise. This promise can be used in lieu of or
+      // in addition to the token callback (or you can just ignore
+      // it if you like the default API).
+      //
+      // The rejection callback doesn't work in IE6-7.
+      handler.open(options)
+          .then(function(result) {
+            alert("Got Stripe token: " + result[0].id);
+          },function() {
+            alert("Stripe Checkout closed without making a sale :(");
+          });
+    };
+
+    //var handler = StripeCheckout.configure({
+    //  key: 'pk_test_InlAsQrc8SCJqufg8KA4MV2z',
+    //  image: '/img/documentation/checkout/marketplace.png',
+    //  locale: 'auto',
+    //  token: function(token) {
+    //    alert(token);
+    //    // Use the token to create the charge with a server-side script.
+    //    // You can access the token ID with `token.id`
+    //  }
+    //});
+
+    //function stripeCheckout() {
+    //  handler.open({
+    //    name: 'Demo Site',
+    //    description: '2 widgets',
+    //    currency: "cad",
+    //    amount: 2000
+    //  });
+    //}
+
 
     //// Remove existing Course
     //function remove() {
