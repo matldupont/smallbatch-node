@@ -23,7 +23,8 @@ module.exports = {
         'public/lib/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
         'public/lib/angular-file-upload/dist/angular-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'https://js.stripe.com/v2/'
+        'https://js.stripe.com/v2/',
+        'https://checkout.stripe.com/checkout.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
