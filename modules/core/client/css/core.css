@@ -75,6 +75,10 @@
   float: left;
 }
 
+.home-bg {
+
+}
+
 .open .header-profile-image,
 a:hover .header-profile-image {
   opacity: 1;

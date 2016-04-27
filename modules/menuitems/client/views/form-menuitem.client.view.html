@@ -1,65 +1,65 @@
 <section>
   <div class="page-header">
-    <h1>{{vm.menuItem._id ? 'Edit Menu Item' : 'New Menu Item'}}</h1>
+    <h1>{{menuItem._id ? 'Edit Menu Item' : 'New Menu Item'}}</h1>
   </div>
   <div class="col-md-12">
-    <form name="vm.form.menuItemForm" class="form-horizontal" ng-submit="vm.save(vm.form.menuItemForm.$valid)" novalidate>
+    <form name="form.menuItemForm" class="form-horizontal" ng-submit="save(form.menuItemForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label col-sm-2" for="name">Name</label>
           <div class="col-sm-7">
-            <input name="name" type="text" ng-model="vm.menuItem.name" id="name" class="form-control " placeholder="Name" required>
+            <input name="name" type="text" ng-model="menuItem.name" id="name" class="form-control " placeholder="Name" required>
           </div>
 
-          <div ng-messages="vm.form.menuItemForm.name.$error" role="alert">
+          <div ng-messages="form.menuItemForm.name.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Menu Item name is required.</p>
           </div>
         </div>
         <div class="form-group" show-errors>
           <label class="control-label col-sm-2" for="description">Description</label>
           <div class="col-sm-7">
-            <textarea name="description" rows="10" type="text" ng-model="vm.menuItem.description" id="description" class="form-control" placeholder="Description"></textarea>
+            <textarea name="description" rows="10" type="text" ng-model="menuItem.description" id="description" class="form-control" placeholder="Description"></textarea>
           </div>
         </div>
         <div class="form-group" show-errors>
           <label class="control-label col-sm-2" for="course">Course</label>
           <div class="col-sm-7">
-            <select class="form-control" name="course" id="course" ng-model="vm.menuItem.course.id" required>
-              <option ng-repeat="course in vm.courses" value="{{course._id}}">{{course.name}}</option>
+            <select class="form-control" name="course" id="course" ng-model="menuItem.course.id" required>
+              <option ng-repeat="course in courses" value="{{course._id}}">{{course.name}}</option>
             </select>
           </div>
 
-          <!--<input name="name" type="text" ng-model="vm.menuItem.course" id="course" class="form-control" placeholder="Name" required>-->
-          <div ng-messages="vm.form.menuItemForm.course.$error" role="alert">
+          <!--<input name="name" type="text" ng-model="menuItem.course" id="course" class="form-control" placeholder="Name" required>-->
+          <div ng-messages="form.menuItemForm.course.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Menu Item Course is required.</p>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="enabled">Enabled</label>
           <div class="col-sm-1">
-            <checkbox class="btn" ng-class="{ 'btn-success': vm.menuItem.enabled == true, 'btn-warning': vm.menuItem.enabled == false }" ng-model="vm.menuItem.enabled" id="enabled" name="enabled"></checkbox>
+            <checkbox class="btn" ng-class="{ 'btn-success': menuItem.enabled == true, 'btn-warning': menuItem.enabled == false }" ng-model="menuItem.enabled" id="enabled" name="enabled"></checkbox>
           </div>
         </div>
         <div class="form-group top-gap">
-          <button type="submit" class="btn btn-info">{{vm.menuItem._id ? 'Update' : 'Create'}}</button>
+          <button type="submit" class="btn btn-info">{{menuItem._id ? 'Update' : 'Create'}}</button>
 
-          <a ng-if="vm.menuItem._id" ui-sref="menuitems.view({menuItemId: vm.menuItem._id})">
+          <a ng-if="menuItem._id" ui-sref="menuitems.view({menuItemId: menuItem._id})">
             <button class="btn btn-default">Cancel</button>
           </a>
-          <a ng-if="!vm.menuItem._id && vm.courseId" ui-sref="courses.view({courseId: vm.courseId})">
+          <a ng-if="!menuItem._id && courseId" ui-sref="courses.view({courseId: courseId})">
             <button class="btn btn-default">Cancel</button>
           </a>
-          <a ng-if="!vm.menuItem._id && !vm.courseId" ui-sref="menuitems.list" >
+          <a ng-if="!menuItem._id && !courseId" ui-sref="menuitems.list" >
             <button class="btn btn-default">Cancel</button>
           </a>
 
-          <a ng-if="vm.menuItem._id" class="btn btn-danger" data-ng-click="vm.remove()">
+          <a ng-if="menuItem._id" class="btn btn-danger" data-ng-click="remove()">
             <i class="glyphicon glyphicon-trash"></i>
           </a>
         </div>
 
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
         </div>
       </fieldset>
     </form>

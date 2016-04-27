@@ -1,31 +1,35 @@
-<section>
-  <div class="page-header">
-    <h1>Menu Items</h1>
-  </div>
-  <div ng-if="vm.isAdmin" class="bottom-gap">
-    <a ui-sref="menuitems.create">
-      <button class="btn btn-primary">Add Menu Item</button>
-    </a>
-  </div>
-  <div class="list-group">
-    <a data-ng-repeat="menuItem in vm.menuItems"
-       data-ui-sref="menuitems.view({ menuItemId: menuItem._id })"
-       class="list-group-item">
-      <!--<small class="list-group-item-text">-->
-        <!--Posted on-->
-        <!--<span data-ng-bind="menuItem.created | date:'mediumDate'"></span>-->
-        <!--by-->
-        <!--<span data-ng-if="menuItem.user" data-ng-bind="menuItem.user.displayName"></span>-->
-        <!--<span data-ng-if="!menuItem.user">Deleted User</span>-->
-      <!--</small>-->
-      <h4 class="list-group-item-heading">
-        {{menuItem.name}}
-        <small><span class="label label-info">{{menuItem.course.name}}</span></small>
-      </h4>
-      <small class="list-group-item-text" data-ng-bind="menuItem.description"></small>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" data-ng-if="vm.menuItems.$resolved && !vm.menuItems.length">
-    No Menu Items yet, why don't you <a data-ui-sref="menuitems.create">create one</a>?
+<section ng-controller="MenuItemsListController">
+  <div class="shell">
+    <div class="section-110 section-cover ">
+      <div class="page-header">
+        <h1>Menu Items {{isAdmin}}</h1>
+      </div>
+      <div ng-if="isAdmin" class="bottom-gap">
+        <a ui-sref="menuitems.create">
+          <button class="btn btn-primary">Add Menu Item</button>
+        </a>
+      </div>
+      <div class="list-group">
+        <a data-ng-repeat="menuItem in menuItems"
+           data-ui-sref="menuitems.view({ menuItemId: menuItem._id })"
+           class="list-group-item">
+          <!--<small class="list-group-item-text">-->
+            <!--Posted on-->
+            <!--<span data-ng-bind="menuItem.created | date:'mediumDate'"></span>-->
+            <!--by-->
+            <!--<span data-ng-if="menuItem.user" data-ng-bind="menuItem.user.displayName"></span>-->
+            <!--<span data-ng-if="!menuItem.user">Deleted User</span>-->
+          <!--</small>-->
+          <h4 class="list-group-item-heading">
+            {{menuItem.name}}
+            <small><span class="label label-info">{{menuItem.course.name}}</span></small>
+          </h4>
+          <small class="list-group-item-text" data-ng-bind="menuItem.description"></small>
+        </a>
+      </div>
+      <div class="alert alert-warning text-center" data-ng-if="menuItems.$resolved && !menuItems.length">
+        No Menu Items yet, why don't you <a data-ui-sref="menuitems.create">create one</a>?
+      </div>
+    </div>
   </div>
 </section>

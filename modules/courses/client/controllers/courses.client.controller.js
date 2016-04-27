@@ -11,36 +11,36 @@
   function CoursesController ($scope, $state, Authentication, course) {
     var vm = this;
 
-    vm.authentication = Authentication;
-    vm.course = course;
-    vm.error = null;
-    vm.form = {};
-    vm.remove = remove;
-    vm.save = save;
+    $scope.authentication = Authentication;
+    $scope.course = course;
+    $scope.error = null;
+    $scope.form = {};
+    $scope.remove = remove;
+    $scope.save = save;
 
-    if (!vm.course._id) {
-      vm.course.enabled = true;
+    if (!$scope.course._id) {
+      $scope.course.enabled = true;
     }
 
     // Remove existing Course
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
-        vm.course.$remove($state.go('courses.list'));
+        $scope.course.$remove($state.go('courses.list'));
       }
     }
 
     // Save Course
     function save(isValid) {
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.courseForm');
+        $scope.$broadcast('show-errors-check-validity', '$scope.form.courseForm');
         return false;
       }
 
       // TODO: move create/update logic to service
-      if (vm.course._id) {
-        vm.course.$update(successCallback, errorCallback);
+      if ($scope.course._id) {
+        $scope.course.$update(successCallback, errorCallback);
       } else {
-        vm.course.$save(successCallback, errorCallback);
+        $scope.course.$save(successCallback, errorCallback);
       }
 
       function successCallback(res) {
@@ -50,7 +50,7 @@
       }
 
       function errorCallback(res) {
-        vm.error = res.data.message;
+        $scope.error = res.data.message;
       }
     }
 
@@ -59,7 +59,7 @@
         return role === 'admin';
       });
 
-      vm.isAdmin = match.length > 0;
+      $scope.isAdmin = match.length > 0;
     }
   }
 })();

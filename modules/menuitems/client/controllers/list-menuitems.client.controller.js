@@ -5,20 +5,22 @@
     .module('menuItems')
     .controller('MenuItemsListController', MenuItemsListController);
 
-  MenuItemsListController.$inject = ['MenuItemsService', 'Authentication'];
+  MenuItemsListController.$inject = ['$scope','MenuItemsService', 'Authentication'];
 
-  function MenuItemsListController(MenuItemsService, Authentication) {
+  function MenuItemsListController($scope, MenuItemsService, Authentication) {
     var vm = this;
-    vm.authentication = Authentication;
+    $scope.authentication = Authentication;
 
     if (Authentication.user) {
       var match = Authentication.user.roles.filter(function (role) {
         return role === 'admin';
       });
 
-      vm.isAdmin = match.length > 0;
+      $scope.isAdmin = match.length > 0;
     }
 
-    vm.menuItems = MenuItemsService.query();
+    $scope.menuItems = MenuItemsService.query(function(result) {
+      console.log(result);
+    });
   }
 })();

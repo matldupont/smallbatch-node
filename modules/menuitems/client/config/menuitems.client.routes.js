@@ -15,7 +15,7 @@
         template: '<ui-view/>'
       })
       .state('menuitems.list', {
-        url: '',
+        url: '/list',
         templateUrl: 'modules/menuitems/client/views/list-menuitems.client.view.html',
         controller: 'MenuItemsListController',
         controllerAs: 'vm',
