@@ -1,0 +1,73 @@
+<section ng-controller="CoursesListController">
+  <section class="context-dark">
+    <div data-on="false" data-md-on="true" class="rd-parallax">
+      <div style="background: url('../modules/core/client/img/intro-01-1920x955.jpg'); background-size: cover; background-repeat: no-repeat;">
+        <div class="shell">
+          <div class="section-110 range range-xs-center range-xs-middle">
+            <div class="cell-md-8">
+              <div>
+                <h1 class="font-accent"><span class="big">Zaher's Menu</span></h1>
+              </div>
+              <ul class="list-inline list-inline-mg list-inline-squared h3 text-uppercase text-light offset-top-4 veil reveal-xs-block">
+                <li>On the Stove</li>
+                <li>On the Grill</li>
+              </ul>
+              <div class="group offset-top-50"><a ui-sref="order.create" data-custom-scroll-to="meal-section" class="btn btn-lg btn-primary">Order Now</a></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section Menu-->
+  <section class="section-98 section-110">
+    <div class="shell">
+      <div >
+        <div class="row">
+          <!-- Isotope Filters-->
+          <div class="col-lg-3">
+            <div class="isotope-filters isotope-filters-vertical">
+              <h4 class="text-uppercase text-bold isotope-filters-title offset-top-34">Categories</h4>
+              <ul class="list-inline list-inline-sm">
+                <li class="veil-md">
+                  <p>Choose your category:</p>
+                </li>
+                <li class="section-relative">
+                  <button data-custom-toggle="isotope-3" data-custom-toggle-disable-on-blur="true" class="isotope-filters-toggle btn btn-sm btn-default">Filter<span class="caret"></span></button>
+                  <ul id="isotope-3" class="list-sm-inline isotope-filters-list">
+                    <li><a class="text-sbold" ng-class="{ active: selectedCourse == null }" ng-click="selectCourse()">All</a></li>
+                    <li ng-repeat="course in courses" ng-if="course.menuItems.length > 0"><a class="text-sbold" ng-class="{ active: selectedCourse == course._id }" ng-click="selectCourse(course._id)">{{course.name}}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Isotope Content-->
+          <div class="col-lg-9 offset-lg-top-0 offset-top-34">
+            <div data-isotope-group="gallery" class="isotope">
+              <div data-filter="Breakfasts" class="isotope-item element-fullwidth" data-ng-repeat="course in courses | filter: { _id : selectedCourse }" ng-if="course.menuItems.length > 0">
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2 col-lg-offset-0 col-lg-5" ng-class="{ 'col-lg-push-7' : $index % 2 == 0 }"><img src="images/gallery-08-370x370.jpg" alt="" width="370" height="370" class="img-responsive element-fullwidth"></div>
+                  <div class="col-sm-8 col-sm-offset-2 col-lg-offset-0 col-lg-7" ng-class="{ 'col-lg-pull-5' : $index % 2 == 0 }">
+                    <!-- Pricing Box type 1-->
+                    <ul class="box-pricing box-pricing-type-1 list-unstyled">
+                      <li class="box-pricing-item" data-ng-repeat="menuItem in course.menuItems">
+                        <div class="box-pricing-title big text-uppercase text-spacing-120">
+                          <div class="box-pricing-name text-darker text-bold">{{menuItem.name}}</div>
+                          <div class="box-pricing-dots"></div>
+                          <!--<div class="box-pricing-price h5 text-bold">$22.00</div>-->
+                        </div>
+                        <div class="box-pricing-desc text-dark offset-top-10">{{menuItem.description}}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

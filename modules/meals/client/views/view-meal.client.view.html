@@ -1,44 +1,54 @@
 <section>
-  <div class="pull-right" ng-if="vm.isAdmin">
-    <h4>
-      <span ng-if="vm.meal.enabled" class="label label-success">Enabled</span>
-      <span ng-if="!vm.meal.enabled" class="label label-warning">Disabled</span>
-      <a class="btn btn-primary"
-         data-ui-sref="meals.edit({ mealId: vm.meal._id })">
-        <i class="glyphicon glyphicon-edit"></i>
-      </a>
-    </h4>
-
-  </div>
-  <div class="page-header" >
-    <h1 >{{vm.meal.name}} <small>{{vm.meal.price | currency}}</small></h1>
-    <a ui-sref="order.create({ mealId: vm.meal._id })" ng-if="!vm.isAdmin"><button class="btn btn-primary">Order Now</button></a>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading" >
-      {{vm.meal.description}}
+  <div class="rd-parallax">
+    <div data-speed="0.45" data-type="media" data-url="../modules/core/client/img/intro-01-1920x955.jpg" class="rd-parallax-layer" style="background-image: url('../modules/core/client/img/intro-01-1920x955.jpg'); height: 110px;">
     </div>
-    <div class="panel-body">
-      <ul class="no-padding">
-        <li data-ng-repeat="course in vm.meal.courses" class="no-decoration"><strong>{{course.quantity}}x {{course.name}}<ng-pluralize count="course.quantity"
-                                                                                                                                    when="{'0': 'Nobody is viewing.',
-                     'one': '',
-                     'other': 's'}">
-        </ng-pluralize></strong></li>
-      </ul>
+    <!--<div class="rd-parallax-layer" style="background-image: url('../modules/core/client/img/intro-01-1920x955.jpg'); height:110px;">-->
+    <!--</div>-->
+  </div>
+  <div class="shell">
+    <div class="section-110 section-cover ">
+      <div class="pull-right" ng-if="vm.isAdmin">
+        <h4>
+          <span ng-if="vm.meal.enabled" class="label label-success">Enabled</span>
+          <span ng-if="!vm.meal.enabled" class="label label-warning">Disabled</span>
+          <a class="btn btn-primary"
+             data-ui-sref="meals.edit({ mealId: vm.meal._id })">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+        </h4>
+
+      </div>
+      <div class="page-header" >
+        <h1 >{{vm.meal.name}} <small>{{vm.meal.price | currency}}</small></h1>
+        <a ui-sref="order.create({ mealId: vm.meal._id })" ng-if="!vm.isAdmin"><button class="btn btn-primary">Order Now</button></a>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading" >
+          {{vm.meal.description}}
+        </div>
+        <div class="panel-body">
+          <ul class="no-padding">
+            <li data-ng-repeat="course in vm.meal.courses" class="no-decoration"><strong>{{course.quantity}}x {{course.name}}<ng-pluralize count="course.quantity"
+                                                                                                                                        when="{'0': 'Nobody is viewing.',
+                         'one': '',
+                         'other': 's'}">
+            </ng-pluralize></strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <small ng-if="vm.isAdmin">
+        <em class="text-muted">
+          Posted on
+          <span data-ng-bind="vm.meal.created | date:'mediumDate'"></span>
+          by
+          <span data-ng-if="vm.meal.user"
+                data-ng-bind="vm.meal.user.displayName"></span>
+          <span data-ng-if="!vm.meal.user">Deleted User</span>
+        </em>
+      </small>
+      <p class="lead" data-ng-bind="vm.meal.content"></p>
     </div>
   </div>
-
-  <small ng-if="vm.isAdmin">
-    <em class="text-muted">
-      Posted on
-      <span data-ng-bind="vm.meal.created | date:'mediumDate'"></span>
-      by
-      <span data-ng-if="vm.meal.user"
-            data-ng-bind="vm.meal.user.displayName"></span>
-      <span data-ng-if="!vm.meal.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" data-ng-bind="vm.meal.content"></p>
 </section>

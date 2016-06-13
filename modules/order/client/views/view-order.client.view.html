@@ -1,32 +1,41 @@
-<section>
-  <div class="page-header">
-    <h1>Your Current Order</h1>
+<section >
+  <div class="rd-parallax">
+    <div data-speed="0.45" data-type="media" data-url="../modules/core/client/img/intro-01-1920x955.jpg" class="rd-parallax-layer" style="background-image: url('../modules/core/client/img/intro-01-1920x955.jpg'); height: 110px;">
+    </div>
+    <!--<div class="rd-parallax-layer" style="background-image: url('../modules/core/client/img/intro-01-1920x955.jpg'); height:110px;">-->
+    <!--</div>-->
   </div>
-
-  <!--<div class="page-header">-->
-    <div data-ng-repeat="meal in vm.order.meals" >
-      <div class="col-xs-7 col-sm-offset-2 bottom-gap-small">
-        <span class="pull-right"><strong>{{meal.price * meal.quantity | currency}}</strong></span>
-        <strong>{{meal.name}} <span ng-if="meal.quantity > 1">for {{meal.quantity}}</span></strong>
-        <div class="col-xs-12" data-ng-repeat="course in meal.courses">
-          {{course.menuItemName}}
-        </div>
+  <div class="shell">
+    <div class="section-110 section-cover ">
+      <div class="page-header">
+        <h1>Your Current Order</h1>
       </div>
-    </div>
-  <!--</div>-->
-  <!--<div class="row">-->
-    <div class="col-xs-7 col-sm-offset-2 ">
-      <span class="pull-right"><strong>Total: {{vm.order.total | currency}}</strong></span>
-    </div>
-  <!--</div>-->
-  <div class="col-xs-7 col-sm-offset-2 top-gap">
-    <!--<a ui-sref="order.checkout">-->
-      <button data-ng-click="doCheckout(vm.order)" class="btn btn-primary pull-right">Checkout</button>
-    <!--</a>-->
-  </div>
-  <!--{{vm.order.meals}}-->
-    <!--<div>{{vm.order.meals}}</div>-->
-  <!--</div>-->
 
+      <!--<div class="page-header">-->
+        <div data-ng-repeat="meal in vm.order.meals" >
+          <div class="col-xs-7 col-sm-offset-2 bottom-gap-small">
+            <span class="pull-right"><strong>{{meal.price * meal.quantity | currency}}</strong></span>
+            <strong>{{meal.name}} <span ng-if="meal.quantity > 1">for {{meal.quantity}}</span></strong>
+            <div class="col-xs-12" data-ng-repeat="course in meal.courses">
+              {{course.menuItemName}}
+            </div>
+          </div>
+        </div>
+      <!--</div>-->
+      <!--<div class="row">-->
+        <div class="col-xs-7 col-sm-offset-2 ">
+          <span class="pull-right"><strong>Total: {{vm.order.total | currency}}</strong></span>
+        </div>
+      <!--</div>-->
+      <div class="col-xs-7 col-sm-offset-2 top-gap">
+        <!--<a ui-sref="order.checkout">-->
+          <button data-ng-click="doCheckout(vm.order)" class="btn btn-primary pull-right">Checkout</button>
+        <!--</a>-->
+      </div>
+      <!--{{vm.order.meals}}-->
+        <!--<div>{{vm.order.meals}}</div>-->
+      <!--</div>-->
+    </div>
+  </div>
 
 </section>

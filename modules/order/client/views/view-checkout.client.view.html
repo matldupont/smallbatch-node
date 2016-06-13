@@ -1,19 +1,32 @@
-<form stripe-form="stripeCallback" name="form">
-  <input ng-model="number" placeholder="Card Number" payments-format="card"
-         payments-validate="card" name="card" />
-  <input ng-model="expiry" placeholder="Expiration" payments-format="expiry"
-         payments-validate="expiry" name="expiry" />
-  <input ng-model="cvc" placeholder="CVC" payments-format="cvc"
-         payments-validate="cvc" name="cvc" />
-  <button type="submit">Submit</button>
-</form>
+<section >
+  <div class="rd-parallax">
+    <div data-speed="0.45" data-type="media" data-url="../modules/core/client/img/intro-01-1920x955.jpg" class="rd-parallax-layer" style="background-image: url('../modules/core/client/img/intro-01-1920x955.jpg'); height: 110px;">
+    </div>
+    <!--<div class="rd-parallax-layer" style="background-image: url('../modules/core/client/img/intro-01-1920x955.jpg'); height:110px;">-->
+    <!--</div>-->
+  </div>
+  <div class="shell">
+    <div class="section-110 section-cover ">
 
-<div ng-if="form.card.$invalid">
-  Error: invalid card number!
-</div>
-<div ng-if="form.expiry.$invalid">
-  Error: invalid expiration date!
-</div>
-<div ng-if="form.cvc.$invalid">
-  Error: invalid CVC!
-</div>
+      <form stripe-form="stripeCallback" name="form">
+        <input ng-model="number" placeholder="Card Number" payments-format="card"
+               payments-validate="card" name="card" />
+        <input ng-model="expiry" placeholder="Expiration" payments-format="expiry"
+               payments-validate="expiry" name="expiry" />
+        <input ng-model="cvc" placeholder="CVC" payments-format="cvc"
+               payments-validate="cvc" name="cvc" />
+        <button type="submit">Submit</button>
+      </form>
+
+      <div ng-if="form.card.$invalid">
+        Error: invalid card number!
+      </div>
+      <div ng-if="form.expiry.$invalid">
+        Error: invalid expiration date!
+      </div>
+      <div ng-if="form.cvc.$invalid">
+        Error: invalid CVC!
+      </div>
+    </div>
+  </div>
+</section>

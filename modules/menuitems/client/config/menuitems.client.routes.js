@@ -23,6 +23,15 @@
           pageTitle: 'Menu'
         }
       })
+      .state('menuitems.readonlylist', {
+        url: '/readonlylist',
+        templateUrl: 'modules/menuitems/client/views/readonly-menuitems.client.view.html',
+        controller: 'MenuItemsListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Menu'
+        }
+      })
       .state('menuitems.create', {
         url: '/create?course',
         templateUrl: 'modules/menuitems/client/views/form-menuitem.client.view.html',

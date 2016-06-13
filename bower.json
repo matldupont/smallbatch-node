@@ -18,7 +18,8 @@
     "angular-cookies": "^1.5.2",
     "angular-payments": "*",
     "angular-stripe-checkout": "^4.0.1",
-    "angular-isotope": "^0.1.14"
+    "angular-isotope": "^0.1.14",
+    "angular-parallax": "^0.0.2"
   },
   "overrides": {
     "bootstrap": {

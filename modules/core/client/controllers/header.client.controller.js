@@ -3,6 +3,7 @@
 angular.module('core').controller('HeaderController', ['$scope', '$location', '$http', '$state', 'Authentication', 'Menus', 'OrderService',
   function ($scope, $location, $http, $state, Authentication, Menus, OrderService) {
     // Expose view variables
+    console.log("ASDfasdfasdf");
     $scope.$state = $state;
     $scope.authentication = Authentication;
     $scope.currentOrder = OrderService.currentOrder;
@@ -29,5 +30,15 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
       OrderService.clearOrder();
       window.location.href = '/api/auth/signout';
     };
+
+    if (Authentication.user) {
+      var match = Authentication.user.roles.filter(function(role) {
+        return role === 'admin';
+      });
+
+      $scope.isAdmin = match.length > 0;
+    }
+
+    $scope.isAuthenticated = Authentication.user ? true : false;
   }
 ]);

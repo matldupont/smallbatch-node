@@ -19,5 +19,12 @@
     }
 
     $scope.courses = CoursesService.query(function(result) { console.log(result); });
+
+    //$scope.selectedCourse = null;
+
+    $scope.selectCourse = function(courseId) {
+      $scope.selectedCourse = courseId;
+      console.log($scope.selectedCourse);
+    };
   }
 })();

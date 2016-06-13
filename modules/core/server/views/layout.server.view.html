@@ -38,7 +38,7 @@
 <body class="ng-cloak">
   <div class="page text-center">
     <header class="page-head slider-menu-position">
-      <div class="rd-navbar-wrap" ng-controller="HeaderController">
+      <div class="rd-navbar-wrap" >
 
         <!-- RD Navbar Transparent-->
         <nav class="rd-navbar rd-navbar-default rd-navbar-transparent" data-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
@@ -65,39 +65,40 @@
                     </form>
                   </div>
                   <!-- RD Navbar Nav-->
-                  <ul class="rd-navbar-nav">
-                    <li class="active"><a ui-sref="home"><span>Home</span></a>
-                    </li>
-                    <li><a href="about.html"><span>About Us</span></a>
-                    </li>
-                    <li><a ui-sref="menuitems.list"><span>Menu</span></a>
-                    </li>
-                    <li><a ui-sref="authentication.signin"><span>Sign In</span></a>
-                    </li>
-                    <li><a href="events.html"><span>Events</span></a>
-                      <ul class="rd-navbar-dropdown">
-                        <li><a href="single-event.html"><span class="text-middle">Single Event</span></a>
-                        </li>
-                        <li><a href="#"><span class="text-middle">Action</span></a>
-                        </li>
-                        <li><a href="#"><span class="text-middle">Another Action</span></a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a href="contacts.html"><span>Contacts</span></a>
-                    </li>
-                  </ul>
+                  <div ng-include="'/modules/core/client/views/header.client.view.html'"></div>
+                  <!--<ul class="rd-navbar-nav">-->
+                    <!--<li ui-sref-active="active" class="active"><a ui-sref="home"><span>Home</span></a>-->
+                    <!--</li>-->
+                    <!--<li ui-sref-active="active"><a href="about.html"><span>About Us</span></a>-->
+                    <!--</li>-->
+                    <!--<li ui-sref-active="active"><a ui-sref="menuitems.list"><span>Menu</span></a>-->
+                    <!--</li>-->
+                    <!--<li ui-sref-active="active"><a ui-sref="authentication.signin"><span>Sign In</span></a>-->
+                    <!--</li>-->
+                    <!--<li ui-sref-active="active"><a href="events.html"><span>Events</span></a>-->
+                      <!--<ul class="rd-navbar-dropdown">-->
+                        <!--<li><a href="single-event.html"><span class="text-middle">Single Event</span></a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#"><span class="text-middle">Action</span></a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#"><span class="text-middle">Another Action</span></a>-->
+                        <!--</li>-->
+                      <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li ui-sref-active="active"><a ui-sref="authentication.signin"><span>Sign In</span></a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
                 </div>
               </div>
               <!--RD Navbar Search-->
-              <div class="rd-navbar-search"><a data-rd-navbar-toggle=".rd-navbar-inner,.rd-navbar-search" href="#" class="rd-navbar-search-toggle mdi"><span></span></a>
-                <form action="search-results.html" method="GET" class="rd-navbar-search-form search-form-icon-right">
-                  <div class="form-group">
-                    <label for="rd-navbar-search-form-input" class="form-label">Type and hit enter...</label>
-                    <input id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off" class="rd-navbar-search-form-input form-control form-control-gray-lightest"/>
-                  </div>
-                </form>
-              </div>
+              <!--<div class="rd-navbar-search"><a data-rd-navbar-toggle=".rd-navbar-inner,.rd-navbar-search" href="#" class="rd-navbar-search-toggle mdi"><span></span></a>-->
+                <!--<form action="search-results.html" method="GET" class="rd-navbar-search-form search-form-icon-right">-->
+                  <!--<div class="form-group">-->
+                    <!--<label for="rd-navbar-search-form-input" class="form-label">Type and hit enter...</label>-->
+                    <!--<input id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off" class="rd-navbar-search-form-input form-control form-control-gray-lightest"/>-->
+                  <!--</div>-->
+                <!--</form>-->
+              <!--</div>-->
             </div>
           </div>
         </nav>
@@ -105,297 +106,9 @@
 
     </header>
     <main class="page-content" >
-       <!--Section Intro-->
-      <!--<section class="context-dark" >-->
-        <!--<div data-on="false" data-md-on="true" class="rd-parallax">-->
-          <!--<div data-speed="0.45" data-type="media" data-url="modules/core/client/img/intro-01-1920x955.jpg" class="rd-parallax-layer"></div>-->
-          <!--<div data-speed="0.3" data-type="html" data-fade="true" class="rd-parallax-layer">-->
-            <!--<div class="shell">-->
-              <!--<div class="section-110 section-cover range range-xs-center range-xs-middle">-->
-                <!--<div class="cell-md-8">-->
-                  <!--<img src="modules/core/client/img/smallbatch-logo.png" alt="">-->
-                  <!--<div class="group offset-top-50"><a href="#" data-custom-scroll-to="meal-section" class="btn btn-lg btn-primary">Order Now</a></div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</section>-->
-      <!-- Section Welcome -->
-      <!--<section class="section-98 section-md-110">-->
-        <!--<div class="shell">-->
-          <!--<div class="range text-lg-left">-->
-            <!--<div class="cell-sm-preffix-2 cell-sm-8 cell-lg-preffix-0 cell-lg-6 cell-lg-push-6">-->
-              <!--<div class="shadow-drop-xl">-->
-                <!--&lt;!&ndash; Media Elements&ndash;&gt;-->
-                <!--<div class="embed-responsive embed-responsive-16by9">-->
-                  <!--<iframe src="https://www.youtube.com/embed/hUNAX1UYeAE" class="embed-responsive-item"></iframe>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="cell-sm-preffix-2 cell-sm-8 cell-lg-preffix-0 cell-lg-6 cell-lg-pull-6 offset-top-30 offset-lg-top-0">-->
-              <!--<div class="inset-lg-right-20">-->
-                <!--<h1><span class="reveal-block font-accent big">Zaher</span><span class="reveal-block offset-top-4 h3 text-light text-uppercase">SmallBatch</span></h1>-->
-                <!--<hr class="divider hr-lg-left-0 bg-mantis offset-top-30">-->
-                <!--<p>Want some good eats?  I know you do.  Zaher has some serious good eats.  Eats you'd really wanna eat.  Boxes of your favorite eats for you and all the pals you wanna eat with!  Dont be a fool, check out these serious eats.  Appetizer Eats.  Entree Eats.  Dessert Eats.   .... Eats for your grill.  One-Off Eats.  Eats you can add to your other eats.  Stop fucking around and eat.  Bitch.</p>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</section>-->
       <section>
         {% block content %}{% endblock %}
       </section>
-      <!-- Section Menu -->
-      <!--<section>-->
-        <!--<div class="context-dark">-->
-          <!--&lt;!&ndash; RD Parallax&ndash;&gt;-->
-          <!--<div data-on="false" data-md-on="true" class="rd-parallax">-->
-            <!--<div data-speed="0.35" data-type="media" data-url="modules/meals/client/img/smallbatch1.jpg" class="rd-parallax-layer"></div>-->
-            <!--<div data-speed="0" data-type="html" class="rd-parallax-layer">-->
-              <!--<div class="shell section-66 section-sm-110">-->
-                <!--<div>-->
-                  <!--<h1 class="font-accent"><span class="big">Zaher's Menu</span></h1>-->
-                <!--</div>-->
-                <!--<ul class="list-inline list-inline-mg list-inline-squared h3 text-uppercase text-light offset-top-4 veil reveal-xs-block">-->
-                  <!--<li>On the Stove</li>-->
-                  <!--<li>On the Grill</li>-->
-                <!--</ul>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="shell-wide section-66">-->
-          <!--{{authentication}}-->
-          <!--<div class="isotope-wrap">-->
-            <!--<div class="row">-->
-              <!--&lt;!&ndash; Isotope Filters&ndash;&gt;-->
-              <!--<div class="col-lg-12">-->
-                <!--<div class="isotope-filters isotope-filters-horizontal">-->
-                  <!--<ul class="list-inline list-inline-sm">-->
-                    <!--<li class="veil-md">-->
-                      <!--<p>Choose your category:</p>-->
-                    <!--</li>-->
-                    <!--<li class="section-relative">-->
-                      <!--<button data-custom-toggle="isotope-1" data-custom-toggle-disable-on-blur="true" class="isotope-filters-toggle btn btn-sm btn-default">Filter<span class="caret"></span></button>-->
-                      <!--<ul id="isotope-1" class="list-sm-inline isotope-filters-list">-->
-                        <!--<li><a data-isotope-filter="*" data-isotope-group="menu" href="#" class="text-sbold active">All</a></li>-->
-                        <!--<li><a data-isotope-filter="Breakfasts" data-isotope-group="menu" href="#" class="text-sbold">Breakfasts</a></li>-->
-                        <!--<li><a data-isotope-filter="Lunches" data-isotope-group="menu" href="#" class="text-sbold">Lunches</a></li>-->
-                        <!--<li><a data-isotope-filter="Dinners" data-isotope-group="menu" href="#" class="text-sbold">Dinners</a></li>-->
-                        <!--<li><a data-isotope-filter="Desserts" data-isotope-group="menu" href="#" class="text-sbold">Desserts</a></li>-->
-                        <!--<li><a data-isotope-filter="Drinks" data-isotope-group="menu" href="#" class="text-sbold">Drinks</a></li>-->
-                      <!--</ul>-->
-                    <!--</li>-->
-                  <!--</ul>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--&lt;!&ndash; Isotope Content&ndash;&gt;-->
-              <!--<div class="col-lg-12 offset-top-34">-->
-                <!--<div data-isotope-layout="fitRows" data-isotope-group="menu" class="isotope">-->
-                  <!--<div class="row">-->
-                    <!--<div data-filter="Breakfasts" class="col-xs-12 col-md-4 isotope-item">-->
-                      <!--<div class="inset-md-right-20">-->
-                        <!--&lt;!&ndash; Pricing Box type 1&ndash;&gt;-->
-                        <!--<ul class="box-pricing box-pricing-type-1 list-unstyled">-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Old Timer's Breakfast</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$22.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Two eggs cooked to order with grits, sawmill gravy, homemade buttermilk biscuits &amp; real butter  )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Fresh Start Sampler</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$37.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Start your day with a mix of low fat vanilla yogurt, fresh seasonal fruit topped with our honey mix )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Double Meat Breakfast</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$42.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Three eggs cooked to order with a full order of bacon and sausage patties )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Crab &amp; avocado bruschetta</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$19.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Fresh white&amp;brown crab, crunchy fennel, smashed avocado, yoghurt &amp; chilli )</div>-->
-                          <!--</li>-->
-                        <!--</ul>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                    <!--<div data-filter="Lunches" class="col-xs-12 col-md-4 isotope-item">-->
-                      <!--<div class="inset-md-right-20">-->
-                        <!--&lt;!&ndash; Pricing Box type 1&ndash;&gt;-->
-                        <!--<ul class="box-pricing box-pricing-type-1 list-unstyled">-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Turkey milanese</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$22.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Stuffed with prosciutto &amp; provolone, breadcrumbed &amp; topped with a free-range egg &amp; black summer truffle. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Fritto misto</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$37.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Mixed seasonal flash-fried sustainable fish &amp; shellfish served with chunky Italian tartare sauce &amp; lemon. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Italian steak frites</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$42.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Flash-grilled prime beef steak, served with Italian-spiced skinny fries &amp; crunchy vegetable slaw. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Baked Crespelle</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$19.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Spinach, Westcombe ricotta &amp; basil baked in gluten-free buckwheat pancakes with smoked mozzarella, sweet buttery leeks, Sicilian tomato sauce &amp; Parmesan. )</div>-->
-                          <!--</li>-->
-                        <!--</ul>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                    <!--<div data-filter="Dinners" class="col-xs-12 col-md-4 isotope-item">-->
-                      <!--<div class="inset-md-right-20">-->
-                        <!--&lt;!&ndash; Pricing Box type 1&ndash;&gt;-->
-                        <!--<ul class="box-pricing box-pricing-type-1 list-unstyled">-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Our famous prawn linguine</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$22.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Fried garlicky prawns, fennel, tomatoes, chilli, saffron, fish broth &amp; lemony rocket. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Gnocchi genovese</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$37.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Potato gnocchi with green beans, crushed purple potatoes, basil pesto, toasted pine nuts, bella lodi &amp; ricotta. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Penne carbonara</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$42.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Crispy chunks of smoked pancetta, sweet buttery leeks, lemon &amp; a traditional carbonara sauce. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Three-cheese caramelle</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$19.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Beautiful filled pasta with ricotta, provolone, bella lodi &amp; spinach, served with creamy tomato, garlic, basil &amp; rosé wine sauce. )</div>-->
-                          <!--</li>-->
-                        <!--</ul>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                    <!--<div data-filter="Desserts" class="col-xs-12 col-md-4 isotope-item">-->
-                      <!--<div class="inset-md-right-20">-->
-                        <!--&lt;!&ndash; Pricing Box type 1&ndash;&gt;-->
-                        <!--<ul class="box-pricing box-pricing-type-1 list-unstyled">-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Tiramisù</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$22.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( The classic italian dessert topped with chocolate shavings &amp; orange zest. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Rasbery &amp; honeycomb pavlova</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$37.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Rippled, gooey meringue, zesty cream, macerated raspberries, smashed honeycomb &amp; fresh mint. )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Molten chocolate praline pudding</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$42.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Warm chocolate cake with a liquid praline centre, served with salted caramel ice cream &amp; praline.  )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Orange blossom polenta cake</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$19.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Polenta cake studded with candied fruit, served with whipped creme fraiche &amp; pomegranate. )</div>-->
-                          <!--</li>-->
-                        <!--</ul>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                    <!--<div data-filter="Drinks" class="col-xs-12 col-md-4 isotope-item">-->
-                      <!--<div class="inset-md-right-20">-->
-                        <!--&lt;!&ndash; Pricing Box type 1&ndash;&gt;-->
-                        <!--<ul class="box-pricing box-pricing-type-1 list-unstyled">-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Raspberry mule</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$22.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Vodka, raspberry purée &amp; fresh lime juice topped with ginger beer )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">La dolce vita</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$37.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Saliza amaretto, triple sec &amp; sugar syrup shaken up with fresh lemon &amp; cranberry juice )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Montepulciano d’abruzzo</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$42.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Cherry &amp; chocolate flavours are typical of this well-known grape )</div>-->
-                          <!--</li>-->
-                          <!--<li class="box-pricing-item">-->
-                            <!--<div class="box-pricing-title big text-uppercase text-spacing-120">-->
-                              <!--<div class="box-pricing-name text-darker text-bold">Sauvignon blanc</div>-->
-                              <!--<div class="box-pricing-dots"></div>-->
-                              <!--<div class="box-pricing-price h5 text-bold">$19.00</div>-->
-                            <!--</div>-->
-                            <!--<div class="box-pricing-desc text-dark offset-top-10">( Herby aromas &amp; melon flavours )</div>-->
-                          <!--</li>-->
-                        <!--</ul>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</section>-->
     </main>
   </div>
 
