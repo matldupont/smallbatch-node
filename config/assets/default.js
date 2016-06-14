@@ -5,7 +5,8 @@ module.exports = {
     lib: {
       css: [
         // bower:css
-        'public/lib/bootstrap/dist/css/bootstrap.css',
+        //'public/lib/bootstrap/dist/css/bootstrap.css',
+        'public/lib/Ionicons/css/ionicons.min.css'
         //'public/lib/bootstrap/dist/css/bootstrap-theme.css'
         // endbower
       ],
@@ -25,6 +26,7 @@ module.exports = {
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'https://js.stripe.com/v2/',
         'https://checkout.stripe.com/checkout.js'
+
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

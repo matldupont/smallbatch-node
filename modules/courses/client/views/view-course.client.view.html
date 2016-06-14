@@ -1,40 +1,29 @@
-<section>
-  <div class="pull-right" ng-if="vm.isAdmin">
-    <h4>
-      <span ng-if="vm.course.enabled" class="label label-success">Enabled</span>
-      <span ng-if="!vm.course.enabled" class="label label-warning">Disabled</span>
-
-      <a class="btn btn-primary"
-         data-ui-sref="courses.edit({ courseId: vm.course._id })">
-        <i class="glyphicon glyphicon-edit"></i>
-      </a>
-    </h4>
-    <!--<a class="btn btn-primary" data-ng-click="vm.remove()">-->
-      <!--<i class="glyphicon glyphicon-trash"></i>-->
-    <!--</a>-->
+<section class="admin">
+  <div class="item-header">
+    <h1>{{vm.course.name}}</h1>
+    <h4>{{vm.course.description}}</h4>
   </div>
-
-  <div class="page-header">
-    <h1 data-ng-bind="vm.course.name"></h1>
-    <h4 data-ng-bind="vm.course.description"></h4>
-  </div>
-
-  <div ng-if="vm.isAdmin" class="bottom-gap">
+  <div>
     <a ui-sref="menuitems.create({course: vm.course._id})">
-      <button class="btn btn-primary">Add {{vm.course.name}}</button>
+      <button>Add {{vm.course.name}}</button>
     </a>
   </div>
-  <div class="list-group">
+  <div class="item-list">
     <a data-ng-repeat="menuItem in vm.course.menuItems"
-       data-ui-sref="menuitems.view({ menuItemId: menuItem.id })"
-       class="list-group-item">
+       data-ui-sref="menuitems.view({ menuItemId: menuItem.id })">
       <h4 class="list-group-item-heading" data-ng-bind="menuItem.name"></h4>
       <small data-ng-bind="menuItem.description"></small>
     </a>
   </div>
 
-  <small ng-if="vm.isAdmin">
-    <em class="text-muted">
+  <small ng-if="vm.course.enabled">Enabled</small>
+
+  <div class="item-edit">
+    <a data-ui-sref="courses.edit({ courseId: vm.course._id })">Edit</a>
+  </div>
+
+  <small>
+    <em >
       Created on
       <span data-ng-bind="vm.course.created | date:'mediumDate'"></span>
       by
@@ -43,5 +32,5 @@
       <span data-ng-if="!vm.course.user">Deleted User</span>
     </em>
   </small>
-  <p class="lead" data-ng-bind="vm.course.content"></p>
+  <p data-ng-bind="vm.course.content"></p>
 </section>

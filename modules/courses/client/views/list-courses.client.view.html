@@ -1,16 +1,37 @@
-<section>
-  <div class="page-header">
+<section class="admin">
+  <div>
     <h1>Courses</h1>
   </div>
-  <div ng-if="vm.isAdmin" class="bottom-gap">
+  <div>
     <a ui-sref="courses.create">
-      <button class="btn btn-primary">Add Course</button>
+      <button>Add Course</button>
     </a>
   </div>
-  <div class="list-group">
-    <a data-ng-repeat="course in vm.courses"
+
+  <!--<div class="col span-1-of-3" ng-repeat="course in vm.courses">-->
+    <!--<div class="plan-box">-->
+      <!--<div>-->
+        <!--<h3>ONEBox</h3>-->
+        <!--<p class="plan-price">$35<span>xx</span></p>-->
+        <!--<p class="plan-price-meal">Some descriptive stuff here.</p>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<ul>-->
+          <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Appetizer</li>-->
+          <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Entree</li>-->
+          <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Dessert</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<a href="#" class="btn btn-full">Order Now</a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div class="list">
+    <div data-ng-repeat="course in vm.courses"
        data-ui-sref="courses.view({ courseId: course._id })"
-       class="list-group-item" ng-class="{ 'list-group-item-warning': !course.enabled }">
+       class="list-item" ng-class="{ 'list-group-item-warning': !course.enabled }">
       <!--<small class="list-group-item-text">-->
         <!--Posted on-->
         <!--<span data-ng-bind="course.created | date:'mediumDate'"></span>-->
@@ -20,7 +41,7 @@
       <!--</small>-->
       <h4 class="list-group-item-heading" data-ng-bind="course.name"></h4>
       <small data-ng-bind="course.description"></small>
-    </a>
+    </div>
   </div>
   <div class="alert alert-warning text-center" data-ng-if="vm.courses.$resolved && !vm.courses.length">
     No Courses yet, why don't you <a data-ui-sref="courses.create">create one</a>?
