@@ -30,14 +30,17 @@ angular.module('core').controller('AdminController', ['$scope', '$location', '$h
             window.location.href = '/api/auth/signout';
         };
 
-        if (Authentication.user) {
-            var match = Authentication.user.roles.filter(function(role) {
-                return role === 'admin';
-            });
-
+        $scope.$watch(function() {
+            return Authentication.user;
+        }, function(user) {
+            var match = [];
+            if (user) {
+                match = user.roles.filter(function(role) {
+                    return role === 'admin';
+                });
+            }
             $scope.isAdmin = match.length > 0;
-            console.log($scope.isAdmin)
-        }
+        });
     }
 ]);
 
