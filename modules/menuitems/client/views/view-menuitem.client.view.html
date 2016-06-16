@@ -1,27 +1,27 @@
-<section>
-  <div class="pull-right" ng-if="vm.isAdmin">
-    <h4>
-      <span ng-if="vm.menuItem.enabled" class="label label-success">Enabled</span>
-      <span ng-if="!vm.menuItem.enabled" class="label label-warning">Disabled</span>
-      <a class="btn btn-sm btn-primary"
-        data-ui-sref="menuitems.edit({ menuItemId: vm.menuItem._id })">
-        <i class="glyphicon glyphicon-edit"></i>
-      </a>
-    </h4>
-  </div>
+<section class="no-padding">
+
   <div class="page-header">
-    <h1 data-ng-bind="vm.menuItem.name"></h1>
-    <a ui-sref="courses.view({courseId: vm.menuItem.course.id})"><span class="btn btn-info btn-xs">{{vm.menuItem.course.name}}s</span></a>
-    <a ui-sref="menuitems.list"><button class="btn btn-warning btn-xs">All Menu Items</button></a>
+    <h3>
+      <a ui-sref="admin.courses.view({courseId: vm.menuItem.course.id})"><span class="btn btn-info btn-xs">{{vm.menuItem.course.name}}s</span></a>
+      {{vm.menuItem.name}}
+      <small>
+        (<span ng-if="vm.menuItem.enabled" class="label label-success">Enabled</span>
+        <span ng-if="!vm.menuItem.enabled" class="label label-warning">Disabled</span>)
+        <a class="btn-full"
+           data-ui-sref="admin.menuitems.edit({ menuItemId: vm.menuItem._id })">
+          Edit
+        </a>
+      </small>
+    </h3>
   </div>
-  <div class="panel panel-default">
+  <div class="container">
     <div class="panel-heading" data-ng-bind="vm.menuItem.description"></div>
     <div class="panel-body">
-      Image
+
     </div>
   </div>
 
-  <small ng-if="vm.isAdmin">
+  <small>
     <em class="text-muted">
       Created on
       <span data-ng-bind="vm.menuItem.created | date:'mediumDate'"></span>

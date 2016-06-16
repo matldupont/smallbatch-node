@@ -57,14 +57,14 @@
           pageTitle: 'Settings picture'
         }
       })
-      .state('authentication', {
+      .state('admin.authentication', {
         abstract: true,
         url: '/authentication',
         templateUrl: 'modules/users/client/views/authentication/authentication.client.view.html',
         controller: 'AuthenticationController',
         controllerAs: 'vm'
       })
-      .state('authentication.signup', {
+      .state('admin.authentication.signup', {
         url: '/signup',
         templateUrl: 'modules/users/client/views/authentication/signup.client.view.html',
         controller: 'AuthenticationController',
@@ -73,7 +73,7 @@
           pageTitle: 'Signup'
         }
       })
-      .state('authentication.signin', {
+      .state('admin.authentication.signin', {
         url: '/signin?err',
         templateUrl: 'modules/users/client/views/authentication/signin.client.view.html',
         controller: 'AuthenticationController',

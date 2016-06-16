@@ -5,19 +5,12 @@
     .module('meals')
     .controller('MealsListController', MealsListController);
 
-  MealsListController.$inject = ['MealsService', 'Authentication'];
+  MealsListController.$inject = ['$scope', 'MealsService', 'Authentication'];
 
-  function MealsListController(MealsService, Authentication) {
-    var vm = this;
+  function MealsListController($scope, MealsService, Authentication) {
+    $scope.test = "MEALS";
+    $scope.meals = MealsService.query(function(data) {
 
-    vm.meals = MealsService.query();
-
-    if (Authentication.user) {
-      var match = Authentication.user.roles.filter(function(role) {
-        return role === 'admin';
-      });
-
-      vm.isAdmin = match.length > 0;
-    }
+    });
   }
 })();

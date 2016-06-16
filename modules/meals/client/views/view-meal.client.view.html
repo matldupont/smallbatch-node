@@ -1,18 +1,18 @@
-<section>
+<section class="no-padding">
   <div class="pull-right" ng-if="vm.isAdmin">
     <h4>
       <span ng-if="vm.meal.enabled" class="label label-success">Enabled</span>
       <span ng-if="!vm.meal.enabled" class="label label-warning">Disabled</span>
       <a class="btn btn-primary"
-         data-ui-sref="meals.edit({ mealId: vm.meal._id })">
+         data-ui-sref="admin.meals.edit({ mealId: vm.meal._id })">
         <i class="glyphicon glyphicon-edit"></i>
       </a>
     </h4>
 
   </div>
   <div class="page-header" >
-    <h1 >{{vm.meal.name}} <small>{{vm.meal.price | currency}}</small></h1>
-    <a ui-sref="order.create({ mealId: vm.meal._id })" ng-if="!vm.isAdmin"><button class="btn btn-primary">Order Now</button></a>
+    <h3 >{{vm.meal.name}} <small>{{vm.meal.price | currency}}</small></h3>
+    <a ui-sref="admin.order.create({ mealId: vm.meal._id })" ng-if="!vm.isAdmin"><button class="btn btn-primary">Order Now</button></a>
   </div>
 
   <div class="panel panel-default">

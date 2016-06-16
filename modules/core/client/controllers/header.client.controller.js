@@ -6,7 +6,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
     $scope.$state = $state;
     $scope.authentication = Authentication;
     $scope.currentOrder = OrderService.currentOrder;
-
+$scope.test = "ASDFASDFASDFA";
 
     // Get the topbar menu
     $scope.menu = Menus.getMenu('topbar');
@@ -29,5 +29,13 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
       OrderService.clearOrder();
       window.location.href = '/api/auth/signout';
     };
+
+    if (Authentication.user) {
+      var match = Authentication.user.roles.filter(function(role) {
+        return role === 'admin';
+      });
+
+      $scope.isAdmin = match.length > 0;
+    }
   }
 ]);

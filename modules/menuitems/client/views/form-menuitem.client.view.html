@@ -1,6 +1,6 @@
-<section>
+<section class="no-padding">
   <div class="page-header">
-    <h1>{{vm.menuItem._id ? 'Edit Menu Item' : 'New Menu Item'}}</h1>
+    <h3>{{vm.menuItem._id ? 'Edit Menu Item' : 'New Menu Item'}}</h3>
   </div>
   <div class="col-md-12">
     <form name="vm.form.menuItemForm" class="form-horizontal" ng-submit="vm.save(vm.form.menuItemForm.$valid)" novalidate>
@@ -37,25 +37,23 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="enabled">Enabled</label>
           <div class="col-sm-1">
-            <checkbox class="btn" ng-class="{ 'btn-success': vm.menuItem.enabled == true, 'btn-warning': vm.menuItem.enabled == false }" ng-model="vm.menuItem.enabled" id="enabled" name="enabled"></checkbox>
+            <input type="checkbox" ng-class="{ 'btn-success': vm.menuItem.enabled == true, 'btn-warning': vm.menuItem.enabled == false }" ng-model="vm.menuItem.enabled" id="enabled" name="enabled"></checkbox>
           </div>
         </div>
         <div class="form-group top-gap">
           <button type="submit" class="btn btn-info">{{vm.menuItem._id ? 'Update' : 'Create'}}</button>
 
-          <a ng-if="vm.menuItem._id" ui-sref="menuitems.view({menuItemId: vm.menuItem._id})">
+          <a ng-if="vm.menuItem._id" ui-sref="admin.menuitems.view({menuItemId: vm.menuItem._id})">
             <button class="btn btn-default">Cancel</button>
           </a>
-          <a ng-if="!vm.menuItem._id && vm.courseId" ui-sref="courses.view({courseId: vm.courseId})">
+          <a ng-if="!vm.menuItem._id && vm.courseId" ui-sref="admin.courses.view({courseId: vm.courseId})">
             <button class="btn btn-default">Cancel</button>
           </a>
-          <a ng-if="!vm.menuItem._id && !vm.courseId" ui-sref="menuitems.list" >
+          <a ng-if="!vm.menuItem._id && !vm.courseId" ui-sref="admin.menuitems.list" >
             <button class="btn btn-default">Cancel</button>
           </a>
 
-          <a ng-if="vm.menuItem._id" class="btn btn-danger" data-ng-click="vm.remove()">
-            <i class="glyphicon glyphicon-trash"></i>
-          </a>
+          <a ng-if="vm.menuItem._id" class="btn btn-danger" data-ng-click="vm.remove()">Delete</a>
         </div>
 
         <div ng-show="vm.error" class="text-danger">

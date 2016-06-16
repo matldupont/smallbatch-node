@@ -1,0 +1,22 @@
+<div ng-controller="AdminController">
+  <div class="admin-home"><h2>SmallBatch Administration {{test}}</h2></div>
+  <div class="row">
+    <a ui-sref="admin.authentication.signin" ng-if="!isAdmin" class="pull-right">
+      Sign In
+    </a>
+    <div class="row admin-header" ng-if="isAdmin">
+      <div class="col span-1-of-7">&nbsp;</div>
+      <div class="col span-1-of-7">&nbsp;</div>
+      <div class="col span-1-of-7"><a ui-sref="admin.courses.list">Courses</a></div>
+      <div class="col span-1-of-7"><a ui-sref="admin.menuitems.list">Menu</a></div>
+      <div class="col span-1-of-7"><a ui-sref="admin.meals.list">Meals</a></div>
+      <div class="col span-1-of-7">&nbsp;</div>
+      <div class="col span-1-of-7">
+        <a ng-click="logout()">Sign Out</a>
+      </div>
+    </div>
+    <div ui-view></div>
+
+  </div>
+
+</div>

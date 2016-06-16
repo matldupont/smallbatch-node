@@ -42,7 +42,7 @@
     // Remove existing MenuItem
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
-        vm.menuItem.$remove($state.go('menuitems.list'));
+        vm.menuItem.$remove($state.go('admin.menuitems.list'));
       }
     }
 
@@ -62,9 +62,7 @@
       }
 
       function successCallback(res) {
-        $state.go('menuitems.view', {
-          menuItemId: res._id
-        });
+        $state.go('admin.menuitems.list');
       }
 
       function errorCallback(res) {

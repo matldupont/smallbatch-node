@@ -78,7 +78,7 @@ exports.signin = function (req, res, next) {
 exports.signout = function (req, res) {
   req.logout();
   req.session.destroy();
-  res.redirect('/');
+  res.redirect('/admin');
 };
 
 /**

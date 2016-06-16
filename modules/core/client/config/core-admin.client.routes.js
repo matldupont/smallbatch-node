@@ -5,12 +5,18 @@ angular.module('core.admin.routes').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
       .state('admin', {
-        abstract: true,
         url: '/admin',
-        template: '<ui-view/>',
+        templateUrl: 'modules/core/client/views/admin.client.view.html',
         data: {
-          roles: ['admin']
+          pageTitle: 'Admin'
         }
       });
+      //.state('admin.authentication', {
+      //  //abstract: true,
+      //  url: '/authentication',
+      //  templateUrl: 'modules/users/client/views/authentication/authentication.client.view.html',
+      //  controller: 'AuthenticationController',
+      //  controllerAs: 'vm'
+      //});
   }
 ]);

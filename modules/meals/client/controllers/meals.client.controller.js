@@ -47,7 +47,7 @@
     // Remove existing Meal
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
-        vm.meal.$remove($state.go('meals.list'));
+        vm.meal.$remove($state.go('admin.meals.list'));
       }
     }
 
@@ -66,9 +66,7 @@
       }
 
       function successCallback(res) {
-        $state.go('meals.view', {
-          mealId: res._id
-        });
+        $state.go('admin.meals.list');
       }
 
       function errorCallback(res) {

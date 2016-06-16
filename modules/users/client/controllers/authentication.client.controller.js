@@ -21,7 +21,7 @@
 
     // If user is signed in then redirect back home
     if (vm.authentication.user) {
-      $location.path('/');
+      $location.path('/admin');
     }
 
     function signup(isValid) {

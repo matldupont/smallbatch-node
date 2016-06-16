@@ -1,36 +1,14 @@
-<section class="admin">
+<section class="no-padding">
   <div>
-    <h1>Courses</h1>
+    <h3>Courses</h3>
   </div>
   <div>
-    <a ui-sref="courses.create">
-      <button>Add Course</button>
-    </a>
+    <a ui-sref="admin.courses.create">Add Course</a>
   </div>
-
-  <!--<div class="col span-1-of-3" ng-repeat="course in vm.courses">-->
-    <!--<div class="plan-box">-->
-      <!--<div>-->
-        <!--<h3>ONEBox</h3>-->
-        <!--<p class="plan-price">$35<span>xx</span></p>-->
-        <!--<p class="plan-price-meal">Some descriptive stuff here.</p>-->
-      <!--</div>-->
-      <!--<div>-->
-        <!--<ul>-->
-          <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Appetizer</li>-->
-          <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Entree</li>-->
-          <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Dessert</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-      <!--<div>-->
-        <!--<a href="#" class="btn btn-full">Order Now</a>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="list">
     <div data-ng-repeat="course in vm.courses"
-       data-ui-sref="courses.view({ courseId: course._id })"
+       data-ui-sref="admin.courses.edit({ courseId: course._id })"
        class="list-item" ng-class="{ 'list-group-item-warning': !course.enabled }">
       <!--<small class="list-group-item-text">-->
         <!--Posted on-->

@@ -25,7 +25,7 @@
     // Remove existing Course
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
-        vm.course.$remove($state.go('courses.list'));
+        vm.course.$remove($state.go('admin.courses.list'));
       }
     }
 
@@ -44,9 +44,7 @@
       }
 
       function successCallback(res) {
-        $state.go('courses.view', {
-          courseId: res._id
-        });
+        $state.go('admin.courses.list');
       }
 
       function errorCallback(res) {

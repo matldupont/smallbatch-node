@@ -1,6 +1,6 @@
 <div >
 
-  <section class="home">
+  <section class="home" >
     <div class="row">
       <div class="col span-1-of-3 left-home-text">
         <div>EST. 1920</div>
@@ -73,23 +73,24 @@
     </div>
   </section>
 
-  <section class="section-meals">
+  <section class="section-meals" ng-controller="MealsListController">
     <div class="row">
       <h2>A Meal Option for any Occasion!</h2>
     </div>
     <div class="row">
-      <div class="col span-1-of-3">
+      <div class="col span-1-of-3" ng-repeat="meal in meals">
         <div class="plan-box">
           <div>
-            <h3>ONEBox</h3>
-            <p class="plan-price">$35<span>xx</span></p>
-            <p class="plan-price-meal">Some descriptive stuff here.</p>
+            <h3>{{meal.name}}</h3>
+            <p class="plan-price">{{meal.price}}<span>xx</span></p>
+            <p class="plan-price-meal">{{meal.description}}</p>
           </div>
           <div>
             <ul>
-              <li><i class="ion-ios-checkmark icon-small"></i>1 Appetizer</li>
-              <li><i class="ion-ios-checkmark icon-small"></i>1 Entree</li>
-              <li><i class="ion-ios-checkmark icon-small"></i>1 Dessert</li>
+              <li ng-repeat="course in meal.courses">
+                <i class="ion-ios-checkmark icon-small"></i>{{course.quantity}} {{course.name}}
+                    <ng-pluralize count="course.quantity" when="{'0': 'Nobody is viewing.', 'one': '', 'other': 's'}"></ng-pluralize>
+              </li>
             </ul>
           </div>
           <div>
@@ -98,25 +99,25 @@
         </div>
       </div>
 
-      <div class="col span-1-of-3">
-        <div class="plan-box">
-          <div>
-            <h3>BBQBox</h3>
-            <p class="plan-price">$25<span>xx</span></p>
-            <p class="plan-price-meal">descriptive text here</p>
-          </div>
-          <div>
-            <ul>
-              <li><i class="ion-ios-checkmark icon-small"></i>1 Appetizer</li>
-              <li><i class="ion-ios-checkmark icon-small"></i>1 Entree</li>
-              <li><i class="ion-ios-checkmark icon-small"></i>1 Dessert</li>
-            </ul>
-          </div>
-          <div>
-            <a href="#" class="btn btn-ghost">Order Now</a>
-          </div>
-        </div>
-      </div>
+      <!--<div class="col span-1-of-3">-->
+        <!--<div class="plan-box">-->
+          <!--<div>-->
+            <!--<h3>BBQBox</h3>-->
+            <!--<p class="plan-price">$25<span>xx</span></p>-->
+            <!--<p class="plan-price-meal">descriptive text here</p>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<ul>-->
+              <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Appetizer</li>-->
+              <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Entree</li>-->
+              <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Dessert</li>-->
+            <!--</ul>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<a href="#" class="btn btn-ghost">Order Now</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
       <div class="col span-1-of-3">
         <div class="plan-box">
@@ -133,7 +134,7 @@
             </ul>
           </div>
           <div>
-            <a href="#" class="btn btn-ghost">Order Now</a>
+            <a href="tel:1-705-923-9366" class="btn btn-ghost">Call Now</a>
           </div>
         </div>
       </div>

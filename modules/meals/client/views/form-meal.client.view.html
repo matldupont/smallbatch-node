@@ -1,6 +1,6 @@
-<section>
+<section class="no-padding">
   <div class="page-header">
-    <h1>{{vm.meal._id ? 'Edit Meal' : 'New Meal'}}</h1>
+    <h3>{{vm.meal._id ? 'Edit Meal' : 'New Meal'}}</h3>
   </div>
   <div class="col-md-12">
     <form name="vm.form.mealForm" class="form-horizontal" ng-submit="vm.save(vm.form.mealForm.$valid)" novalidate>
@@ -32,7 +32,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="enabled">Enabled</label>
           <div class="col-sm-1">
-            <checkbox class="btn" ng-class="{ 'btn-success': vm.meal.enabled == true, 'btn-warning': vm.meal.enabled == false }" ng-model="vm.meal.enabled" id="enabled" name="enabled"></checkbox>
+            <input type="checkbox" class="btn" ng-class="{ 'btn-success': vm.meal.enabled == true, 'btn-warning': vm.meal.enabled == false }" ng-model="vm.meal.enabled" id="enabled" name="enabled"></input>
           </div>
         </div>
         <div class="form-group">
@@ -51,7 +51,7 @@
             </div>
             <div class="col-xs-1">
               <button type="button" class="btn btn-primary" data-ng-click="vm.addCourse()">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">add</span>
               </button>
               <!--<button type="button" class="btn btn-danger" data-ng-click="vm.addingCourse = false;">-->
                 <!--<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>-->
@@ -62,26 +62,26 @@
             <div data-ng-repeat="course in vm.meal.courses"
                class="list-group-item col-sm-7">
               <strong>{{course.name}}</strong>
-              <button type="button" data-ng-click="vm.removeCourse($index)" class="btn btn-xs btn-danger pull-right left-gap-small"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-              <button type="button" ng-disabled="course.quantity == 0" data-ng-click="course.quantity = course.quantity - 1;" class="btn btn-xs btn-warning pull-right left-gap-tiny"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-              <button type="button" data-ng-click="course.quantity = course.quantity + 1;" class="btn btn-xs btn-success pull-right left-gap-small" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+
+
+              <button type="button" data-ng-click="course.quantity = course.quantity + 1;" class="btn btn-xs btn-success pull-right left-gap-small" ><span class="glyphicon glyphicon-plus" aria-hidden="true">more</span></button>
+              <button type="button" ng-disabled="course.quantity == 0" data-ng-click="course.quantity = course.quantity - 1;" class="btn btn-xs btn-warning pull-right left-gap-tiny"><span class="glyphicon glyphicon-minus" aria-hidden="true">less</span></button>
               <span class="pull-right" ><strong>x{{course.quantity}}</strong></span>
+              <button type="button" data-ng-click="vm.removeCourse($index)" class="btn btn-xs btn-danger pull-right left-gap-small"><span class="glyphicon glyphicon-remove" aria-hidden="true">remove</span></button>
             </div>
           </div>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">{{vm.meal._id ? 'Update' : 'Create'}}</button>
-          <a ng-if="vm.meal._id" ui-sref="meals.view({mealId: vm.meal._id})">
+          <a ng-if="vm.meal._id" ui-sref="admin.meals.list">
             <button class="btn btn-default">Cancel</button>
           </a>
-          <a ng-if="!vm.meal._id" ui-sref="meals.list">
-            <button class="btn btn-default">Cancel</button>
-          </a>
+          <!--<a ng-if="!vm.meal._id" ui-sref="admin.meals.list">-->
+            <!--<button class="btn btn-default">Cancel</button>-->
+          <!--</a>-->
 
 
-          <a ng-if="vm.meal._id" class="btn btn-danger" data-ng-click="vm.remove()">
-            <i class="glyphicon glyphicon-trash"></i>
-          </a>
+          <a ng-if="vm.meal._id" class="btn btn-danger" data-ng-click="vm.remove()">Delete</a>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>

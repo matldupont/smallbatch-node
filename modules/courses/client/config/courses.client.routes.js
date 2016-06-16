@@ -9,21 +9,22 @@
 
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('courses', {
+      .state('admin.courses', {
         abstract: true,
         url: '/courses',
         template: '<ui-view/>'
       })
-      .state('courses.list', {
+      .state('admin.courses.list', {
         url: '',
         templateUrl: 'modules/courses/client/views/list-courses.client.view.html',
         controller: 'CoursesListController',
         controllerAs: 'vm',
         data: {
+          roles: ['admin'],
           pageTitle: 'Courses List'
         }
       })
-      .state('courses.create', {
+      .state('admin.courses.create', {
         url: '/create',
         templateUrl: 'modules/courses/client/views/form-course.client.view.html',
         controller: 'CoursesController',
@@ -32,11 +33,11 @@
           courseResolve: newCourse
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['admin'],
           pageTitle : 'Courses Create'
         }
       })
-      .state('courses.edit', {
+      .state('admin.courses.edit', {
         url: '/:courseId/edit',
         templateUrl: 'modules/courses/client/views/form-course.client.view.html',
         controller: 'CoursesController',
@@ -49,7 +50,7 @@
           pageTitle: 'Edit Course {{ courseResolve.name }}'
         }
       })
-      .state('courses.view', {
+      .state('admin.courses.view', {
         url: '/:courseId',
         templateUrl: 'modules/courses/client/views/view-course.client.view.html',
         controller: 'CoursesController',
@@ -58,6 +59,7 @@
           courseResolve: getCourse
         },
         data:{
+          roles: ['admin'],
           pageTitle: 'Course {{ articleResolve.name }}'
         }
       });

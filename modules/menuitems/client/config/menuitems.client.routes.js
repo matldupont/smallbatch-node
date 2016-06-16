@@ -9,21 +9,22 @@
 
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('menuitems', {
+      .state('admin.menuitems', {
         abstract: true,
         url: '/menuitems',
         template: '<ui-view/>'
       })
-      .state('menuitems.list', {
+      .state('admin.menuitems.list', {
         url: '',
         templateUrl: 'modules/menuitems/client/views/list-menuitems.client.view.html',
         controller: 'MenuItemsListController',
         controllerAs: 'vm',
         data: {
+          roles: ['admin'],
           pageTitle: 'Menu'
         }
       })
-      .state('menuitems.create', {
+      .state('admin.menuitems.create', {
         url: '/create?course',
         templateUrl: 'modules/menuitems/client/views/form-menuitem.client.view.html',
         controller: 'MenuItemsController',
@@ -32,11 +33,11 @@
           menuItemResolve: newMenuItem
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['admin'],
           pageTitle : 'Menu Add'
         }
       })
-      .state('menuitems.edit', {
+      .state('admin.menuitems.edit', {
         url: '/:menuItemId/edit',
         templateUrl: 'modules/menuitems/client/views/form-menuitem.client.view.html',
         controller: 'MenuItemsController',
@@ -49,7 +50,7 @@
           pageTitle: 'Edit {{ menuItemResolve.name }}'
         }
       })
-      .state('menuitems.view', {
+      .state('admin.menuitems.view', {
         url: '/:menuItemId',
         templateUrl: 'modules/menuitems/client/views/view-menuitem.client.view.html',
         controller: 'MenuItemsController',
@@ -58,6 +59,7 @@
           menuItemResolve: getMenuItem
         },
         data:{
+          roles: ['admin'],
           pageTitle: '{{ articleResolve.name }}'
         }
       });
