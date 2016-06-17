@@ -80,8 +80,7 @@
           vm.mealOrder.courses[i].menuItem = vm.mealOrder.courses[i].menuItem;
           vm.mealOrder.courses[i].menuItemName = vm.mealOrder.courses[i].menuItem.name;
         }
-        console.log('valid');
-        console.log(vm.mealOrder);
+
         OrderService.addMealToOrder(vm.mealOrder);
 
         $state.go('order.view');
@@ -104,7 +103,7 @@
         //$log.debug("Got stripe token: " + token.id);
       }
     });
-    $scope.doCheckout = function(order) {console.log("DO CHECKOUT");console.log(order);
+    $scope.doCheckout = function(order) {
       var options = {
         description: "Order #" + order._id,
         amount: order.total * 100

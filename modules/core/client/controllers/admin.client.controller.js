@@ -33,8 +33,6 @@ angular.module('core').controller('AdminController', ['$scope', '$location', '$h
         $scope.$watch(function() {
             return Authentication.user;
         }, function(user) {
-            console.log("auth change");
-            console.log(user);
             var match = [];
             if (user) {
                 match = user.roles.filter(function(role) {

@@ -28,7 +28,6 @@
     vm.courses = CoursesService.query();
 
     function addCourse() {
-      console.log(vm.newCourseObj);
       if (!vm.newCourseObj) { return; }
       if (!vm.newCourseQuantity || vm.newCourseQuantity < 1) { return; }
 

@@ -52,10 +52,9 @@
         $scope.$broadcast('show-errors-check-validity', 'vm.form.menuItemForm');
         return false;
       }
-      console.log(menuItem);
 
       // TODO: move create/update logic to service
-      if (vm.menuItem._id) {console.log(vm.menuItem);
+      if (vm.menuItem._id) {
         vm.menuItem.$update(successCallback, errorCallback);
       } else {
         vm.menuItem.$save(successCallback, errorCallback);
