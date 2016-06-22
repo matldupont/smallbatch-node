@@ -9,10 +9,10 @@
     </div>
     <div class="row menu-body">
       <div class="row menu-filter">
-        <div class="col span-1-of-4">
+        <div class="col span-1-of-4" ng-class="{ 'selected' : currentFilter == null }">
           <a ng-click="applyFilter(null)">All Items</a>
         </div>
-        <div class="col span-1-of-4" ng-repeat="filter in getFilters()" ng-click="applyFilter(filter)">
+        <div class="col span-1-of-4" ng-class="{ 'selected' : currentFilter == filter }" ng-repeat="filter in getFilters()" ng-click="applyFilter(filter)">
           <a ng-click="applyFilter(filter)">{{filter.name}}</a>
         </div>
       </div>

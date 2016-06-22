@@ -91,3 +91,7 @@
     font-family: 'Josefin Slab', serif;
     font-size: 80%;
 }
+
+.selected {
+    color: #f3a328;
+}

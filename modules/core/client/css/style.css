@@ -286,7 +286,6 @@ header {
 
 .social-links {
     list-style: none;
-    float: right;
     text-align: center;
     font-size: 120%;
     -webkit-border-radius: 50%;
@@ -371,14 +370,17 @@ header {
     padding: 20px;
     border-top: 1px solid #f3a328;
     border-bottom: 1px solid #f3a328;
-    margin-top: 40px;
+    margin-top: 125px;
     height: 140px;
+    width: 300px;
+
 }
 
 .left-home-text div:first-child,
 .right-home-text div:first-child{
     font-size: 160%;
 }
+
 
 .left-home-text div,
 .right-home-text div{
@@ -388,15 +390,17 @@ header {
 
 .left-home-text {
     text-align: right;
-    margin-left: 100px;
+    float:left;
 }
 
 .left-home-text div:last-child {
     font-size: 130%;
+
 }
 
 .right-home-text {
     text-align: left;
+    float: right;
 }
 
 /* Video sections */
@@ -452,9 +456,10 @@ header {
     text-align: center;
     margin-top: 50px;
     color: #222;
-    font-size: 80%;
+    font-size: 90%;
     line-height: 145%;
     padding: 0 10px;
+    font-family: 'Josefin Slab', serif;
 }
 
 /* Plans */
@@ -521,6 +526,7 @@ header {
 
 .plan-price-meal {
     font-size: 80%;
+
 }
 
 .plan-box ul {
@@ -529,6 +535,62 @@ header {
 
 .plan-box ul li {
     padding: 5px 0;
+    font-family: 'Josefin Slab', serif;
+}
+
+/* Footer */
+
+footer {
+    padding-top: 40px;
+    font-family: 'Josefin Slab', serif;
+    color: #f3a328;
+    background-color: #111;
+}
+
+footer h3 {
+    font-weight: 700;
+}
+
+footer p {
+    line-height: 145%;
+    font-size: 80%;
+}
+
+footer .email {
+    padding-top: 20px;
+    font-size: 90%;
+}
+
+footer .social-links {
+    border-radius: 0;
+    position: relative;
+    float: right;
+    width: auto;
+    height: auto;
+    padding: 2px 5px;
+}
+
+
+footer .social-links li {
+    display: inline-block;
+    padding: 5px 0;
+    margin: 0;
+    font-size: 80%;
+}
+
+footer .social-links li a:link,
+footer .social-links li a:visited, {
+    padding: 0;
+    margin: 0;
+}
+
+footer .copyright {
+    width: 50%;
+    border-top: 1px solid #f3a328;
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 70%;
 }
 
 
