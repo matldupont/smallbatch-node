@@ -58,7 +58,7 @@
       };
 
       // Initialize the MenuItems controller.
-      MenuItemsController = $controller('MenuItemsController as vm', {
+      MenuItemsController = $controller('MenuItemsController', {
         $scope: $scope,
         menuItemResolve: {}
       });
@@ -67,7 +67,7 @@
       spyOn($state, 'go');
     }));
 
-    describe('vm.save() as create', function () {
+    describe('save() as create', function () {
       var sampleMenuItemPostData;
 
       beforeEach(function () {
@@ -76,7 +76,7 @@
           name: 'MenuItem Name'
         });
 
-        $scope.vm.menuItem = sampleMenuItemPostData;
+        $scope.menuItem = sampleMenuItemPostData;
       });
 
       it('should send a POST request with the form input values and then locate to new object URL', inject(function (MenuItemsService) {
@@ -84,7 +84,7 @@
         $httpBackend.expectPOST('api/menuitems', sampleMenuItemPostData).respond(mockMenuItem);
 
         // Run controller functionality
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
         // Test URL redirection after the MenuItem was created
@@ -93,23 +93,23 @@
         });
       }));
 
-      it('should set $scope.vm.error if error', function () {
+      it('should set $scope.error if error', function () {
         var errorMessage = 'this is an error message';
         $httpBackend.expectPOST('api/menuitems', sampleMenuItemPostData).respond(400, {
           message: errorMessage
         });
 
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
-        expect($scope.vm.error).toBe(errorMessage);
+        expect($scope.error).toBe(errorMessage);
       });
     });
 
-    describe('vm.save() as update', function () {
+    describe('save() as update', function () {
       beforeEach(function () {
         // Mock MenuItem in $scope
-        $scope.vm.menuItem = mockMenuItem;
+        $scope.menuItem = mockMenuItem;
       });
 
       it('should update a valid MenuItem', inject(function (MenuItemsService) {
@@ -117,7 +117,7 @@
         $httpBackend.expectPUT(/api\/menuitems\/([0-9a-fA-F]{24})$/).respond();
 
         // Run controller functionality
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
         // Test URL location to new object
@@ -126,23 +126,23 @@
         });
       }));
 
-      it('should set $scope.vm.error if error', inject(function (MenuItemsService) {
+      it('should set $scope.error if error', inject(function (MenuItemsService) {
         var errorMessage = 'error';
         $httpBackend.expectPUT(/api\/menuitems\/([0-9a-fA-F]{24})$/).respond(400, {
           message: errorMessage
         });
 
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
-        expect($scope.vm.error).toBe(errorMessage);
+        expect($scope.error).toBe(errorMessage);
       }));
     });
 
-    describe('vm.remove()', function () {
+    describe('remove()', function () {
       beforeEach(function () {
         //Setup MenuItems
-        $scope.vm.menuItem = mockMenuItem;
+        $scope.menuItem = mockMenuItem;
       });
 
       it('should delete the MenuItem and redirect to MenuItems', function () {
@@ -151,7 +151,7 @@
 
         $httpBackend.expectDELETE(/api\/menuitems\/([0-9a-fA-F]{24})$/).respond(204);
 
-        $scope.vm.remove();
+        $scope.remove();
         $httpBackend.flush();
 
         expect($state.go).toHaveBeenCalledWith('menuitems.list');
@@ -161,7 +161,7 @@
         //Return false on confirm message
         spyOn(window, 'confirm').and.returnValue(false);
 
-        $scope.vm.remove();
+        $scope.remove();
 
         expect($state.go).not.toHaveBeenCalled();
       });

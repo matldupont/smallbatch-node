@@ -1,43 +1,47 @@
 <section class="no-padding">
   <div class="page-header">
-    <h3>{{vm.course._id ? 'Edit Course' : 'New Course'}}</h3>
+    <h3>{{course._id ? 'Edit Course' : 'New Course'}}</h3>
   </div>
   <div >
-    <form name="vm.form.courseForm" ng-submit="vm.save(vm.form.courseForm.$valid)" novalidate>
+    <form name="form.courseForm" ng-submit="save(form.courseForm.$valid)" novalidate>
       <fieldset>
         <div show-errors>
           <label for="name">Name</label>
           <div class="form-field">
-            <input name="name" type="text" ng-model="vm.course.name" id="name" placeholder="Name" required>
+            <input name="name" type="text" ng-model="course.name" id="name" placeholder="Name" required>
           </div>
-          <div ng-messages="vm.form.courseForm.name.$error" role="alert">
+          <div ng-messages="form.courseForm.name.$error" role="alert">
             <p ng-message="required">Course name is required.</p>
           </div>
         </div>
         <div show-errors>
           <label for="description">Description</label>
           <div class="form-field">
-            <textarea name="description" rows="10" type="text" ng-model="vm.course.description" id="description" placeholder="Description"></textarea>
+            <textarea name="description" rows="10" type="text" ng-model="course.description" id="description" placeholder="Description"></textarea>
           </div>
         </div>
-        <div >
-          <label for="enabled">Enabled</label>
-          <div class="form-field">
-            <input type="checkbox"  ng-class="{ 'btn-success': vm.course.enabled == true, 'btn-warning': vm.course.enabled == false }" ng-model="vm.course.enabled" id="enabled" name="enabled"></input>
-          </div>
+        <div class="bottom-padding">
+          <label>Add-on?</label>
+          <input type="checkbox" ng-model="course.addon">
+        </div>
+        <div class="bottom-padding">
+          <label for="ordinal">Ordinal</label> <input type="number" ng-model="course.ordinal" id="ordinal" name="ordinal">
+        </div>
+        <div class="bottom-padding">
+          <label for="enabled">Enabled</label> <input type="checkbox"  ng-class="{ 'btn-success': course.enabled == true, 'btn-warning': course.enabled == false }" ng-model="course.enabled" id="enabled" name="enabled">
         </div>
         <div >
-          <button type="submit" >{{vm.course._id ? 'Update' : 'Create'}}</button>
+          <button type="submit" >{{course._id ? 'Update' : 'Create'}}</button>
           <!--<a ng-if="vm.course._id" ui-sref="admin.courses.view({courseId: vm.course._id})" >-->
             <!--<button >Cancel</button>-->
           <!--</a>-->
           <a ui-sref="admin.courses.list" >
             <button >Cancel</button>
           </a>
-          <a ng-if="vm.course._id" data-ng-click="vm.remove()">Delete</a>
+          <a ng-if="course._id" data-ng-click="remove()">Delete</a>
         </div>
-        <div ng-show="vm.error" >
-          <strong ng-bind="vm.error"></strong>
+        <div ng-show="error" >
+          <strong ng-bind="error"></strong>
         </div>
       </fieldset>
     </form>

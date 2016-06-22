@@ -2,20 +2,20 @@
 
   <div class="page-header">
     <h3>
-      <a ui-sref="admin.courses.view({courseId: vm.menuItem.course.id})"><span class="btn btn-info btn-xs">{{vm.menuItem.course.name}}s</span></a>
-      {{vm.menuItem.name}}
+      <a ui-sref="admin.courses.view({courseId: menuItem.course.id})"><span class="btn btn-info btn-xs">{{menuItem.course.name}}s</span></a>
+      {{menuItem.name}}
       <small>
-        (<span ng-if="vm.menuItem.enabled" class="label label-success">Enabled</span>
-        <span ng-if="!vm.menuItem.enabled" class="label label-warning">Disabled</span>)
+        (<span ng-if="menuItem.enabled" class="label label-success">Enabled</span>
+        <span ng-if="!menuItem.enabled" class="label label-warning">Disabled</span>)
         <a class="btn-full"
-           data-ui-sref="admin.menuitems.edit({ menuItemId: vm.menuItem._id })">
+           data-ui-sref="admin.menuitems.edit({ menuItemId: menuItem._id })">
           Edit
         </a>
       </small>
     </h3>
   </div>
   <div class="container">
-    <div class="panel-heading" data-ng-bind="vm.menuItem.description"></div>
+    <div class="panel-heading" data-ng-bind="menuItem.description"></div>
     <div class="panel-body">
 
     </div>
@@ -24,12 +24,12 @@
   <small>
     <em class="text-muted">
       Created on
-      <span data-ng-bind="vm.menuItem.created | date:'mediumDate'"></span>
+      <span data-ng-bind="menuItem.created | date:'mediumDate'"></span>
       by
-      <span data-ng-if="vm.menuItem.user"
-            data-ng-bind="vm.menuItem.user.displayName"></span>
-      <span data-ng-if="!vm.menuItem.user">Deleted User</span>
+      <span data-ng-if="menuItem.user"
+            data-ng-bind="menuItem.user.displayName"></span>
+      <span data-ng-if="!menuItem.user">Deleted User</span>
     </em>
   </small>
-  <p class="lead" data-ng-bind="vm.menuItem.content"></p>
+  <p class="lead" data-ng-bind="menuItem.content"></p>
 </section>

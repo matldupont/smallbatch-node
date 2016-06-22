@@ -1,10 +1,10 @@
 <section class="no-padding">
   <div class="item-header">
-    <h3>{{vm.course.name}}(<small ng-if="vm.course.enabled">Enabled</small>) <a data-ui-sref="courses.edit({ courseId: vm.course._id })">Edit</a></h3>
+    <h3>{{course.name}}(<small ng-if="course.enabled">Enabled</small>) <a data-ui-sref="courses.edit({ courseId: course._id })">Edit</a></h3>
   </div>
 
   <div class=container">
-    {{vm.course.description}}
+    {{course.description}}
   </div>
   <!--<div>-->
     <!--<a ui-sref="menuitems.create({course: vm.course._id})">-->
@@ -26,12 +26,12 @@
   <small>
     <em >
       Created on
-      <span data-ng-bind="vm.course.created | date:'mediumDate'"></span>
+      <span data-ng-bind="course.created | date:'mediumDate'"></span>
       by
-      <span data-ng-if="vm.course.user"
-            data-ng-bind="vm.course.user.displayName"></span>
-      <span data-ng-if="!vm.course.user">Deleted User</span>
+      <span data-ng-if="course.user"
+            data-ng-bind="course.user.displayName"></span>
+      <span data-ng-if="!course.user">Deleted User</span>
     </em>
   </small>
-  <p data-ng-bind="vm.course.content"></p>
+  <p data-ng-bind="course.content"></p>
 </section>

@@ -54,7 +54,7 @@
           });
 
           //Initialize Controller
-          MenuItemsController = $controller('MenuItemsController as vm', {
+          MenuItemsController = $controller('MenuItemsController', {
             $scope: $scope,
             menuItemResolve: mockMenuItem
           });
@@ -76,7 +76,7 @@
         }));
 
         it('should attach an MenuItem to the controller scope', function () {
-          expect($scope.vm.menuItem._id).toBe(mockMenuItem._id);
+          expect($scope.menuItem._id).toBe(mockMenuItem._id);
         });
 
         it('Should not be abstract', function () {
@@ -101,7 +101,7 @@
           mockMenuItem = new MenuItemsService();
 
           //Initialize Controller
-          MenuItemsController = $controller('MenuItemsController as vm', {
+          MenuItemsController = $controller('MenuItemsController', {
             $scope: $scope,
             menuItemResolve: mockMenuItem
           });
@@ -121,8 +121,8 @@
         }));
 
         it('should attach an MenuItem to the controller scope', function () {
-          expect($scope.vm.menuItem._id).toBe(mockMenuItem._id);
-          expect($scope.vm.menuItem._id).toBe(undefined);
+          expect($scope.menuItem._id).toBe(mockMenuItem._id);
+          expect($scope.menuItem._id).toBe(undefined);
         });
 
         it('Should not be abstract', function () {
@@ -150,7 +150,7 @@
           });
 
           //Initialize Controller
-          MenuItemsController = $controller('MenuItemsController as vm', {
+          MenuItemsController = $controller('MenuItemsController', {
             $scope: $scope,
             menuItemResolve: mockMenuItem
           });
@@ -172,7 +172,7 @@
         }));
 
         it('should attach an MenuItem to the controller scope', function () {
-          expect($scope.vm.menuItem._id).toBe(mockMenuItem._id);
+          expect($scope.menuItem._id).toBe(mockMenuItem._id);
         });
 
         it('Should not be abstract', function () {

@@ -18,7 +18,6 @@
         url: '',
         templateUrl: 'modules/courses/client/views/list-courses.client.view.html',
         controller: 'CoursesListController',
-        controllerAs: 'vm',
         data: {
           roles: ['admin'],
           pageTitle: 'Courses List'
@@ -28,7 +27,6 @@
         url: '/create',
         templateUrl: 'modules/courses/client/views/form-course.client.view.html',
         controller: 'CoursesController',
-        controllerAs: 'vm',
         resolve: {
           courseResolve: newCourse
         },
@@ -41,7 +39,6 @@
         url: '/:courseId/edit',
         templateUrl: 'modules/courses/client/views/form-course.client.view.html',
         controller: 'CoursesController',
-        controllerAs: 'vm',
         resolve: {
           courseResolve: getCourse
         },
@@ -54,7 +51,6 @@
         url: '/:courseId',
         templateUrl: 'modules/courses/client/views/view-course.client.view.html',
         controller: 'CoursesController',
-        controllerAs: 'vm',
         resolve: {
           courseResolve: getCourse
         },

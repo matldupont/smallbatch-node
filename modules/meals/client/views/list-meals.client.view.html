@@ -6,7 +6,7 @@
     <a ui-sref="admin.meals.create">Add Meal</a>
   </div>
   <div class="row">
-    <div class="col span-1-of-3" ng-repeat="meal in vm.meals">
+    <div class="col span-1-of-3" ng-repeat="meal in meals | orderBy: 'ordinal'">
       <div class="plan-box">
         <div>
           <h3>{{meal.name}}</h3>
@@ -15,7 +15,7 @@
         </div>
         <div>
           <ul>
-            <li ng-repeat="course in meal.courses">
+            <li ng-repeat="course in meal.courses | orderBy: 'ordinal'">
                 <i class="ion-ios-checkmark icon-small"></i>{{course.quantity}} {{course.name}}<ng-pluralize count="course.quantity"
                                                                                                              when="{'0': 'Nobody is viewing.',
                      'one': '',
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="alert alert-warning text-center" data-ng-if="vm.meals.$resolved && !vm.meals.length">
+  <div class="alert alert-warning text-center" data-ng-if="meals.$resolved && !meals.length">
     No Meals yet, why don't you <a data-ui-sref="admin.meals.create">create one</a>?
   </div>
 </section>

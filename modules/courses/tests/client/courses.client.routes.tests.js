@@ -54,7 +54,7 @@
           });
 
           //Initialize Controller
-          CoursesController = $controller('CoursesController as vm', {
+          CoursesController = $controller('CoursesController', {
             $scope: $scope,
             courseResolve: mockCourse
           });
@@ -76,7 +76,7 @@
         }));
 
         it('should attach an Course to the controller scope', function () {
-          expect($scope.vm.course._id).toBe(mockCourse._id);
+          expect($scope.course._id).toBe(mockCourse._id);
         });
 
         it('Should not be abstract', function () {
@@ -101,7 +101,7 @@
           mockCourse = new CoursesService();
 
           //Initialize Controller
-          CoursesController = $controller('CoursesController as vm', {
+          CoursesController = $controller('CoursesController', {
             $scope: $scope,
             courseResolve: mockCourse
           });
@@ -121,8 +121,8 @@
         }));
 
         it('should attach an Course to the controller scope', function () {
-          expect($scope.vm.course._id).toBe(mockCourse._id);
-          expect($scope.vm.course._id).toBe(undefined);
+          expect($scope.course._id).toBe(mockCourse._id);
+          expect($scope.course._id).toBe(undefined);
         });
 
         it('Should not be abstract', function () {
@@ -150,7 +150,7 @@
           });
 
           //Initialize Controller
-          CoursesController = $controller('CoursesController as vm', {
+          CoursesController = $controller('CoursesController', {
             $scope: $scope,
             courseResolve: mockCourse
           });
@@ -172,7 +172,7 @@
         }));
 
         it('should attach an Course to the controller scope', function () {
-          expect($scope.vm.course._id).toBe(mockCourse._id);
+          expect($scope.course._id).toBe(mockCourse._id);
         });
 
         it('Should not be abstract', function () {

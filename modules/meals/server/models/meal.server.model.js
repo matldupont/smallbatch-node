@@ -21,6 +21,10 @@ var MealSchema = new Schema({
     default: '',
     trim: true
   },
+  ordinal: {
+    type: Number,
+    default: 0
+  },
   enabled: {
     type: Boolean,
     default: true
@@ -32,7 +36,8 @@ var MealSchema = new Schema({
         ref: 'Course'
       },
       name: String,
-      quantity: Number
+      quantity: Number,
+      ordinal: Number
     }
   ],
   price: {

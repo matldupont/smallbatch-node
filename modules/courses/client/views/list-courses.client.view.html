@@ -7,7 +7,7 @@
   </div>
 
   <div class="list">
-    <div data-ng-repeat="course in vm.courses"
+    <div data-ng-repeat="course in courses | orderBy: 'name'"
        data-ui-sref="admin.courses.edit({ courseId: course._id })"
        class="list-item" ng-class="{ 'list-group-item-warning': !course.enabled }">
       <!--<small class="list-group-item-text">-->
@@ -21,7 +21,7 @@
       <small data-ng-bind="course.description"></small>
     </div>
   </div>
-  <div class="alert alert-warning text-center" data-ng-if="vm.courses.$resolved && !vm.courses.length">
+  <div class="alert alert-warning text-center" data-ng-if="courses.$resolved && !courses.length">
     No Courses yet, why don't you <a data-ui-sref="courses.create">create one</a>?
   </div>
 </section>

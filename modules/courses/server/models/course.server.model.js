@@ -25,6 +25,14 @@ var CourseSchema = new Schema({
     type: Boolean,
     default: true
   },
+  ordinal: {
+    type: Number,
+    default: 0
+  },
+  addon: {
+    type: Boolean,
+    default: false
+  },
   menuItems: [
     {
       id: {

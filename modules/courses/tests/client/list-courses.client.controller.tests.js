@@ -58,7 +58,7 @@
       };
 
       // Initialize the Courses List controller.
-      CoursesListController = $controller('CoursesListController as vm', {
+      CoursesListController = $controller('CoursesListController', {
         $scope: $scope
       });
 
@@ -81,9 +81,9 @@
         $httpBackend.flush();
 
         // Test form inputs are reset
-        expect($scope.vm.courses.length).toEqual(2);
-        expect($scope.vm.courses[0]).toEqual(mockCourse);
-        expect($scope.vm.courses[1]).toEqual(mockCourse);
+        expect($scope.courses.length).toEqual(2);
+        expect($scope.courses[0]).toEqual(mockCourse);
+        expect($scope.courses[1]).toEqual(mockCourse);
 
       }));
     });

@@ -2,11 +2,11 @@
   <div class="page-header">
     <h3>Menu Items</h3>
   </div>
-  <div ng-if="vm.isAdmin" class="bottom-gap">
+  <div class="bottom-gap">
     <a ui-sref="admin.menuitems.create">Add Menu Item</a>
   </div>
   <div class="list">
-    <div class="list-item" data-ng-repeat="menuItem in vm.menuItems"
+    <div class="list-item" data-ng-repeat="menuItem in menuItems"
        data-ui-sref="admin.menuitems.edit({ menuItemId: menuItem._id })"
        class="list-group-item">
       <!--<small class="list-group-item-text">-->
@@ -23,7 +23,7 @@
       <small class="list-group-item-text" data-ng-bind="menuItem.description"></small>
     </div>
   </div>
-  <div class="alert alert-warning text-center" data-ng-if="vm.menuItems.$resolved && !vm.menuItems.length">
+  <div class="alert alert-warning text-center" data-ng-if="menuItems.$resolved && !menuItems.length">
     No Menu Items yet, why don't you <a data-ui-sref="admin.menuitems.create">create one</a>?
   </div>
 </section>

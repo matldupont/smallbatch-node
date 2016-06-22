@@ -58,7 +58,7 @@
       };
 
       // Initialize the MenuItems List controller.
-      MenuItemsListController = $controller('MenuItemsListController as vm', {
+      MenuItemsListController = $controller('MenuItemsListController', {
         $scope: $scope
       });
 
@@ -81,9 +81,9 @@
         $httpBackend.flush();
 
         // Test form inputs are reset
-        expect($scope.vm.menuItems.length).toEqual(2);
-        expect($scope.vm.menuItems[0]).toEqual(mockMenuItem);
-        expect($scope.vm.menuItems[1]).toEqual(mockMenuItem);
+        expect($scope.menuItems.length).toEqual(2);
+        expect($scope.menuItems[0]).toEqual(mockMenuItem);
+        expect($scope.menuItems[1]).toEqual(mockMenuItem);
 
       }));
     });

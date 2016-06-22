@@ -58,7 +58,7 @@
       };
 
       // Initialize the Courses controller.
-      CoursesController = $controller('CoursesController as vm', {
+      CoursesController = $controller('CoursesController', {
         $scope: $scope,
         courseResolve: {}
       });
@@ -67,7 +67,7 @@
       spyOn($state, 'go');
     }));
 
-    describe('vm.save() as create', function () {
+    describe('save() as create', function () {
       var sampleCoursePostData;
 
       beforeEach(function () {
@@ -76,7 +76,7 @@
           name: 'Course Name'
         });
 
-        $scope.vm.course = sampleCoursePostData;
+        $scope.course = sampleCoursePostData;
       });
 
       it('should send a POST request with the form input values and then locate to new object URL', inject(function (CoursesService) {
@@ -84,7 +84,7 @@
         $httpBackend.expectPOST('api/courses', sampleCoursePostData).respond(mockCourse);
 
         // Run controller functionality
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
         // Test URL redirection after the Course was created
@@ -93,23 +93,23 @@
         });
       }));
 
-      it('should set $scope.vm.error if error', function () {
+      it('should set $scope.error if error', function () {
         var errorMessage = 'this is an error message';
         $httpBackend.expectPOST('api/courses', sampleCoursePostData).respond(400, {
           message: errorMessage
         });
 
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
-        expect($scope.vm.error).toBe(errorMessage);
+        expect($scope.error).toBe(errorMessage);
       });
     });
 
-    describe('vm.save() as update', function () {
+    describe('save() as update', function () {
       beforeEach(function () {
         // Mock Course in $scope
-        $scope.vm.course = mockCourse;
+        $scope.course = mockCourse;
       });
 
       it('should update a valid Course', inject(function (CoursesService) {
@@ -117,7 +117,7 @@
         $httpBackend.expectPUT(/api\/courses\/([0-9a-fA-F]{24})$/).respond();
 
         // Run controller functionality
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
         // Test URL location to new object
@@ -126,23 +126,23 @@
         });
       }));
 
-      it('should set $scope.vm.error if error', inject(function (CoursesService) {
+      it('should set $scope.error if error', inject(function (CoursesService) {
         var errorMessage = 'error';
         $httpBackend.expectPUT(/api\/courses\/([0-9a-fA-F]{24})$/).respond(400, {
           message: errorMessage
         });
 
-        $scope.vm.save(true);
+        $scope.save(true);
         $httpBackend.flush();
 
-        expect($scope.vm.error).toBe(errorMessage);
+        expect($scope.error).toBe(errorMessage);
       }));
     });
 
-    describe('vm.remove()', function () {
+    describe('remove()', function () {
       beforeEach(function () {
         //Setup Courses
-        $scope.vm.course = mockCourse;
+        $scope.course = mockCourse;
       });
 
       it('should delete the Course and redirect to Courses', function () {
@@ -151,7 +151,7 @@
 
         $httpBackend.expectDELETE(/api\/courses\/([0-9a-fA-F]{24})$/).respond(204);
 
-        $scope.vm.remove();
+        $scope.remove();
         $httpBackend.flush();
 
         expect($state.go).toHaveBeenCalledWith('courses.list');
@@ -161,7 +161,7 @@
         //Return false on confirm message
         spyOn(window, 'confirm').and.returnValue(false);
 
-        $scope.vm.remove();
+        $scope.remove();
 
         expect($state.go).not.toHaveBeenCalled();
       });

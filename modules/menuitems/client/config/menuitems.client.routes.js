@@ -18,7 +18,6 @@
         url: '',
         templateUrl: 'modules/menuitems/client/views/list-menuitems.client.view.html',
         controller: 'MenuItemsListController',
-        controllerAs: 'vm',
         data: {
           roles: ['admin'],
           pageTitle: 'Menu'
@@ -28,7 +27,6 @@
         url: '/create?course',
         templateUrl: 'modules/menuitems/client/views/form-menuitem.client.view.html',
         controller: 'MenuItemsController',
-        controllerAs: 'vm',
         resolve: {
           menuItemResolve: newMenuItem
         },
@@ -41,7 +39,6 @@
         url: '/:menuItemId/edit',
         templateUrl: 'modules/menuitems/client/views/form-menuitem.client.view.html',
         controller: 'MenuItemsController',
-        controllerAs: 'vm',
         resolve: {
           menuItemResolve: getMenuItem
         },
@@ -54,13 +51,20 @@
         url: '/:menuItemId',
         templateUrl: 'modules/menuitems/client/views/view-menuitem.client.view.html',
         controller: 'MenuItemsController',
-        controllerAs: 'vm',
         resolve: {
           menuItemResolve: getMenuItem
         },
         data:{
           roles: ['admin'],
           pageTitle: '{{ articleResolve.name }}'
+        }
+      })
+      .state('menu', {
+        url: '/menu',
+        templateUrl: 'modules/menuitems/client/views/main-menuitems.client.view.html',
+        controller: 'MenuItemsListController',
+        data: {
+          pageTitle: 'Menu'
         }
       });
   }

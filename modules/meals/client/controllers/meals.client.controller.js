@@ -33,7 +33,7 @@
 
       if (!vm.meal.courses) { vm.meal.courses = []; }
 
-      vm.meal.courses.push({ id: vm.newCourseObj._id, name: vm.newCourseObj.name, quantity: vm.newCourseQuantity });
+      vm.meal.courses.push({ id: vm.newCourseObj._id, name: vm.newCourseObj.name, quantity: vm.newCourseQuantity, ordinal: vm.newCourseObj.ordinal });
 
       vm.newCourseObj = null;
       vm.newCourseQuantity = 1;
