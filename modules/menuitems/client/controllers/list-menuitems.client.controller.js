@@ -3,8 +3,7 @@
 
   angular
     .module('menuItems')
-    .controller('MenuItemsListController', MenuItemsListController)
-      //.filter('menuFilter', menuFilter);
+    .controller('MenuItemsListController', MenuItemsListController);
 
   MenuItemsListController.$inject = ['$scope', 'MenuItemsService', 'MealsService', 'CoursesService'];
 
@@ -12,9 +11,7 @@
     $scope.currentFilter = null;
     $scope.menuItems = MenuItemsService.query();
     $scope.meals = MealsService.query();
-    $scope.courses = CoursesService.query(function(data) {
-      console.log(data)
-    });
+    $scope.courses = CoursesService.query();
 
     $scope.getFilters = function() {
       var addons = $scope.courses.filter(function(course) {
@@ -29,17 +26,16 @@
     };
 
     $scope.menuFilter = function(course) {
-      console.log(course)
       if ($scope.currentFilter && $scope.currentFilter.courses) {
         var match = $scope.currentFilter.courses.filter(function(filterCourse) {
-          return filterCourse.id == course._id;
+          return filterCourse.id === course._id;
         });
         return match.length > 0;
       } else if ($scope.currentFilter) {
-        return $scope.currentFilter._id == course._id;
+        return $scope.currentFilter._id === course._id;
       }
       return true;
-    }
+    };
   }
 
 })();
