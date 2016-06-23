@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  //angular
-  //  .module('orders')
-  //  .config(routeConfig);
+  angular
+    .module('orders')
+    .config(routeConfig);
 
   routeConfig.$inject = ['$stateProvider'];
 
@@ -15,10 +15,9 @@
         template: '<ui-view/>'
       })
       .state('orders.list', {
-        url: '',
+        url: 'list',
         templateUrl: 'modules/orders/client/views/list-orders.client.view.html',
         controller: 'OrdersListController',
-        controllerAs: 'vm',
         data: {
           pageTitle: 'Orders List'
         }
@@ -27,7 +26,6 @@
         url: '/create',
         templateUrl: 'modules/orders/client/views/form-order.client.view.html',
         controller: 'OrdersController',
-        controllerAs: 'vm',
         resolve: {
           orderResolve: newOrder
         },
@@ -40,7 +38,6 @@
         url: '/:orderId/edit',
         templateUrl: 'modules/orders/client/views/form-order.client.view.html',
         controller: 'OrdersController',
-        controllerAs: 'vm',
         resolve: {
           orderResolve: getOrder
         },
@@ -60,7 +57,13 @@
         data:{
           pageTitle: 'Order {{ articleResolve.name }}'
         }
-      });
+      }).state('order', {
+          url: '/order',
+          templateUrl: 'modules/orders/client/views/main-order.client.view.html',
+          data: {
+            pageTitle: 'Order'
+          }
+        });
   }
 
   getOrder.$inject = ['$stateParams', 'OrdersService'];

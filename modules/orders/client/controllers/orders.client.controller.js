@@ -2,26 +2,25 @@
   'use strict';
 
   // Orders controller
-  //angular
-  //  .module('orders')
-  //  .controller('OrdersController', OrdersController);
+  angular
+    .module('orders')
+    .controller('OrdersController', OrdersController);
 
-  OrdersController.$inject = ['$scope', '$state', 'Authentication', 'orderResolve'];
+  OrdersController.$inject = ['$rootScope', '$scope', '$state', 'MealsService', 'CoursesService'];
 
-  function OrdersController ($scope, $state, Authentication, order) {
-    var vm = this;
+  function OrdersController ($rootScope, $scope, $state, MealsService, CoursesService) {
+    console.log("ORDERS!");
+    //$scope.order = orders;
+    $scope.error = null;
+    $scope.form = {};
+    $scope.remove = remove;
+    $scope.save = save;
 
-    vm.authentication = Authentication;
-    vm.order = order;
-    vm.error = null;
-    vm.form = {};
-    vm.remove = remove;
-    vm.save = save;
 
     // Remove existing Order
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
-        vm.order.$remove($state.go('orders.list'));
+        $scope.order.$remove($state.go('orders.list'));
       }
     }
 
@@ -33,10 +32,10 @@
       }
 
       // TODO: move create/update logic to service
-      if (vm.order._id) {
-        vm.order.$update(successCallback, errorCallback);
+      if ($scope.order._id) {
+        $scope.order.$update(successCallback, errorCallback);
       } else {
-        vm.order.$save(successCallback, errorCallback);
+        $scope.order.$save(successCallback, errorCallback);
       }
 
       function successCallback(res) {
@@ -46,8 +45,13 @@
       }
 
       function errorCallback(res) {
-        vm.error = res.data.message;
+        $scope.error = res.data.message;
       }
     }
+
+    $rootScope.$on('cart-popup', function(event, item) {
+      console.log(item);
+      $scope.newItem = item;
+    });
   }
 })();

@@ -5,7 +5,7 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Order = mongoose.model('Order'),
+  Orders = mongoose.model('Orders'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -13,7 +13,7 @@ var path = require('path'),
  * Create a Order
  */
 exports.create = function(req, res) {
-  var order = new Order(req.body);
+  var order = new Orders(req.body);
   order.user = req.user;
 
   order.save(function(err) {
@@ -81,7 +81,7 @@ exports.delete = function(req, res) {
  * List of Orders
  */
 exports.list = function(req, res) { 
-  Order.find().sort('-created').populate('user', 'displayName').exec(function(err, orders) {
+  Orders.find().sort('-created').populate('user', 'displayName').exec(function(err, orders) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -103,7 +103,7 @@ exports.orderByID = function(req, res, next, id) {
     });
   }
 
-  Order.findById(id).populate('user', 'displayName').exec(function (err, order) {
+  Orders.findById(id).populate('user', 'displayName').exec(function (err, order) {
     if (err) {
       return next(err);
     } else if (!order) {

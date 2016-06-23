@@ -5,13 +5,23 @@
     .module('menuItems')
     .controller('MenuItemsListController', MenuItemsListController);
 
-  MenuItemsListController.$inject = ['$scope', 'MenuItemsService', 'MealsService', 'CoursesService'];
+  MenuItemsListController.$inject = ['$rootScope', '$scope', 'MenuItemsService', 'MealsService', 'CoursesService'];
 
-  function MenuItemsListController($scope, MenuItemsService, MealsService, CoursesService) {
+  function MenuItemsListController($rootScope, $scope, MenuItemsService, MealsService, CoursesService) {
     $scope.currentFilter = null;
     $scope.menuItems = MenuItemsService.query();
     $scope.meals = MealsService.query();
-    $scope.courses = CoursesService.query();
+    $scope.addons = [];
+    $scope.courses = CoursesService.query(function(courses) {
+      var matches = courses.filter(function(course) {
+        return course.addon;
+      });
+
+      angular.forEach(matches, function(course) {
+        $scope.addons = $scope.addons.concat(course.menuItems);
+      });
+    });
+
 
     $scope.getFilters = function() {
       var addons = $scope.courses.filter(function(course) {
@@ -36,6 +46,10 @@
       }
       return true;
     };
+
+    $scope.addToCart = function(item) {
+      $rootScope.$emit('cart-popup', item);
+    }
   }
 
 })();

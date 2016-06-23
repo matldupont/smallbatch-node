@@ -2,9 +2,9 @@
 (function () {
   'use strict';
 
-  //angular
-  //  .module('orders')
-  //  .factory('OrdersService', OrdersService);
+  angular
+    .module('orders')
+    .factory('OrdersService', OrdersService);
 
   OrdersService.$inject = ['$resource'];
 
