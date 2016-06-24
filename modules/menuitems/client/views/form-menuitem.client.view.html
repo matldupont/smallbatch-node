@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <form name="form.menuItemForm" class="form-horizontal" ng-submit="save(form.menuItemForm.$valid)" novalidate>
       <fieldset>
-        <div class="form-group" show-errors>
+        <div class="bottom-padding" show-errors>
           <label class="control-label col-sm-2" for="name">Name</label>
           <div class="col-sm-7">
             <input name="name" type="text" ng-model="menuItem.name" id="name" class="form-control " placeholder="Name" required>
@@ -15,34 +15,35 @@
             <p class="help-block error-text" ng-message="required">Menu Item name is required.</p>
           </div>
         </div>
-        <div class="form-group" show-errors>
+        <div class="bottom-padding" show-errors>
           <label class="control-label col-sm-2" for="description">Description</label>
           <div class="col-sm-7">
             <textarea name="description" rows="10" type="text" ng-model="menuItem.description" id="description" class="form-control" placeholder="Description"></textarea>
           </div>
         </div>
-        <div class="form-group" show-errors>
+        <div class="bottom-padding" show-errors>
           <label class="control-label col-sm-2" for="course">Course</label>
-          <div class="col-sm-7">
-            <select class="form-control" name="course" id="course" ng-model="menuItem.course.id" required>
-              <option ng-repeat="course in courses" value="{{course._id}}">{{course.name}}</option>
-            </select>
-          </div>
+          <select class="form-control" name="course" id="course" ng-model="menuItem.course.id" required>
+            <option ng-repeat="course in courses" value="{{course._id}}">{{course.name}}</option>
+          </select>
 
           <div ng-messages="form.menuItemForm.course.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Menu Item Course is required.</p>
           </div>
         </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="enabled">Enabled</label>
-          <div class="col-sm-1">
-            <input type="checkbox" ng-class="{ 'btn-success': menuItem.enabled == true, 'btn-warning': menuItem.enabled == false }" ng-model="menuItem.enabled" id="enabled" name="enabled"></checkbox>
-          </div>
+        <div class="bottom-padding">
+          <label class="control-label col-sm-2" for="price">Price</label>
+          <input type="number" ng-class="{ 'btn-success': menuItem.enabled == true, 'btn-warning': menuItem.enabled == false }" ng-model="menuItem.price" id="price" name="enabled">
         </div>
-        <div class="form-group top-gap">
+
+        <div class="bottom-padding">
+          <label class="control-label col-sm-2" for="enabled">Enabled</label>
+          <input type="checkbox" ng-class="{ 'btn-success': menuItem.enabled == true, 'btn-warning': menuItem.enabled == false }" ng-model="menuItem.enabled" id="enabled" name="enabled"></checkbox>
+        </div>
+        <div class="">
           <button type="submit" class="btn btn-info">{{menuItem._id ? 'Update' : 'Create'}}</button>
 
-          <a ng-if="!menuItem._id && !courseId" ui-sref="admin.menuitems.list" >
+          <a ui-sref="admin.menuitems.list" >
             <button class="btn btn-default">Cancel</button>
           </a>
 

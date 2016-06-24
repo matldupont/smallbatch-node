@@ -191,6 +191,19 @@ input[type=submit]:active {
     color: #fff;
 }
 
+.btn-ghost-inverse:link,
+.btn-ghost-inverse:visited {
+    border: 1px solid #000;
+    color: #000;
+}
+
+.btn-ghost-inverse:hover,
+.btn-ghost-inverse:active {
+    /*border: 1px solid #000;*/
+    background-color: #222;
+    color: #f3a328;
+}
+
 .btn-sm:link,
 .btn-sm:visited {
     font-size: 80%;
@@ -426,6 +439,9 @@ header {
 .section-how {
     background-color: #f3a328;
     color: #f3a328;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 20px;
 }
 
 .section-how .tile {
@@ -542,6 +558,15 @@ header {
 .plan-box ul li {
     padding: 5px 0;
     font-family: 'Josefin Slab', serif;
+}
+
+.more-info {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.underlined {
+    text-decoration: underline;
 }
 
 /* Footer */

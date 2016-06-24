@@ -31,8 +31,14 @@
           </div>
         </div>
         <div class="row">
-          <p class="subtext">
-            Small Batch means carefully handcrafted food in an artisan fashion.
+          <p class="subtext" ng-show="!moreInfo">
+            <strong>Small Batch</strong> means carefully handcrafted food in an <strong>artisan</strong> fashion.
+          </p>
+          <p class="subtext" ng-show="moreInfo">
+            <strong>Small Batch</strong> means carefully handcrafted food in an <strong>artisan</strong> fashion.<br><br>
+            We all <strong>love</strong> food!<br><br>
+            With a hint of <strong>Middle Eastern flare</strong> and a zest for <strong>modern fusion</strong> cuisine, Zaher's Small Batch perfectly suits Date Nights, Family Dinners and DIY Home Catering for when you're entertaining guests!<br><br>
+            Further, we want to share our <strong>passion</strong> for food with you, and in the <strong>convenience</strong> of your own home... for a fraction of the cost of dining out!
           </p>
         </div>
       </div>
@@ -44,8 +50,14 @@
           </div>
         </div>
         <div class="row">
-          <p class="subtext">
-            Simply click on the "Order Now" button at the top of your screen or follow the menu options below!
+          <p class="subtext" ng-show="!moreInfo">
+            <strong>Simply</strong> click on the "Order Now" button at the top of your screen or follow the menu options below!
+          </p>
+          <p class="subtext" ng-show="moreInfo">
+            <strong>Simply</strong> click on the "Order Now" button at the top of your screen or follow the menu options below!<br><br>
+            From this point, we need some <strong>basic</strong> information so we can contact you when your order is ready!<br><br>
+            Since our supply is partially dependant on the <strong>local</strong> butchers we source and a baker who makes our <strong>fresh</strong> bread daily, we require 24 hours to complete your order.  As everything is freshly prepared and vacuum sealed, you have a week to pick it up! The efficiency behind this system helps us keep our costs low for you, when we don't waste good food!<br><br>
+            There are <strong><span class="underlined">NO CANCELLATIONS</span></strong> once the order has been placed so please, double check your tasty selection!
           </p>
         </div>
       </div>
@@ -53,25 +65,36 @@
       <div class="col span-1-of-3">
         <div class="tile">
           <div class="boxes">
-            ONEbox vs. BBQbox
+            ONEBox vs. BBQBox
           </div>
         </div>
         <div class="row">
-          <p class="subtext">
-            Our ONEBox selection is our higher line of par-prepared take home meals!
-            <br><brb>
-            Our BBQBox concept is just as cool, and a bit cheaper.
+          <p class="subtext" ng-show="!moreInfo">
+            Our <strong>ONEBox</strong> selection is our higher line of par-prepared take home meals!
+            <br><br>
+            Our <strong>BBQBox</strong> concept is just as cool, and a bit cheaper.
+          </p>
+          <p class="subtext" ng-show="moreInfo">
+            Our <strong>ONEBox</strong> selection is our <strong>higher line</strong> of par-prepared take home meals!  All of these meals are prepared fresh to order and vacuum sealed for you to enjoy in the comfort of your own home! Instructions are included and all <strong>ONEBox</strong> courses are prepared as easily as dropping the vacuum sealed packages in boiling water for a few minutes, or grilling!
+            <br><br>
+            Our <strong>BBQBox</strong> concept is just as cool, and a bit cheaper.  In every meal, you get: a side salad, grilling veggies, 8oz of meat and even the desserts go <strong>on the grill!</strong> No mess! Perfect for family dinners, camping or even entertaining large company for your outdoor occasion that you're celebrating!<br><br>
+            For large events, please check out our <strong>"Live Charcoal Events"</strong> section!
           </p>
         </div>
       </div>
     </div>
+    <div class="row more-info">
+      <a href="#" class="btn btn-sm btn-ghost-inverse"  ng-click="moreInfo = !moreInfo"><span ng-show="!moreInfo">Tell me more</span><span ng-show="moreInfo">Tell me less</span></a>
+    </div>
+
+
   </section>
 
-  <section class="section-video">
-    <div class="row">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Rt1QVlOkRfU?rel=0&modestbranding=1&showinfo=0&controls=0&theme=light" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </section>
+  <!--<section class="section-video">-->
+    <!--<div class="row">-->
+      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/Rt1QVlOkRfU?rel=0&modestbranding=1&showinfo=0&controls=0&theme=light" frameborder="0" allowfullscreen></iframe>-->
+    <!--</div>-->
+  <!--</section>-->
 
   <section class="section-meals" ng-controller="MealsListController" id="meals">
     <div class="row">
@@ -98,26 +121,6 @@
         </div>
       </div>
 
-      <!--<div class="col span-1-of-3">-->
-        <!--<div class="plan-box">-->
-          <!--<div>-->
-            <!--<h3>BBQBox</h3>-->
-            <!--<p class="plan-price">$25<span>xx</span></p>-->
-            <!--<p class="plan-price-meal">descriptive text here</p>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<ul>-->
-              <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Appetizer</li>-->
-              <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Entree</li>-->
-              <!--<li><i class="ion-ios-checkmark icon-small"></i>1 Dessert</li>-->
-            <!--</ul>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<a href="#" class="btn btn-ghost">Order Now</a>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
       <div class="col span-1-of-3">
         <div class="plan-box">
           <div>
@@ -139,4 +142,5 @@
       </div>
     </div>
   </section>
+  <footer ng-include="'/modules/core/client/views/footer.client.view.html'"></footer>
 </div>

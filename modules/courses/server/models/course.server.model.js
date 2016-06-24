@@ -40,7 +40,8 @@ var CourseSchema = new Schema({
         ref: 'MenuItem'
       },
       name: String,
-      description: String
+      description: String,
+      price: Number
     }
   ],
   created: {

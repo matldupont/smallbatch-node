@@ -49,9 +49,21 @@
       }
     }
 
-    $rootScope.$on('cart-popup', function(event, item) {
+    $scope.getItemPopupClass = function() {
+      if (!$scope.newItem) { return; }
+
+      if ($scope.newItem.courses) {
+        return 'box-item';
+      } else {
+        return 'addon-item';
+      }
+    };
+
+    var popupListener = $rootScope.$on('cart-popup', function(event, item) {
       console.log(item);
       $scope.newItem = item;
     });
+
+    $scope.$on('destroy', popupListener);
   }
 })();

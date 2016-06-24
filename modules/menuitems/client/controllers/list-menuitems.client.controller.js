@@ -49,7 +49,7 @@
 
     $scope.addToCart = function(item) {
       $rootScope.$emit('cart-popup', item);
-    }
+    };
   }
 
 })();

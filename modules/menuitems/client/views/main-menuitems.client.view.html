@@ -1,33 +1,37 @@
-<section class="menu-home">
-  <div class="menu-container">
-    <div class="row menu-header">
-      <div class="col span-2-of-7 title-spacer"></div>
-      <div class="col span-3-of-7 menu-title">
-        Zaher's Menu
-      </div>
-      <div class="col span-2-of-7 title-spacer"></div>
-    </div>
-    <div class="row menu-body">
-      <div class="row menu-filter">
-        <div class="col span-1-of-4" ng-class="{ 'selected' : currentFilter == null }">
-          <a ng-click="applyFilter(null)">All Items</a>
+<div>
+  <section class="menu-home">
+    <div class="menu-container">
+      <div class="row menu-header">
+        <div class="col span-2-of-7 title-spacer"></div>
+        <div class="col span-3-of-7 menu-title">
+          Zaher's Menu
         </div>
-        <div class="col span-1-of-4" ng-class="{ 'selected' : currentFilter == filter }" ng-repeat="filter in getFilters()" ng-click="applyFilter(filter)">
-          <a ng-click="applyFilter(filter)">{{filter.name}}</a>
-        </div>
+        <div class="col span-2-of-7 title-spacer"></div>
       </div>
-      <div class="row menu-content">
-        <div class="menu-course row" ng-repeat="course in courses | filter:menuFilter | orderBy: 'ordinal'">
-          <div class="course-header">
-            {{course.name}}s
+      <div class="row menu-body">
+        <div class="row menu-filter">
+          <div class="col span-1-of-4" ng-class="{ 'selected' : currentFilter == null }">
+            <a ng-click="applyFilter(null)">All Items</a>
           </div>
-          <div ng-repeat="menuItem in course.menuItems | orderBy: 'name'" class="menu-item col span-1-of-2">
-            <div class="item-title">{{menuItem.name}}</div>
-            <div class="item-details">{{menuItem.description}}</div>
+          <div class="col span-1-of-4" ng-class="{ 'selected' : currentFilter == filter }" ng-repeat="filter in getFilters()" ng-click="applyFilter(filter)">
+            <a ng-click="applyFilter(filter)">{{filter.name}}</a>
           </div>
         </div>
+        <div class="row menu-content">
+          <div class="menu-course row" ng-repeat="course in courses | filter:menuFilter | orderBy: 'ordinal'">
+            <div class="course-header">
+              {{course.name}}s
+            </div>
+            <div ng-repeat="menuItem in course.menuItems | orderBy: 'name'" class="menu-item col span-1-of-2">
+              <div class="item-title">{{menuItem.name}}</div>
+              <div class="item-details">{{menuItem.description}}</div>
+            </div>
+          </div>
 
+        </div>
       </div>
     </div>
-  </div>
-</section>
+    <div ng-include="'/modules/core/client/views/footer.client.view.html'"></div>
+  </section>
+
+</div>

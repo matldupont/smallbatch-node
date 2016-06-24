@@ -29,7 +29,7 @@ exports.create = function(req, res) {
             message: errorHandler.getErrorMessage(err)
           });
         } else {
-          course.menuItems.push({ id: menuItem._id, name: menuItem.name, description: menuItem.description });
+          course.menuItems.push({ id: menuItem._id, name: menuItem.name, description: menuItem.description, price: menuItem.price });
           course.save();
           res.jsonp(menuItem);
         }
@@ -84,7 +84,7 @@ exports.update = function(req, res) {
                     message: errorHandler.getErrorMessage(err2)
                   });
                 } else {
-                  course.menuItems.push({ id: menuItem._id, name: menuItem.name, description: menuItem.description });
+                  course.menuItems.push({ id: menuItem._id, name: menuItem.name, description: menuItem.description, price: menuItem.price });
                   course.save();
                   res.jsonp(menuItem);
                 }

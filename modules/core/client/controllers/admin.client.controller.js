@@ -1,11 +1,10 @@
 'use strict';
 
-angular.module('core').controller('AdminController', ['$scope', '$location', '$http', '$state', 'Authentication', 'Menus', 'OrderService',
-    function ($scope, $location, $http, $state, Authentication, Menus, OrderService) {
+angular.module('core').controller('AdminController', ['$scope', '$location', '$http', '$state', 'Authentication', 'Menus',
+    function ($scope, $location, $http, $state, Authentication, Menus) {
         // Expose view variables
         $scope.$state = $state;
         $scope.authentication = Authentication;
-        $scope.currentOrder = OrderService.currentOrder;
 
         $scope.test = "ADMIN";
         // Get the topbar menu
@@ -26,7 +25,6 @@ angular.module('core').controller('AdminController', ['$scope', '$location', '$h
         });
 
         $scope.logout = function() {
-            OrderService.clearOrder();
             window.location.href = '/api/auth/signout';
         };
 

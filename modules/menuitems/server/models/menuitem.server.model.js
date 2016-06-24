@@ -28,6 +28,10 @@ var MenuItemSchema = new Schema({
     },
     name: String
   },
+  price: {
+    type: Number,
+    default: 0
+  },
   enabled: {
     type: Boolean,
     default: true

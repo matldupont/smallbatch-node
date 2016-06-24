@@ -32,8 +32,8 @@
       </div>
       <div class="row order-section-body">
         <div class="col span-1-of-2" ng-repeat="addon in addons">
-          <div class="menu-item">
-            <div class="item-title">{{addon.name}}</div>
+          <div class="menu-item addon-tile">
+            <div class="item-title">{{addon.name}}</div><div class="addon-price">${{addon.price}}</div>
             <div class="item-details">{{addon.description}}</div>
             <a class="addon-to-cart" ng-click="addToCart(addon)"><i class="ion-plus-circled"></i></a>
           </div>
@@ -42,11 +42,11 @@
     </div>
   </div>
   <div class="order-summary">
-    Summary
+    Summary goes here
   </div>
 
   <div class="order-overlay" ng-controller="OrdersController" ng-hide="!newItem" >
-    <div class="order-popup">
+    <div class="order-popup" ng-class="getItemPopupClass()">
       <div class="popup-header">
         <div class="row item-title">{{newItem.name}}</div>
         <div class="row item-details">{{newItem.description}}</div>

@@ -8,9 +8,6 @@
   OrdersListController.$inject = ['$scope', 'OrdersService'];
 
   function OrdersListController($scope, OrdersService) {
-
-
-
-    vm.orders = OrdersService.query();
+    $scope.orders = OrdersService.query();
   }
 })();
