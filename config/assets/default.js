@@ -6,7 +6,7 @@ module.exports = {
       css: [
         // bower:css
         //'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/Ionicons/css/ionicons.min.css'
+        'public/lib/components-font-awesome/css/font-awesome.min.css'
         //'public/lib/bootstrap/dist/css/bootstrap-theme.css'
         // endbower
       ],

@@ -18,7 +18,7 @@
     "angular-cookies": "^1.5.2",
     "angular-payments": "*",
     "angular-stripe-checkout": "^4.0.1",
-    "Ionicons": "ionicons#^2.0.1"
+    "components-font-awesome": "^4.6.3"
   },
   "overrides": {
     "bootstrap": {

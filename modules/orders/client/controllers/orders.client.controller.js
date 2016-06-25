@@ -79,9 +79,9 @@
           console.error(error);
         });
       } else {
-        $scope.order.$save(function (order) { console.log(order)
+        $scope.order.$save(function (order) {
           $scope.newItem = null;
-          $cookies.put('currentOrderId', order._id)
+          $cookies.put('currentOrderId', order._id);
         });
       }
     };
@@ -131,7 +131,7 @@
             item.menuItems.push({
               name: course.name,
               id: course.id
-            })
+            });
           }
         });
       }
