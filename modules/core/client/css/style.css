@@ -576,6 +576,43 @@ header {
     text-decoration: underline;
 }
 
+/* Order Section */
+
+.section-order {
+    padding: 60px 0;
+    background-color: #222;
+    position: relative;
+}
+
+.section-order .order {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    top: 40px;
+    text-transform: uppercase;
+}
+
+.section-order div:last-child  a {
+
+}
+
+.yellow-strikeout {
+    height: 3px;
+    background-color: #f3a328;
+}
+
+/* Quote Section */
+
+.section-quote {
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(img/zaher-kebabs.jpg);
+    /*    background-image: url(img/zaher1.jpg);*/
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 500px;
+}
+
 /* Footer */
 
 footer {
