@@ -578,23 +578,19 @@ header {
 
 /* Order Section */
 
-.section-order {
+.section-menu {
     padding: 60px 0;
     background-color: #222;
     position: relative;
 }
 
-.section-order .order {
+.section-menu .menu-button {
     width: 100%;
     margin: 0 auto;
     text-align: center;
     position: absolute;
     top: 40px;
     text-transform: uppercase;
-}
-
-.section-order div:last-child  a {
-
 }
 
 .yellow-strikeout {
@@ -610,7 +606,26 @@ header {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 500px;
+
+    font-family: 'Josefin Slab', serif;
+    color: #f3a328;
+    line-height: 145%;
+    word-spacing: 2px;
+    letter-spacing: .5px;
+    font-size: 150%;
+}
+
+.section-quote .col img {
+    width: 70%;
+}
+
+.quote {
+    margin-top: 100px;
+}
+
+.quote-author {
+    margin-top: 50px;
+    float: right;
 }
 
 /* Footer */
