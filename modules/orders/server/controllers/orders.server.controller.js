@@ -13,6 +13,7 @@ var path = require('path'),
  * Create a Order
  */
 exports.create = function(req, res) {
+  console.log("create");
   var order = new Orders(req.body);
   order.user = req.user;
 
@@ -31,6 +32,7 @@ exports.create = function(req, res) {
  * Show the current Order
  */
 exports.read = function(req, res) {
+  console.log('read');
   // convert mongoose document to JSON
   var order = req.order ? req.order.toJSON() : {};
 
@@ -44,7 +46,7 @@ exports.read = function(req, res) {
 /**
  * Update a Order
  */
-exports.update = function(req, res) {
+exports.update = function(req, res) {console.log("update?");
   var order = req.order ;
 
   order = _.extend(order , req.body);
@@ -80,7 +82,8 @@ exports.delete = function(req, res) {
 /**
  * List of Orders
  */
-exports.list = function(req, res) { 
+exports.list = function(req, res) {
+  console.log("list");
   Orders.find().sort('-created').populate('user', 'displayName').exec(function(err, orders) {
     if (err) {
       return res.status(400).send({
@@ -96,7 +99,7 @@ exports.list = function(req, res) {
  * Order middleware
  */
 exports.orderByID = function(req, res, next, id) {
-
+  console.log("by id");
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Order is invalid'

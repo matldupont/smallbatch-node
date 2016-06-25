@@ -5,7 +5,7 @@
         <div class="order-section-title">Boxes</div>
       </div>
       <div class="row">
-        <div class="col span-1-of-2" ng-repeat="meal in meals">
+        <div class="col span-1-of-2" ng-repeat="meal in meals | orderBy: 'ordinal'">
           <div class="plan-box">
             <div>
               <h3>{{meal.name}}</h3>
@@ -35,32 +35,46 @@
           <div class="menu-item addon-tile">
             <div class="item-title">{{addon.name}}</div><div class="addon-price">${{addon.price}}</div>
             <div class="item-details">{{addon.description}}</div>
-            <a class="addon-to-cart" ng-click="addToCart(addon)"><i class="ion-plus-circled"></i></a>
+            <div class="addon-to-cart"><a href="#" class="btn btn-sm btn-ghost" ng-click="addToCart(addon)">Add to Cart</a></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="order-summary">
-    Summary goes here
-  </div>
-
-  <div class="order-overlay" ng-controller="OrdersController" ng-hide="!newItem" >
-    <div class="order-popup" ng-class="getItemPopupClass()">
-      <div class="popup-header">
-        <div class="row item-title">{{newItem.name}}</div>
-        <div class="row item-details">{{newItem.description}}</div>
-        <div class="item-price">${{newItem.price}}</div>
+  <div ng-controller="OrdersController">
+    <div class="order-summary">
+      <div class="row">
+        Summary goes here
       </div>
-      <div class="popup-body">
-        <div class="row" ng-repeat="course in newItem.courses">
-          {{course.name}}
+      <!--<div class="row" ng-repeat="addon in order.addons track by addon.id | orderBy: 'name'">-->
+        <!--{{addon.name}} {{addon.quantity}} {{addon.price}}-->
+      <!--</div>-->
+      <div class="row">
+        {{order.total}}
+      </div>
+    </div>
+
+    <div class="order-overlay"  ng-hide="!newItem" >
+      <div class="order-popup" ng-class="getItemPopupClass()">
+        <div class="popup-header">
+          <div class="row item-title">{{newItem.name}}</div>
+          <div class="row item-details">{{newItem.description}}</div>
+          <div class="item-price">${{newItem.price}}</div>
         </div>
-      </div>
-      <div class="popup-footer">
-        <a href="#" class="btn btn-sm btn-ghost" ng-click="newItem = null">Cancel</a>
-        <a href="#" class="btn btn-sm btn-full" >Add to Cart</a>
+        <div class="popup-body" ng-if="newItem.menuItems">
+          <div class="row meal" ng-repeat="menuItem in newItem.menuItems">
+            <span>{{menuItem.name}}</span> <input ng-model="newItem.menuItems" type="number">
+          </div>
+          <div class="row addon"><span>Quantity</span><input ng-model="newItem.quantity" type="number"></div>
+        </div>
+        <div class="popup-body" ng-if="!newItem.courses">
+          <div class="row addon"><span>Quantity</span><input ng-model="newItem.quantity" type="number"></div>
+        </div>
+        <div class="popup-footer">
+          <a href="#" class="btn btn-sm btn-ghost" ng-click="newItem = null">Cancel</a>
+          <a href="#" class="btn btn-sm btn-full" ng-click="addToCart(newItem)" >Add to Cart</a>
 
+        </div>
       </div>
     </div>
   </div>
