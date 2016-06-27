@@ -28,11 +28,11 @@ var OrdersSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'MenuItem'
           },
-          quantity: Number,
-          price: Number
+          name: String
         }
       ],
-      price: Number
+      price: Number,
+      quantity: Number
     }
   ],
   addons: [

@@ -110,7 +110,7 @@
           </div>
           <div>
             <ul>
-              <li ng-repeat="course in meal.courses">
+              <li ng-repeat="course in meal.courses | orderBy: 'ordinal'">
                 <i class="ion-ios-checkmark icon-small"></i>{{course.quantity}} {{course.name}}<ng-pluralize count="course.quantity" when="{'0': 'Nobody is viewing.', 'one': '', 'other': 's'}"></ng-pluralize>
               </li>
             </ul>

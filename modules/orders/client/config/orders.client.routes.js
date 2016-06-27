@@ -30,7 +30,6 @@
           orderResolve: newOrder
         },
         data: {
-          roles: ['user', 'admin'],
           pageTitle : 'Orders Create'
         }
       })
@@ -42,7 +41,7 @@
           orderResolve: getOrder
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['guest'],
           pageTitle: 'Edit Order {{ orderResolve.name }}'
         }
       })
@@ -61,7 +60,8 @@
           url: '/order',
           templateUrl: 'modules/orders/client/views/main-order.client.view.html',
           data: {
-            pageTitle: 'Order'
+            pageTitle: 'Order',
+            roles: ['guest']
           }
         });
   }

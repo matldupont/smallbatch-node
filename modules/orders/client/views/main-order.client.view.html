@@ -14,7 +14,7 @@
             </div>
             <div>
               <ul>
-                <li ng-repeat="course in meal.courses">
+                <li ng-repeat="course in meal.courses | orderBy: 'ordinal'">
                   <i class="ion-ios-checkmark icon-small"></i>{{course.quantity}} {{course.name}}<ng-pluralize count="course.quantity" when="{'0': 'Nobody is viewing.', 'one': '', 'other': 's'}"></ng-pluralize>
                 </li>
               </ul>
@@ -43,14 +43,32 @@
   </div>
   <div ng-controller="OrdersController">
     <div class="order-summary">
-      <div class="row">
-        Summary goes here
+      <div class="row order-empty-header" ng-if="cartIsEmpty()">You cart is currently Empty</div>
+      <div class="row" ng-if="!cartIsEmpty()">
+        <a href="#" class="empty-cart" ng-click="remove()"><span>Empty My Cart</span></a>
       </div>
-      <!--<div class="row" ng-repeat="addon in order.addons track by addon.id | orderBy: 'name'">-->
-        <!--{{addon.name}} {{addon.quantity}} {{addon.price}}-->
-      <!--</div>-->
-      <div class="row">
-        {{order.total}}
+      <div class="row order-header" ng-if="!cartIsEmpty()">
+        Your Current Order:
+      </div>
+      <div class="row order-item" ng-repeat="meal in order.meals track by meal._id | orderBy: 'name'">
+        <div class="order-details">{{meal.name}}</div>
+        <div class="order-detail-price">{{meal.quantity}}x {{meal.price | currency}}</div>
+        <a href="#" class="remove" ng-click="removeFromCart(meal)"><i class="fa fa-times-circle"></i></a>
+
+        <div class="order-details-item" ng-repeat="item in meal.items">
+          - {{item.name}}
+        </div>
+
+      </div>
+      <div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">
+        <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
+      </div>
+      <div class="row order-total" ng-if="!cartIsEmpty()">
+        Total: {{order.total | currency}}
+      </div>
+
+      <div class="row checkout" ng-if="!cartIsEmpty()">
+        <a href="#" class="btn btn-full">Checkout</a>
       </div>
     </div>
 
@@ -62,10 +80,12 @@
           <div class="item-price">${{newItem.price}}</div>
         </div>
         <div class="popup-body" ng-if="newItem.menuItems">
-          <div class="row meal" ng-repeat="menuItem in newItem.menuItems">
-            <span>{{menuItem.name}}</span> <input ng-model="newItem.menuItems" type="number">
+          <div class="row meal" ng-repeat="menuItem in newItem.menuItems | orderBy: 'ordinal'">
+            <span>{{menuItem.name}}</span>
+            <select ng-options="item.name for item in getCourseItems(menuItem.id) | orderBy: 'name' "
+                    ng-model="menuItem.choice"></select>
           </div>
-          <div class="row addon"><span>Quantity</span><input ng-model="newItem.quantity" type="number"></div>
+          <div class="row addon"><span>Quantity</span><input ng-model="newItem.quantity" type="number" min="2"></div>
         </div>
         <div class="popup-body" ng-if="!newItem.courses">
           <div class="row addon"><span>Quantity</span><input ng-model="newItem.quantity" type="number"></div>

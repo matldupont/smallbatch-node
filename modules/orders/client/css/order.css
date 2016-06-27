@@ -97,6 +97,70 @@
     top: 150px;
     right: 10%;
     font-family: 'Josefin Slab', serif;
+    padding: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.order-summary a.remove:link,
+.order-summary a.remove:visited {
+    border: 0;
+}
+
+.empty-cart {
+    float: right;
+    font-size: 70%;
+    margin-bottom: 10px;
+}
+
+.order-header,
+.order-empty-header {
+    font-weight: bold;
+}
+
+.order-header {
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+.order-empty-header {
+    text-align: center;
+}
+
+.order-summary .order-details {
+    display: inline-block;
+    font-size: 85%;
+    width:60%;
+    padding: 5px 0;
+}
+
+.checkout {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Special Elite', 'Arial', 'sans-serif';
+}
+
+
+.order-summary .order-detail-price {
+    display: inline-block;
+    font-size: 70%;
+    width: 30%;
+    text-align: right;
+}
+
+.order-details-item {
+    font-size: 75%;
+    margin-left: 15px;
+    line-height: 145%;
+}
+
+.order-summary .order-total {
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #000;
 }
 
 div::-webkit-scrollbar {
@@ -122,7 +186,6 @@ div::-webkit-scrollbar-thumb {
 
 .order-popup {
     background-color: #fff;
-    height: 10px;
     width: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -178,6 +241,12 @@ div::-webkit-scrollbar-thumb {
 
 .popup-body .meal input {
     width: 250px;
+}
+
+.popup-body .meal select {
+    width: 50%;
+    float: right;
+    font-size: 130%;
 }
 
 .popup-body span {

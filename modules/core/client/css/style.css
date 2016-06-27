@@ -141,6 +141,10 @@ a:active {
     border-bottom: 1px solid transparent;
 }
 
+a i {
+    text-decoration: none;
+}
+
 
 /* Buttons */
 
@@ -260,12 +264,13 @@ header {
     text-decoration: none;
     padding-bottom: 1px;
     /*    border-bottom: 1px solid #f1c40f;*/
-    transition: border-bottom 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.5s;
 }
 
 .order-btn:hover,
 .order-btn:active {
     background-color: #df921c;
+    color: #fff;
     /*    border-bottom: 1px solid transparent;*/
 }
 
@@ -376,7 +381,7 @@ header {
 }
 
 .home {
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(img/zaher-boxflame-centered.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .9)), url(img/zaher-boxflame-centered.jpg);
     color: #f3a328;
     padding-top: 200px;
     background-size: cover;
@@ -617,6 +622,8 @@ header {
 
 .section-quote .col img {
     width: 70%;
+    /*box-shadow: 0 2px 2px #cccccc;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 4px 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
 .quote {

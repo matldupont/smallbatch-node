@@ -12,6 +12,7 @@ angular.module('core').factory('authInterceptor', ['$q', '$injector', 'Authentic
               $injector.get('$state').transitionTo('authentication.signin');
               break;
             case 403:
+                console.log("403!");
               $injector.get('$state').transitionTo('forbidden');
               break;
           }
