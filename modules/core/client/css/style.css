@@ -241,6 +241,44 @@ header {
     transform: translate(-50%, -50%)
 }
 
+.mobile-order {
+    /*width: 200px;*/
+    /*margin: 20px auto;*/
+    /*background-color: #f3a328;*/
+    /*color: #000;*/
+    padding-top: 40px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 150%;
+}
+
+.mobile-order a {
+    margin-top: 100px;
+    padding: 20px 30px;
+    padding-top: 25px;
+    font-size: 130%;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    /*padding: 60px 40px;*/
+}
+
+.mobile-order a:link,
+.mobile-order a:visited {
+    color: #000;
+    background-color: #f3a328;
+    text-decoration: none;
+    /*    border-bottom: 1px solid #f1c40f;*/
+    transition: background-color 0.2s, color 0.5s;
+}
+
+.mobile-order a:hover,
+.mobile-order a:active {
+    background-color: #df921c;
+    color: #fff;
+    /*    border-bottom: 1px solid transparent;*/
+}
+
 .order-btn {
     height: 110px;
     width: 110px;
@@ -283,13 +321,18 @@ header {
 }
 
 .main-nav ul {
-    width: 90%;
-    margin-left: 5%;
+    width: 60%;
+    margin-left: 20%;
 }
 
 .main-nav li {
     display: inline;
-    margin-left: 40px;
+    /*margin-left: 40px;*/
+    width: 20%;
+}
+
+.main-nav .col {
+    margin: 0;
 }
 
 .main-nav li a:link,
@@ -391,6 +434,10 @@ header {
     position: relative;
 }
 
+.js-home-text {
+    /*display: none;*/
+}
+
 .main-logo img {
     width: 100%;
     border-radius: 3px;
@@ -398,6 +445,7 @@ header {
 
 .left-home-text,
 .right-home-text {
+
     padding: 20px;
     border-top: 1px solid #f3a328;
     border-bottom: 1px solid #f3a328;
@@ -434,6 +482,23 @@ header {
     float: right;
 }
 
+.center-home-text {
+    width: 300px;
+    margin: 0 auto;
+    line-height: 145%;
+    text-align: center;
+    margin-top: 200px;
+    display: none;
+}
+
+.center-home-top {
+    font-size: 140%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f3a328;
+    margin-bottom: 20px;
+
+}
+
 /* Video sections */
 .section-video {
     background-color: #111;
@@ -446,9 +511,9 @@ header {
 
 }
 
-/* How it Works Section */
+/* About Section */
 
-.section-how {
+.section-about {
     background-color: #f3a328;
     color: #f3a328;
     padding: 0;
@@ -456,7 +521,7 @@ header {
     padding-bottom: 20px;
 }
 
-.section-how .tile {
+.section-about .tile {
     text-align: center;
     background-color: #222;
     width: 220px;
@@ -465,21 +530,21 @@ header {
     margin: auto;
 }
 
-.section-how .tile .what {
+.section-about .tile .what {
     width: 80%;
     margin-left: 10%;
     font-size: 130%;
     padding-top: 65px;
 }
 
-.section-how .tile .how {
+.section-about .tile .how {
     width: 90%;
     margin-left: 5%;
     font-size: 130%;
     padding-top: 95px;
 }
 
-.section-how .tile .boxes {
+.section-about .tile .boxes {
     width: 90%;
     margin-left: 5%;
     font-size: 130%;
@@ -518,6 +583,7 @@ header {
     width: 90%;
     margin-left: 5%;
     box-shadow: 0 2px 2px #cccccc;
+    margin-bottom: 20px;
 }
 
 .plan-box div {

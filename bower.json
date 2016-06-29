@@ -18,7 +18,8 @@
     "angular-cookies": "^1.5.2",
     "angular-payments": "*",
     "angular-stripe-checkout": "^4.0.1",
-    "components-font-awesome": "^4.6.3"
+    "components-font-awesome": "^4.6.3",
+    "jquery": "^3.0.0"
   },
   "overrides": {
     "bootstrap": {
@@ -33,6 +34,7 @@
     }
   },
   "resolutions": {
-    "angular": "1.5.2"
+    "angular": "1.5.2",
+    "jquery": "^3.0.0"
   }
 }
