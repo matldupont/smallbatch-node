@@ -128,7 +128,7 @@
     text-align: center;
 }
 
-.order-summary .order-details {
+.order-details {
     display: inline-block;
     font-size: 85%;
     width:60%;
@@ -142,7 +142,7 @@
 }
 
 
-.order-summary .order-detail-price {
+.order-detail-price {
     display: inline-block;
     font-size: 70%;
     width: 30%;
@@ -155,9 +155,9 @@
     line-height: 145%;
 }
 
-.order-summary .order-total {
+.order-total {
     text-align: right;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
     margin-top: 10px;
     padding-top: 15px;
     border-top: 1px solid #000;
@@ -272,4 +272,31 @@ div::-webkit-scrollbar-thumb {
     right: 20px;
     top: 20px;
     font-size: 200%;
+}
+
+.order-receipt {
+    width: 500px;
+    font-family: 'Josefin Slab', serif;
+}
+
+.receipt-header {
+    font-size: 150%;
+    padding-bottom: 20px;
+}
+
+.receipt-body {
+    padding-bottom: 15px;
+}
+
+.order-receipt .order-details {
+    width:70%;
+}
+
+.order-receipt .order-detail-price {
+    width: 23%;
+}
+
+.close-order {
+    text-align: right;
+    margin-top: 30px;
 }

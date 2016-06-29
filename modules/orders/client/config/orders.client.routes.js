@@ -5,9 +5,9 @@
     .module('orders')
     .config(routeConfig);
 
-  routeConfig.$inject = ['$stateProvider'];
+  routeConfig.$inject = ['$stateProvider', 'StripeCheckoutProvider'];
 
-  function routeConfig($stateProvider) {
+  function routeConfig($stateProvider, StripeCheckoutProvider) {
     $stateProvider
       .state('orders', {
         abstract: true,
@@ -62,6 +62,10 @@
           data: {
             pageTitle: 'Order',
             roles: ['guest']
+          },
+          resolve: {
+            // checkout.js isn't fetched until this is resolved.
+            stripe: StripeCheckoutProvider.load
           }
         });
   }

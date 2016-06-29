@@ -61,19 +61,19 @@
 
       </div>
       <div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">
-        <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
+        <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price | currency}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
       </div>
       <div class="row order-total" ng-if="!cartIsEmpty()">
         Total: {{order.total | currency}}
       </div>
 
       <div class="row checkout" ng-if="!cartIsEmpty()">
-        <a href="#" class="btn btn-full">Checkout</a>
+        <a href="#" class="btn btn-full" ng-click="doCheckout(order)">Checkout</a>
       </div>
     </div>
 
-    <div class="order-overlay"  ng-hide="!newItem" >
-      <div class="order-popup" ng-class="getItemPopupClass()">
+    <div class="order-overlay"  ng-hide="!newItem && !order.paid" >
+      <div class="order-popup" ng-class="getItemPopupClass()" ng-show="newItem">
         <div class="popup-header">
           <div class="row item-title">{{newItem.name}}</div>
           <div class="row item-details">{{newItem.description}}</div>
@@ -94,6 +94,38 @@
           <a href="#" class="btn btn-sm btn-ghost" ng-click="newItem = null">Cancel</a>
           <a href="#" class="btn btn-sm btn-full" ng-click="addToCart(newItem)" >Add to Cart</a>
 
+        </div>
+      </div>
+      <div class="order-popup order-receipt" ng-show="order.paid">
+        <div class="row receipt-header">
+          Thank You for your purchase.
+        </div>
+        <div class="row receipt-body">
+          Your Order (#{{order.orderNumber}}) has been processed.
+        </div>
+        <div class="row receipt-details">
+          <div class="order-header" ng-if="!cartIsEmpty()">
+            Summary:
+          </div>
+          <div class="row order-item" ng-repeat="meal in order.meals track by meal._id | orderBy: 'name'">
+            <div class="order-details">{{meal.name}}</div>
+            <div class="order-detail-price">{{meal.quantity}}x {{meal.price | currency}}</div>
+
+
+            <div class="order-details-item" ng-repeat="item in meal.items">
+              - {{item.name}}
+            </div>
+
+          </div>
+          <div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">
+            <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price | currency}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
+          </div>
+          <div class="row order-total" ng-if="!cartIsEmpty()">
+            Total: {{order.total | currency}}
+          </div>
+        </div>
+        <div class="row close-order">
+          <a href="#" class="btn btn-sm btn-ghost" ng-click="closeOrder()">Got it!</a>
         </div>
       </div>
     </div>
