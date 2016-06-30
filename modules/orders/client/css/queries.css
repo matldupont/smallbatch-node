@@ -164,13 +164,25 @@
         float: right;
     }
 
+    footer h3 {
+        font-size: 140%;
+    }
+
+    footer p {
+        font-size: 110%;
+    }
+
     footer .social-links {
         float: none;
-        width: 130px;
+        width: 300px;
+        font-size: 300%;
         margin: 0 auto;
     }
 
-    footer .email { text-align: center; }
+    footer .email {
+        font-size: 150%;
+        text-align: center;
+    }
 
     footer .copyright {
         width: 80%;
