@@ -616,9 +616,8 @@ header {
 
 .plan-price-small {
     color: #f3a328;
-    font-size: 160%;
-
-    margin: 26px 0;
+    font-size: 140%;
+    margin: 28px 0;
 }
 
 .plan-price span {
