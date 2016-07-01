@@ -31,9 +31,30 @@
 
     .center-home-text { display: block; }
 
-    nav { display: none; }
+    /*nav { display: none; }*/
+
+    nav .order-btn { display: none; }
+    nav .social-links { display: none; }
+
+    .nav-container {
+        background-color: #222;
+        border-bottom: 1px solid #f3a328;
+        /*padding-bottom: 20px;*/
+    }
+
+    .main-nav ul {
+        margin-top: 80px;
+        width: 100%;
+        margin-left: 40px;
+    }
+
+    .main-nav li { display: block; }
+
+    header { height: 100px; }
 
     .mobile-order { display: block; }
+
+    .mobile-order a { font-size: 90%; }
 
     .section-video iframe {
         width:85%;
@@ -115,6 +136,8 @@
         width: 100%;
         margin: 0 0 4% 0;
     }
+
+    .mobile-order a { font-size: 100%; }
     /*.main-nav { display: none; }*/
 
     /*.long-copy {*/
