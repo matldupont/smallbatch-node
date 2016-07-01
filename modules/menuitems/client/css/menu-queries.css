@@ -1,0 +1,45 @@
+
+/* Large tablets to 1200px (widths smaller than 1140px row) */
+@media only screen and (max-width: 1200px) {
+    .menu-home .row.menu-body {
+        padding: 30px 0;
+    }
+}
+
+/* Small tablets to big tablets */
+@media only screen and (max-width: 1023px) {
+
+}
+
+/* Small phones to small tablets: 481px to 767px */
+@media only screen and (max-width: 767px) {
+    .menu-home .row.menu-body {
+        padding: 15px 0;
+    }
+
+    .menu-home .row.menu-header { margin-top: 50px; }
+
+    .menu-home .row.menu-content {
+        padding-top: 20px;
+        font-size: 110%;
+    }
+
+    .menu-filter .col.span-1-of-4 {
+        width: 50%;
+        font-size: 130%;
+        border-right: 0;
+    }
+
+    .menu-filter .row .col { border-right: 0; }
+
+    .menu-item .item-title { font-size: 110%; }
+    .menu-item .item-details { font-size: 100%; }
+
+    .course-header { font-size: 120%; }
+}
+
+
+/* Small phones: 0 to 480px */
+@media only screen and (max-width: 480px) {
+
+}
