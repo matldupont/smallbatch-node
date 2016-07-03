@@ -1,0 +1,29 @@
+
+/* Large tablets to 1200px (widths smaller than 1140px row) */
+@media only screen and (max-width: 1200px) {
+
+}
+
+/* Small tablets to big tablets */
+@media only screen and (max-width: 1023px) {
+    /*.order-summary { display: none; }*/
+    .order-home .order-container {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .order-section div .plan-box div:last-child {
+        font-size: 80%;
+    }
+}
+
+/* Small phones to small tablets: 481px to 767px */
+@media only screen and (max-width: 767px) {
+
+}
+
+
+/* Small phones: 0 to 480px */
+@media only screen and (max-width: 480px) {
+
+}

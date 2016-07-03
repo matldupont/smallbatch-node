@@ -28,6 +28,7 @@
     $scope.error = null;
     $scope.form = {};
     $scope.remove = remove;
+      $scope.showSummary = false;
     //$scope.save = save;
     //$scope.stripeCallback = stripeCallback;
 
@@ -281,6 +282,10 @@
           });
     };
 
+      $scope.closeSummary = function() {
+        $scope.showSummary = false;
+      };
+
     /*****************************/
 
     var popupListener = $rootScope.$on('cart-popup', function(event, item) {
@@ -289,5 +294,11 @@
     });
 
     $scope.$on('destroy', popupListener);
+
+      var summaryListener = $rootScope.$on('cart-summary-popup', function(event) {
+          $scope.showSummary = !$scope.showSummary;
+      });
+
+      $scope.$on('destroy', summaryListener);
   }
 })();

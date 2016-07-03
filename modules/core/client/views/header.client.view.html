@@ -1,15 +1,15 @@
-<div >
+<div ng-controller="HeaderController">
   <nav>
-    <div class="row nav-container slideable" id="main-nav">
+    <div class="row nav-container standard-nav">
       <a ui-sref="order" class="order-btn">Order Now</a>
       <div class="main-nav" >
         <ul class="">
-          <li slide-toggle="#main-nav" class=""><a href="/#">Home</a></li>
-          <li slide-toggle="#main-nav" class=""><a href="/#about">About</a></li>
-          <li slide-toggle="#main-nav" class=""><a href="/#meals">Meals</a></li>
-          <li slide-toggle="#main-nav" class=""><a ui-sref="menu">Menu</a></li>
+          <li class=""><a href="/#">Home</a></li>
+          <li class=""><a href="/#about">About</a></li>
+          <li class=""><a href="/#meals">Meals</a></li>
+          <li class=""><a ui-sref="menu">Menu</a></li>
           <!--<li><a href="#">Gallery</a></li>-->
-          <li slide-toggle="#main-nav" class=""><a href="/#location">Info</a></li>
+          <li class=""><a href="/#location">Info</a></li>
           <!--<li><a ui-sref="authentication.signin">Admin - {{isAdmin }}</a></li>-->
         </ul>
       </div>
@@ -25,9 +25,34 @@
         </li>
       </ul>
     </div>
+    <div class="row nav-container mobile-nav slideable" id="main-nav">
+      <a ui-sref="order" class="order-btn">Order Now</a>
+      <div class="main-nav" >
+        <ul class="">
+          <li slide-toggle="#main-nav" class=""><a href="/#">Home</a></li>
+          <li slide-toggle="#main-nav" class=""><a href="/#about">About</a></li>
+          <li slide-toggle="#main-nav" class=""><a href="/#meals">Meals</a></li>
+          <li slide-toggle="#main-nav" class=""><a ui-sref="menu">Menu</a></li>
+          <!--<li><a href="#">Gallery</a></li>-->
+          <li slide-toggle="#main-nav" class=""><a href="/#location">Info</a></li>
+          <!--<li><a ui-sref="authentication.signin">Admin - {{isAdmin }}</a></li>-->
+        </ul>
+      </div>
+
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/zaherssmallbatch/" target="_blank" class="facebook" ><i class="fa fa-facebook"></i></a>
+          <a href="https://twitter.com/?lang=en" class="twitter"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="https://www.tripadvisor.ca/"><i class="fa fa-tripadvisor"></i></a>
+          <a href="https://www.instagram.com/zaherssmallbatch/" target="_blank"><i class="fa fa-instagram"></i></a>
+        </li>
+      </ul>
+    </div>
   </nav>
   <div class="mobile-order">
-    <div class="mobile-nav-left"><a ui-sref="order" >Order Now</a></div><div class="mobile-nav-right"><a class="mobile-nav-icon" slide-toggle="#main-nav"><i class="fa fa-bars"></i></a></div>
+    <div class="mobile-nav-left"><a ui-sref="order" >Order Now</a></div><div class="mobile-cart-btn" ng-show="showCartIcon()"><a ng-click="toggleOrderSummary()"><i class="fa fa-shopping-cart"></i></a></div><div class="mobile-nav-right"><a class="mobile-nav-icon" slide-toggle="#main-nav"><i class="fa fa-bars"></i></a></div>
   </div>
 
 </div>

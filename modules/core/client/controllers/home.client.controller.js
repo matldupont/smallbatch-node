@@ -4,8 +4,6 @@ angular.module('core').controller('HomeController', ['$scope', '$document', '$wi
   function ($scope, $document, $window) {
     // This provides Authentication context.
 
-    console.log("core");
-
     angular.element(document).ready(function () {
         var marginTop = $window.innerWidth - 967 > 0 ? $window.innerWidth - 967 : 0;
         angular.element('.js-home-text').css('margin-top',  (marginTop * 0.25) + 'px');

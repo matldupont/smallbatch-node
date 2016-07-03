@@ -3,11 +3,16 @@
 @media only screen and (max-width: 1200px) {
     .menu-home .row.menu-body {
         padding: 30px 0;
+        width: 90%;
+        margin-left: 5%;
     }
 }
 
 /* Small tablets to big tablets */
 @media only screen and (max-width: 1023px) {
+    .menu-home .row.menu-body {
+
+    }
 
 }
 

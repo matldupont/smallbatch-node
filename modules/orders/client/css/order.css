@@ -24,7 +24,7 @@
 
 .order-section {
     background-color: #222;
-    padding: 40px 30px;
+    padding-top: 30px;
     margin-bottom: 10px;
     margin-right: 5px;
     border-radius: 10px;
@@ -46,7 +46,7 @@
 }
 
 .order-section-body {
-    width: 90%;
+    /*width: 90%;*/
     color: #f3a328;
 }
 
@@ -62,11 +62,17 @@
 .order-section-body .menu-item {
     position: relative;
     background-color: #eee;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     color: #000;
 }
+
+.order-section .plan-box div:last-child {
+    font-size: 90%;
+}
+
+
 
 /*.addon-tile {*/
     /*padding-bottom: 20px;*/
@@ -91,16 +97,17 @@
 
 .order-summary {
     background-color: #fff;
-    width: 25%;
-    margin-left: 10%;
-    position: absolute;
-    top: 150px;
-    right: 10%;
+    /* width: 25%; */
+    /* margin-left: 10%; */
+    /* position: absolute; */
+    /* top: 150px; */
+    /* right: 10%; */
     font-family: 'Josefin Slab', serif;
-    padding: 20px;
+    /* padding: 20px; */
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    /* height: 500px; */
 }
 
 .order-summary a.remove:link,
@@ -108,9 +115,18 @@
     border: 0;
 }
 
+a.close-summary:link,
+a.close-summary:visited {
+    float: left;
+    font-size: 130%;
+    text-decoration: none;
+    border: 0;
+}
+
 .empty-cart {
     float: right;
     font-size: 70%;
+    padding-top:10px;
     margin-bottom: 10px;
 }
 
@@ -120,6 +136,7 @@
 }
 
 .order-header {
+    margin-top: 20px;
     border-bottom: 1px solid #000;
     margin-bottom: 10px;
 }

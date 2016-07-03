@@ -19,7 +19,7 @@
                 </li>
               </ul>
             </div>
-            <div>
+            <div class="add-to-cart">
               <a href="#" class="btn" ng-class="$index == 0 ? 'btn-full' : 'btn-ghost'" ng-click="addToCart(meal)">Add to Cart</a>
             </div>
           </div>
@@ -42,37 +42,45 @@
     </div>
   </div>
   <div ng-controller="OrdersController">
-    <div class="order-summary">
-      <div class="row order-empty-header" ng-if="cartIsEmpty()">You cart is currently Empty</div>
-      <div class="row" ng-if="!cartIsEmpty()">
-        <a href="#" class="empty-cart" ng-click="remove()"><span>Empty My Cart</span></a>
-      </div>
-      <div class="row order-header" ng-if="!cartIsEmpty()">
-        Your Current Order:
-      </div>
-      <div class="row order-item" ng-repeat="meal in order.meals track by meal._id | orderBy: 'name'">
-        <div class="order-details">{{meal.name}}</div>
-        <div class="order-detail-price">{{meal.quantity}}x {{meal.price | currency}}</div>
-        <a href="#" class="remove" ng-click="removeFromCart(meal)"><i class="fa fa-times-circle"></i></a>
+    <!--<div ng-include="'/modules/orders/client/views/order-summary.client.view.html'"></div>-->
+    <!--<div class="order-summary">-->
+      <!--<div class="row order-empty-header" ng-if="cartIsEmpty()">You cart is currently Empty</div>-->
+      <!--<div class="row" ng-if="!cartIsEmpty()">-->
+        <!--<a href="#" class="empty-cart" ng-click="remove()"><span>Empty My Cart</span></a>-->
+      <!--</div>-->
+      <!--<div class="row order-header" ng-if="!cartIsEmpty()">-->
+        <!--Your Current Order:-->
+      <!--</div>-->
+      <!--<div class="row order-item" ng-repeat="meal in order.meals track by meal._id | orderBy: 'name'">-->
+        <!--<div class="order-details">{{meal.name}}</div>-->
+        <!--<div class="order-detail-price">{{meal.quantity}}x {{meal.price | currency}}</div>-->
+        <!--<a href="#" class="remove" ng-click="removeFromCart(meal)"><i class="fa fa-times-circle"></i></a>-->
 
-        <div class="order-details-item" ng-repeat="item in meal.items">
-          - {{item.name}}
-        </div>
+        <!--<div class="order-details-item" ng-repeat="item in meal.items">-->
+          <!-&#45;&#45; {{item.name}}-->
+        <!--</div>-->
 
-      </div>
-      <div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">
-        <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price | currency}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
-      </div>
-      <div class="row order-total" ng-if="!cartIsEmpty()">
-        Total: {{order.total | currency}}
+      <!--</div>-->
+      <!--<div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">-->
+        <!--<div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price | currency}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>-->
+      <!--</div>-->
+      <!--<div class="row order-total" ng-if="!cartIsEmpty()">-->
+        <!--Total: {{order.total | currency}}-->
+      <!--</div>-->
+
+      <!--<div class="row checkout" ng-if="!cartIsEmpty()">-->
+        <!--<a href="#" class="btn btn-full" ng-click="doCheckout(order)">Checkout</a>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="order-overlay" ng-if="showSummary">
+      <div class="order-popup box-item" >
+        <div ng-include="'/modules/orders/client/views/order-summary.client.view.html'"></div>
       </div>
 
-      <div class="row checkout" ng-if="!cartIsEmpty()">
-        <a href="#" class="btn btn-full" ng-click="doCheckout(order)">Checkout</a>
-      </div>
     </div>
 
-    <div class="order-overlay"  ng-hide="!newItem && !order.paid" >
+    <div class="order-overlay" ng-hide="!newItem && !order.paid" >
       <div class="order-popup" ng-class="getItemPopupClass()" ng-show="newItem">
         <div class="popup-header">
           <div class="row item-title">{{newItem.name}}</div>

@@ -233,6 +233,14 @@ header {
     /*position: relative;*/
 }
 
+.standard-nav {
+    display: block;
+}
+
+.mobile-nav {
+    display: none;
+}
+
 .hero-text-box {
     position: absolute;
     width: 1140px;
@@ -261,6 +269,20 @@ header {
     border-radius: 7px;
 
     /*padding: 60px 40px;*/
+}
+
+.mobile-cart-btn {
+    position: absolute;
+    color: #f3a328;
+    font-size: 120%;
+    top: -3px;
+    right: 100px;
+}
+
+.mobile-cart-btn a {
+    border: 1px solid #f3a328;
+    padding: 7px;
+    vertical-align: top;
 }
 
 .mobile-nav-left {

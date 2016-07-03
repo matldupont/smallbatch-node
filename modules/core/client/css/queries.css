@@ -29,7 +29,7 @@
     .left-home-text,
     .right-home-text { display: none; }
 
-    .center-home-text { display: block; }
+    .home .center-home-text { display: block; }
 
     /*nav { display: none; }*/
 
@@ -42,19 +42,24 @@
         /*padding-bottom: 20px;*/
     }
 
-    .main-nav ul {
+    header .main-nav ul {
         margin-top: 80px;
         width: 100%;
         margin-left: 40px;
     }
 
-    .main-nav li { display: block; }
+    header .main-nav li { display: block; }
 
     header { height: 100px; }
 
-    .mobile-order { display: block; }
+    header .mobile-order { display: block; }
+
+    header .standard-nav { display: none; }
+    header .mobile-nav { display: block; }
 
     .mobile-order a { font-size: 90%; }
+
+    /*.mobile-cart-btn*/
 
     .section-video iframe {
         width:85%;
