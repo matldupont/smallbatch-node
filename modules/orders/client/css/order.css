@@ -214,6 +214,7 @@ div::-webkit-scrollbar-thumb {
     padding: 20px;
     position: relative;
     height: auto;
+    overflow: scroll;
 }
 
 .order-popup.box-item {

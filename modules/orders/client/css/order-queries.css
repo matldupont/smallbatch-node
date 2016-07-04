@@ -19,7 +19,13 @@
 
 /* Small phones to small tablets: 481px to 767px */
 @media only screen and (max-width: 767px) {
+    .order-overlay .order-popup.box-item {
+        width: 90%;
+    }
 
+    .order-oerlay .order-popup.addon-item {
+        width: 90%;
+    }
 }
 
 

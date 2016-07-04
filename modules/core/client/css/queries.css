@@ -48,7 +48,11 @@
         margin-left: 40px;
     }
 
-    header .main-nav li { display: block; }
+    header .main-nav li {
+        display: block;
+        text-align: left;
+    }
+
 
     header { height: 100px; }
 
