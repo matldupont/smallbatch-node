@@ -7,7 +7,7 @@
     .controller('OrdersController', OrdersController)
       .config(function(StripeCheckoutProvider) {
         StripeCheckoutProvider.defaults({
-          key: "pk_test_InlAsQrc8SCJqufg8KA4MV2z"
+          key: "pk_test_6IDAXpqJs3VnBYnGUrCrzwQK"
         });
         //window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
       }).run(function($log, StripeCheckout) {
@@ -28,26 +28,49 @@
     $scope.error = null;
     $scope.form = {};
     $scope.remove = remove;
-      $scope.showSummary = false;
+
+      $scope.processingFee = 1.13;
     //$scope.save = save;
     //$scope.stripeCallback = stripeCallback;
 
     $scope.courses = CoursesService.query(function(data) {  });
 
-    var currentOrderId = $cookies.get('currentOrderId');
-    if (currentOrderId) {
-      $scope.order = OrdersService.get({
-        orderId: currentOrderId
-      },function(order) {
-        //console.log(order);
-      }, function(err) {
-        console.error(err);
-        $cookies.remove('currentOrderId');
-        newOrder();
-      });
-    } else {
-      newOrder();
+
+    function refreshOrder() {
+        var currentOrderId = $cookies.get('currentOrderId');
+        if (currentOrderId) {
+            $scope.order = OrdersService.get({
+                orderId: currentOrderId
+            },function(order) {console.log("existing");
+                //$scope.order = order;
+            }, function(err) {
+                //console.error(err);
+                $cookies.remove('currentOrderId');
+                newOrder();
+            });
+        } else {
+            newOrder();
+            $scope.closeSummary();
+        }
     }
+
+
+
+
+
+      $scope.getOrderItemCount = function() {
+          var count = 0;
+          if (!$scope.order) { return count; }
+          if ($scope.order.meals) {
+              count = $scope.order.meals.length;
+          }
+
+          if ($scope.order.addons) {
+              count += $scope.order.addons.length;
+          }
+
+          return count;
+      };
 
     $scope.cartIsEmpty = function(){
       return !$scope.order || ((!$scope.order.addons || $scope.order.addons.length === 0) && (!$scope.order.meals || $scope.order.meals.length === 0));
@@ -67,6 +90,8 @@
       if (confirm('Are you sure you want to clear this order?')) {
         $scope.order.$remove(function() {
           newOrder();
+            $scope.closeSummary();
+            $rootScope.$emit('cart-order-refresh');
         });
       }
     }
@@ -83,6 +108,7 @@
           });
         }
         $scope.order.total = $scope.order.total - (item.quantity * item.price);
+        $scope.order.totalTax = Math.round($scope.order.total * 0.13, 2);
 
         saveOrder();
       }
@@ -101,8 +127,13 @@
           items: []
         };
 
+        var itemsToValidate = item.menuItems.length;
+
         angular.forEach(item.menuItems, function(menuItem) {
           if (menuItem.choice) {
+            if (menuItem.choice.id) {
+                itemsToValidate--;
+            }
             meal.items.push({
               id: menuItem.choice.id,
               name: menuItem.choice.name
@@ -111,7 +142,15 @@
         });
         meal.quantity = item.quantity;
 
-        $scope.order.meals.push(meal);
+          if (itemsToValidate !== 0) {
+              $scope.hasMealItemWarning = true;
+              return;
+          } else {
+              $scope.hasMealItemWarning = false;
+          }
+
+          $scope.order.meals.push(meal);
+
       } else {
         if (!$scope.order.addons) { $scope.order.addons = []; }
 
@@ -139,11 +178,14 @@
       }
 
       $scope.order.total = $scope.order.total + (item.price * item.quantity);
+      $scope.order.totalTax = Math.round($scope.order.total * 0.13, 2);
 
-      saveOrder();
+      saveOrder(function() {
+          $rootScope.$emit('cart-order-refresh');
+      });
     };
 
-    function saveOrder(callback) {
+    function saveOrder(callback) {console.log($scope.order);
       if (!$scope.order) { return; }
       if ($scope.order._id) {
         $scope.order.$update(function(response) {
@@ -151,6 +193,7 @@
           if (callback) {
             callback();
           }
+
         },function(error) {
           console.error(error);
         });
@@ -158,6 +201,7 @@
         $scope.order.$save(function (order) {
           $scope.newItem = null;
           $cookies.put('currentOrderId', order._id);
+            $scope.order = OrdersService.currentOrder;
           if (callback) {
             callback();
           }
@@ -170,10 +214,16 @@
     function newOrder() {
       $scope.order = new OrdersService.Order();
       $scope.order.total = 0;
+      $scope.order.totalTax = 0;
+        $scope.order.processingFee = $scope.processingFee;
+
+
     }
 
     $scope.closeOrder  = function() {
+        $scope.closeSummary();
       newOrder();
+        $rootScope.$emit('cart-order-refresh');
     };
 
     // Save Order
@@ -249,12 +299,15 @@
     var handler = StripeCheckout.configure({
       name: "SmallBatch",
       token: function(token, args) {
+          console.log(args);
         OrdersService.processOrder($scope.order, token).then(function(result) {
           console.log(result);
+            console.log($scope.order);
           if (result.processed) {
+              console.log(token);
             $scope.order.paid = result.charge.paid;
             $scope.order.email = result.charge.source.name;
-
+            $scope.order.stripeToken = result.token.id;
             saveOrder(function() {
               $cookies.remove("currentOrderId");
             });
@@ -265,9 +318,17 @@
     });
 
     $scope.doCheckout = function(order) {
+        if (!order.name || order.name.length === 0 || !order.phone || order.phone < 1000000000 || order.phone > 9999999999) {
+            $scope.hasOrderInfoWarning = true;
+            return;
+        } else {
+            $scope.hasOrderInfoWarning = false;
+        }
       var options = {
         description: "Order #" + order._id,
-        amount: order.total * 100
+        amount: (order.total + order.totalTax + order.processingFee) * 100,
+        application_fee: 100
+
       };
       // The default handler API is enhanced by having open()
       // return a promise. This promise can be used in lieu of or
@@ -278,12 +339,20 @@
       handler.open(options)
           .then(function(result) {
           },function() {
-            alert("Stripe Checkout closed without making a sale :(");
+            //alert("Stripe Checkout closed without making a sale :(");
           });
     };
 
       $scope.closeSummary = function() {
-        $scope.showSummary = false;
+        OrdersService.showSummary = false;
+      };
+
+      $scope.showSummary = function() {
+        OrdersService.showSummary = true;
+      };
+
+      $scope.getShowSummary = function() {
+        return OrdersService.showSummary;
       };
 
     /*****************************/
@@ -300,5 +369,14 @@
       });
 
       $scope.$on('destroy', summaryListener);
+
+      var orderListener = $rootScope.$on('cart-order-refresh', function(event) {
+          console.log("refresh!");
+          refreshOrder();
+      });
+
+      $scope.$on('destroy', orderListener);
+
+      refreshOrder();
   }
 })();

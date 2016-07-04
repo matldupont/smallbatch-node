@@ -16,8 +16,8 @@
 
 .order-container {
     height: 100%;
-    width:50%;
-    margin-left: 10%;
+    width:70%;
+    margin-left: 15%;
     overflow:auto;
 
 }
@@ -142,6 +142,7 @@ a.close-summary:visited {
 }
 
 .order-empty-header {
+    padding-top: 5px;
     text-align: center;
 }
 
@@ -316,4 +317,31 @@ div::-webkit-scrollbar-thumb {
 .close-order {
     text-align: right;
     margin-top: 30px;
+}
+
+.order-info {
+    margin-top: 20px;
+    line-height: 145%;
+}
+
+.order-info label {
+    padding-right: 20px;
+}
+
+.order-info input {
+    width: 250px;
+    /*height: 50px;*/
+    font-size: 80%;
+}
+
+.order-info-warning {
+    font-size: 90%;
+    text-align: center;
+    color: #CC0000;
+}
+
+.mealItem-warning {
+    font-size: 90%;
+    text-align: center;
+    color: #CC0000;
 }

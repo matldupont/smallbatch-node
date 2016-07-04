@@ -11,7 +11,12 @@
           <!--<li><a href="#">Gallery</a></li>-->
           <li class=""><a href="/#location">Info</a></li>
           <!--<li><a ui-sref="authentication.signin">Admin - {{isAdmin }}</a></li>-->
+          <!--<li class="nav-cart"><a><i class="fa fa-shopping-cart"></i></a></li>-->
         </ul>
+
+      </div>
+      <div class="nav-cart" ng-controller="OrdersController">
+        <a ui-sref="order" ng-click="showSummary()"><i class="fa fa-shopping-cart"></i> <span ng-if="getOrderItemCount() > 0">{{getOrderItemCount()}}</span></a>
       </div>
 
       <ul class="social-links">

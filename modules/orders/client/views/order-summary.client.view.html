@@ -1,7 +1,8 @@
 <div class="order-summary" >
+  <a href="#" class="close-summary" ng-click="closeSummary()"><i class="fa fa-times"></i></a>
   <div class="row order-empty-header" ng-if="cartIsEmpty()">You cart is currently Empty</div>
   <div class="row" ng-if="!cartIsEmpty()">
-    <a href="#" class="close-summary" ng-click="closeSummary()"><i class="fa fa-times"></i></a>
+
     <a href="#" class="empty-cart" ng-click="remove()"><span>Empty My Cart</span></a>
   </div>
   <div class="row order-header" ng-if="!cartIsEmpty()">
@@ -18,10 +19,19 @@
 
   </div>
   <div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">
-    <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x ${{addon.price | currency}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
+    <div class="order-details">{{addon.name}}</div><div class="order-detail-price">{{addon.quantity}}x {{addon.price | currency}}</div> <a href="#" class="remove" ng-click="removeFromCart(addon)"><i class="fa fa-times-circle"></i></a>
   </div>
   <div class="row order-total" ng-if="!cartIsEmpty()">
-    Total: {{order.total | currency}}
+    <div>Subtotal: {{order.total | currency}}</div>
+    <div>Tax: {{order.totalTax | currency }}</div>
+    <div>Processing Fee: {{order.processingFee | currency}}</div>
+    <div><strong>Total: {{order.total + order.totalTax + order.processingFee | currency}}</strong></div>
+  </div>
+
+  <div class="order-info" ng-if="!cartIsEmpty()">
+    <div><label>Name:</label><input type="text" ng-model="order.name" placeholder="Enter Your Name"></div>
+    <div><label>Phone:</label><input type="number" ng-model="order.phone" placeholder="(ex: 5556667777)"></div>
+    <div class="order-info-warning" ng-if="hasOrderInfoWarning">Your name and number must be entered correctly!</div>
   </div>
 
   <div class="row checkout" ng-if="!cartIsEmpty()">

@@ -53,6 +53,14 @@ var OrdersSchema = new Schema({
     type: Number,
     default: 0
   },
+  totalTax: {
+    type: Number,
+    default: 0
+  },
+  processingFee: {
+    type: Number,
+    default: 0
+  },
   paid: {
     type: Boolean,
     default: false
@@ -61,6 +69,7 @@ var OrdersSchema = new Schema({
     type: Boolean,
     default: false
   },
+  stripeToken: String,
   created: {
     type: Date,
     default: Date.now

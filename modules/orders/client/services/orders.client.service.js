@@ -13,9 +13,12 @@
       'update': { method:'PUT' }
     });
 
+    var showSummary = false;
+
     return {
       get: Orders.get,
       Order: Orders,
+      showSummary: showSummary,
       processOrder: function(order, stripeToken) {
         return $http.post('/api/orders/process/' + order._id, { stripeToken : stripeToken }).then(function(result) {
           return result.data;

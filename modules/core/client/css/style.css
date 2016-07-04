@@ -237,6 +237,25 @@ header {
     display: block;
 }
 
+.standard-nav .nav-cart {
+    border: 0;
+    position: absolute;
+    top: 35px;
+    right: 200px;
+    font-size: 200%;
+    text-align: right;
+}
+
+.standard-nav .nav-cart a:link,
+.standard-nav .nav-cart a:visited {
+    border-bottom: 0;
+}
+
+.standard-nav .nav-cart span {
+    font-size: 30%;
+    vertical-align: top;
+}
+
 .mobile-nav {
     display: none;
 }
@@ -370,6 +389,7 @@ header {
     display: inline;
     /*margin-left: 40px;*/
     /*width: 20%;*/
+    text-align: center;
 }
 
 .main-nav .col {

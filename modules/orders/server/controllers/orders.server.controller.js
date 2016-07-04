@@ -122,18 +122,22 @@ exports.orderByID = function(req, res, next, id) {
 
 exports.processOrder = function(req, res) {
   Orders.findById(req.params.orderId).exec(function (err, order) {
-    var stripe = require("stripe")("sk_test_y950B9vXrkhtbBYm9moxlewk");
+    console.log("ASDFASDFASDFASDFASDFASDFASDFA");
+    console.log(process.env.STRIPE_SK);
+    var stripe = require("stripe")(process.env.STRIPE_SK);
     var stripeToken = req.body.stripeToken;
     var charge = stripe.charges.create({
-      amount: order.total * 100, // amount in cents, again
+      amount: Math.round((order.total + order.totalTax + order.processingFee) * 100), // amount in cents, again
       currency: "cad",
       source: stripeToken.id,
       description: "Order #" + order._id
     }, function(err, charge) {
+      console.error(err);
+      console.log(charge);
       if (err && err.type === 'StripeCardError') {
         res.jsonp({processed: false});
       } else {
-        res.jsonp({processed: true, charge: charge});
+        res.jsonp({processed: true, charge: charge, token: stripeToken});
       }
     });
   });
