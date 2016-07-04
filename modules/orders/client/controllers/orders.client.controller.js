@@ -41,7 +41,7 @@
         if (currentOrderId) {
             $scope.order = OrdersService.get({
                 orderId: currentOrderId
-            },function(order) {console.log("existing");
+            },function(order) {
                 //$scope.order = order;
             }, function(err) {
                 //console.error(err);
@@ -185,7 +185,7 @@
       });
     };
 
-    function saveOrder(callback) {console.log($scope.order);
+    function saveOrder(callback) {
       if (!$scope.order) { return; }
       if ($scope.order._id) {
         $scope.order.$update(function(response) {
@@ -299,12 +299,8 @@
     var handler = StripeCheckout.configure({
       name: "SmallBatch",
       token: function(token, args) {
-          console.log(args);
         OrdersService.processOrder($scope.order, token).then(function(result) {
-          console.log(result);
-            console.log($scope.order);
           if (result.processed) {
-              console.log(token);
             $scope.order.paid = result.charge.paid;
             $scope.order.email = result.charge.source.name;
             $scope.order.stripeToken = result.token.id;
@@ -365,13 +361,12 @@
     $scope.$on('destroy', popupListener);
 
       var summaryListener = $rootScope.$on('cart-summary-popup', function(event) {
-          $scope.showSummary = !$scope.showSummary;
+          OrdersService.showSummary = !OrdersService.showSummary;
       });
 
       $scope.$on('destroy', summaryListener);
 
       var orderListener = $rootScope.$on('cart-order-refresh', function(event) {
-          console.log("refresh!");
           refreshOrder();
       });
 

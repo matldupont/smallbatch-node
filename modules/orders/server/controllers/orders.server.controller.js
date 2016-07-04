@@ -122,8 +122,7 @@ exports.orderByID = function(req, res, next, id) {
 
 exports.processOrder = function(req, res) {
   Orders.findById(req.params.orderId).exec(function (err, order) {
-    console.log("ASDFASDFASDFASDFASDFASDFASDFA");
-    console.log(process.env.STRIPE_SK);
+
     var stripe = require("stripe")(process.env.STRIPE_SK);
     var stripeToken = req.body.stripeToken;
     var charge = stripe.charges.create({
