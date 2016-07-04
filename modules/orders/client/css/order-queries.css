@@ -23,7 +23,11 @@
         width: 90%;
     }
 
-    .order-oerlay .order-popup.addon-item {
+    .order-overlay .order-popup.addon-item {
+        width: 90%;
+    }
+
+    .order-overlay .order-receipt {
         width: 90%;
     }
 }
