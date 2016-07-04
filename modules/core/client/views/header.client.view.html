@@ -56,8 +56,8 @@
       </ul>
     </div>
   </nav>
-  <div class="mobile-order">
-    <div class="mobile-nav-left"><a ui-sref="order" >Order Now</a></div><div class="mobile-cart-btn" ng-show="showCartIcon()"><a ng-click="toggleOrderSummary()"><i class="fa fa-shopping-cart"></i></a></div><div class="mobile-nav-right"><a class="mobile-nav-icon" slide-toggle="#main-nav"><i class="fa fa-bars"></i></a></div>
+  <div class="mobile-order" ng-controller="OrdersController">
+    <div class="mobile-nav-left"><a ui-sref="order" >Order Now</a></div><div class="mobile-cart-btn" ng-show="showCartIcon()" ng-click="showSummary()"><a ng-click=""><i class="fa fa-shopping-cart"></i></a></div><div class="mobile-nav-right"><a class="mobile-nav-icon" slide-toggle="#main-nav"><i class="fa fa-bars"></i></a></div>
   </div>
 
 </div>
