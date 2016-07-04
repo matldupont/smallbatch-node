@@ -294,13 +294,13 @@ header {
     position: absolute;
     color: #f3a328;
     font-size: 120%;
-    top: -3px;
-    right: 100px;
+    top: -1px;
+    right: 70px;
 }
 
 .mobile-cart-btn a {
     border: 1px solid #f3a328;
-    padding: 7px;
+    padding: 9px;
     vertical-align: top;
 }
 
