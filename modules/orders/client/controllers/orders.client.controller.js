@@ -7,7 +7,7 @@
     .controller('OrdersController', OrdersController)
       .config(function(StripeCheckoutProvider) {
         StripeCheckoutProvider.defaults({
-          key: "pk_test_6IDAXpqJs3VnBYnGUrCrzwQK"
+          key: "pk_live_oz9fe4zkOZ4lcsRIr3haKXFz"
         });
         //window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
       }).run(function($log, StripeCheckout) {
