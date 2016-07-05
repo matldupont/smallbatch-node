@@ -372,28 +372,23 @@
         } else {
             $scope.hasOrderInfoWarning = false;
         }
+      var options = {
+        description: "Order #" + order._id,
+        amount: (order.total + order.totalTax + order.processingFee) * 100,
+        application_fee: 100
 
-        OrdersService.query(function(orders) {
-            var now = Date.Now();
-            var options = {
-                description: "Order #" + order._id,
-                amount: (order.total + order.totalTax + order.processingFee) * 100,
-                application_fee: 100
-
-            };
-            // The default handler API is enhanced by having open()
-            // return a promise. This promise can be used in lieu of or
-            // in addition to the token callback (or you can just ignore
-            // it if you like the default API).
-            //
-            // The rejection callback doesn't work in IE6-7.
-            handler.open(options)
-                .then(function(result) {
-                },function() {
-                    //alert("Stripe Checkout closed without making a sale :(");
-                });
-        });
-
+      };
+      // The default handler API is enhanced by having open()
+      // return a promise. This promise can be used in lieu of or
+      // in addition to the token callback (or you can just ignore
+      // it if you like the default API).
+      //
+      // The rejection callback doesn't work in IE6-7.
+      handler.open(options)
+          .then(function(result) {
+          },function() {
+            //alert("Stripe Checkout closed without making a sale :(");
+          });
     };
 
       $scope.closeSummary = function() {
