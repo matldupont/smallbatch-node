@@ -46,6 +46,7 @@
     </div>
   </div>
   <div class="row close-order">
+    <a href="#" ng-click="deleteOrder()">Delete</a>
     <a ng-if="!order.notified" href="#" class="btn btn-sm btn-full" ng-click="setNotified()">Set Notified</a>
     <a ng-if="order.notified" href="#" class="btn btn-sm btn-full" ng-click="unsetNotified()">OOPS, Unset Notified</a>
     <a ng-if="!order.filled" href="#" class="btn btn-sm btn-ghost" ng-click="setCompleted(order)">Set Completed</a>

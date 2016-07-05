@@ -7,7 +7,7 @@
     .controller('OrdersController', OrdersController)
       .config(function(StripeCheckoutProvider) {
         StripeCheckoutProvider.defaults({
-          key: "pk_live_AKendb5wZhAguw2bTkeXBmrV"
+          key: "pk_test_6IDAXpqJs3VnBYnGUrCrzwQK"
         });
         //window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
       }).run(function($log, StripeCheckout) {
@@ -234,6 +234,13 @@
               $scope.order.filledDate = Date.now();
 
               saveOrder();
+          }
+      };
+
+      $scope.deleteOrder = function() {
+          if (!$scope.order) { return; }
+          if (confirm('Are you ABSOLUTELY SURE you want to delete this order???')) {
+              remove();
           }
       };
 
