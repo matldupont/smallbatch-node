@@ -23,7 +23,7 @@
         <!--Email-->
       <!--</div>-->
       <div class="col span-1-of-7">
-        Price
+        Phone
       </div>
       <div class="col span-1-of-7">
         Paid
@@ -37,7 +37,7 @@
     </div>
     <div class="row order-data" data-ng-repeat="order in getOrders() | orderBy: '-paidDate'" data-ui-sref="admin.orders.view({ orderId: order._id })">
       <div class="col span-2-of-7">
-        <a data-ui-sref="orders.view({ orderId: order._id })">{{order._id}}</a>
+        <a data-ui-sref="orders.view({ orderId: order._id })">{{order.orderNumber}}</a>
       </div>
       <div class="col span-1-of-7">
         {{order.created | date: 'short'}}
@@ -52,7 +52,7 @@
         <!--{{order.email}}-->
       <!--</div>-->
       <div class="col span-1-of-7">
-        {{order.total + order.totalTax + order.processingFee}}
+        {{order.phone}}
       </div>
       <div class="col span-1-of-7">
         {{order.paid}}

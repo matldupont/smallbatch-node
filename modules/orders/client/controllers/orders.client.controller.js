@@ -7,7 +7,7 @@
     .controller('OrdersController', OrdersController)
       .config(function(StripeCheckoutProvider) {
         StripeCheckoutProvider.defaults({
-          key: "pk_live_oz9fe4zkOZ4lcsRIr3haKXFz"
+          key: "pk_live_AKendb5wZhAguw2bTkeXBmrV"
         });
         //window.Stripe.setPublishableKey('pk_test_InlAsQrc8SCJqufg8KA4MV2z');
       }).run(function($log, StripeCheckout) {
@@ -356,6 +356,7 @@
             $scope.order.paid = result.charge.paid;
             $scope.order.email = result.charge.source.name;
             $scope.order.stripeToken = result.token.id;
+              $scope.order.orderNumber = result.orderNumber;
             saveOrder(function() {
               $cookies.remove("currentOrderId");
             });
@@ -373,9 +374,8 @@
             $scope.hasOrderInfoWarning = false;
         }
       var options = {
-        description: "Order #" + order._id,
+        //description: "Order #" + order._id,
         amount: (order.total + order.totalTax + order.processingFee) * 100,
-        application_fee: 100
 
       };
       // The default handler API is enhanced by having open()

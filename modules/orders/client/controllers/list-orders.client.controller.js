@@ -17,10 +17,12 @@
 
     $scope.getOrders = function() {
         if ($scope.showCompleted) {
-          return $scope.orders;
+          return $scope.orders.filter(function(order) {
+            return order.paid;
+          });
         } else {
           return $scope.orders.filter(function(order) {
-            return !order.filled;
+            return !order.filled && order.paid;
           });
 
         }

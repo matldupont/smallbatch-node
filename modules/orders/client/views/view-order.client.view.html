@@ -3,7 +3,7 @@
     <a ui-sref="admin.orders.list" class="btn btn-sm btn-ghost">Back</a>
   </div>
   <div class="row receipt-body">
-   Order #{{order._id}}
+   Order #{{order.orderNumber}}
   </div>
   <div class="row receipt-body" ng-if="order.notified">
     <strong>Notified on {{order.notifiedDate | date: 'medium'}}</strong>
