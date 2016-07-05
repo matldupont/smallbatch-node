@@ -1,26 +1,54 @@
-<section>
-  <div class="page-header">
-    <h1 data-ng-bind="vm.order.name"></h1>
+<div class="order-popup order-receipt">
+  <div class="row order-back">
+    <a ui-sref="admin.orders.list" class="btn btn-sm btn-ghost">Back</a>
   </div>
-  <div class="pull-right"
-       data-ng-show="vm.order.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       data-ui-sref="orders.edit({ orderId: vm.order._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" data-ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
+  <div class="row receipt-body">
+   Order #{{order._id}}
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span data-ng-bind="vm.order.created | date:'mediumDate'"></span>
-      by
-      <span data-ng-if="vm.order.user"
-            data-ng-bind="vm.order.user.displayName"></span>
-      <span data-ng-if="!vm.order.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" data-ng-bind="vm.order.content"></p>
-</section>
+  <div class="row receipt-body" ng-if="order.notified">
+    <strong>Notified on {{order.notifiedDate | date: 'medium'}}</strong>
+  </div>
+  <div class="row receipt-body" ng-if="order.filled">
+    <strong>Completed on {{order.filledDate | date: 'medium'}}<strong>
+  </div>
+  <div class="row receipt-details">
+    <div class="order-header">
+      Summary:
+    </div>
+    <div class="row order-item" ng-repeat="meal in order.meals track by meal._id | orderBy: 'name'">
+      <div class="order-details">{{meal.quantity}} x {{meal.name}}</div>
+      <!--<div class="order-detail-price">{{meal.quantity}}x {{meal.price | currency}}</div>-->
+
+
+      <div class="order-details-item" ng-repeat="item in meal.items">
+        - {{item.name}}
+      </div>
+
+    </div>
+    <div class="row order-item" ng-repeat="addon in order.addons track by addon._id | orderBy: 'name'">
+      <div class="order-details">{{addon.quantity}} x {{addon.name}}</div>
+      <!--<div class="order-detail-price">{{addon.quantity}}x {{addon.price | currency}}</div>-->
+    </div>
+    <div class="row order-total">
+      <!--<div>Subtotal: {{order.total | currency}}</div>-->
+      <!--<div>Tax: {{order.totalTax | currency }}</div>-->
+      <!--<div>Processing Fee: {{order.processingFee | currency}}</div>-->
+      <div><strong>Total: {{order.total + order.totalTax + order.processingFee | currency}}</strong></div>
+    </div>
+    <div class="row">
+      Name: {{order.name}}
+    </div>
+    <div class="row">
+      Phone: <a href="tel:{{order.phone}}">{{order.phone}}</a>
+    </div>
+    <div class="row">
+      Email: <a href="mailto:{{order.email}}">{{order.email}}</a>
+    </div>
+  </div>
+  <div class="row close-order">
+    <a ng-if="!order.notified" href="#" class="btn btn-sm btn-full" ng-click="setNotified()">Set Notified</a>
+    <a ng-if="order.notified" href="#" class="btn btn-sm btn-full" ng-click="unsetNotified()">OOPS, Unset Notified</a>
+    <a ng-if="!order.filled" href="#" class="btn btn-sm btn-ghost" ng-click="setCompleted(order)">Set Completed</a>
+    <a ng-if="order.filled" href="#" class="btn btn-sm btn-full" ng-click="unsetCompleted()">OOPS, Unset Completed</a>
+  </div>
+</div>

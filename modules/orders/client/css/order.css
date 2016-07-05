@@ -347,3 +347,17 @@ div::-webkit-scrollbar-thumb {
     text-align: center;
     color: #CC0000;
 }
+
+
+/****** ORDER ADMIN **********/
+.order-admin {
+    font-family: 'Josefin Slab', serif;
+}
+
+.order-data {
+    font-size: 80%;
+}
+
+.order-back {
+    margin-bottom: 40px;
+}

@@ -1,22 +1,72 @@
-<section>
+<section class="order-admin">
   <div class="page-header">
     <h1>Orders</h1>
   </div>
+  <div class="row">
+    <a href="#" ng-click="toggleCompletedOrders()">Show/Hide Completed Order</a>
+  </div>
   <div class="list-group">
-    <a data-ng-repeat="order in vm.orders"
-       data-ui-sref="orders.view({ orderId: order._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span data-ng-bind="order.created | date:'mediumDate'"></span>
-        by
-        <span data-ng-if="order.user" data-ng-bind="order.user.displayName"></span>
-        <span data-ng-if="!order.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" data-ng-bind="order.name"></h4>
-    </a>
+    <div class="row">
+      <div class="col span-2-of-7">
+        Order #
+      </div>
+      <div class="col span-1-of-7">
+        Date
+      </div>
+      <!--<div class="col span-1-of-9">-->
+        <!--Name-->
+      <!--</div>-->
+      <!--<div class="col span-1-of-9">-->
+        <!--Phone-->
+      <!--</div>-->
+      <!--<div class="col span-1-of-9">-->
+        <!--Email-->
+      <!--</div>-->
+      <div class="col span-1-of-7">
+        Price
+      </div>
+      <div class="col span-1-of-7">
+        Paid
+      </div>
+      <div class="col span-1-of-7">
+        Notified Date
+      </div>
+      <div class="col span-1-of-7">
+        Completed
+      </div>
+    </div>
+    <div class="row order-data" data-ng-repeat="order in getOrders() | orderBy: '-paidDate'" data-ui-sref="admin.orders.view({ orderId: order._id })">
+      <div class="col span-2-of-7">
+        <a data-ui-sref="orders.view({ orderId: order._id })">{{order._id}}</a>
+      </div>
+      <div class="col span-1-of-7">
+        {{order.created | date: 'short'}}
+      </div>
+      <!--<div class="col span-1-of-9">-->
+        <!--{{order.name}}-->
+      <!--</div>-->
+      <!--<div class="col span-1-of-9">-->
+        <!--{{order.phone}}-->
+      <!--</div>-->
+      <!--<div class="col span-1-of-9">-->
+        <!--{{order.email}}-->
+      <!--</div>-->
+      <div class="col span-1-of-7">
+        {{order.total + order.totalTax + order.processingFee}}
+      </div>
+      <div class="col span-1-of-7">
+        {{order.paid}}
+      </div>
+      <div class="col span-1-of-7">
+        {{order.notifiedDate | date: 'short'}}
+      </div>
+      <div class="col span-1-of-7">
+        {{order.filledDate | date: 'short'}}
+      </div>
+
+    </div>
   </div>
-  <div class="alert alert-warning text-center" data-ng-if="vm.orders.$resolved && !vm.orders.length">
-    No Orders yet, why don't you <a data-ui-sref="orders.create">create one</a>?
-  </div>
+  <!--<div class="alert alert-warning text-center" data-ng-if="orders.$resolved && !orders.length">-->
+    <!--No Orders yet, why don't you <a data-ui-sref="orders.create">create one</a>?-->
+  <!--</div>-->
 </section>

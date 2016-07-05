@@ -65,11 +65,16 @@ var OrdersSchema = new Schema({
     type: Boolean,
     default: false
   },
+  paidDate: Date,
+  notified: Boolean,
+  notifiedDate: Date,
   filled: {
     type: Boolean,
     default: false
   },
+  filledDate: Date,
   stripeToken: String,
+
   created: {
     type: Date,
     default: Date.now

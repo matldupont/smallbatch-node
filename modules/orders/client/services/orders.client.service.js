@@ -17,6 +17,7 @@
 
     return {
       get: Orders.get,
+      query: Orders.query,
       Order: Orders,
       showSummary: showSummary,
       processOrder: function(order, stripeToken) {

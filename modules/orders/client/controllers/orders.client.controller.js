@@ -37,6 +37,14 @@
 
 
     function refreshOrder() {
+        if ($state.params && $state.params.orderId) {
+            $scope.order = OrdersService.get({
+                orderId: $state.params.orderId
+            }, function(order) {
+                console.log(order);
+            });
+            return;
+        }
         var currentOrderId = $cookies.get('currentOrderId');
         if (currentOrderId) {
             $scope.order = OrdersService.get({
@@ -185,6 +193,50 @@
       });
     };
 
+      $scope.unsetNotified = function() {
+          if (!$scope.order) { return; }
+          if (confirm('Didn\'t really Notify the customer?')) {
+              $scope.order.notified = false;
+              $scope.order.notifiedDate = null;
+
+              saveOrder();
+          }
+      };
+
+      $scope.setNotified = function() {
+          if (!$scope.order) { return; }
+          if (confirm('Notified the customer?')) {
+              $scope.order.notified = true;
+              $scope.order.notifiedDate = Date.now();
+
+              saveOrder();
+          }
+      };
+
+      $scope.unsetCompleted = function() {
+          if (!$scope.order) { return; }
+          if (confirm('Didn\'t really Complete this order?')) {
+              $scope.order.filled = false;
+              $scope.order.filledDate = null;
+
+              saveOrder();
+          }
+      };
+
+      $scope.setCompleted = function() {
+          if (!$scope.order) { return; }
+          if (!$scope.order.notified) {
+              alert("You haven't notified the customer!  How could this be completed?!");
+              return;
+          }
+          if (confirm('Completed this order?')) {
+              $scope.order.filled = true;
+              $scope.order.filledDate = Date.now();
+
+              saveOrder();
+          }
+      };
+
     function saveOrder(callback) {
       if (!$scope.order) { return; }
       if ($scope.order._id) {
@@ -320,23 +372,28 @@
         } else {
             $scope.hasOrderInfoWarning = false;
         }
-      var options = {
-        description: "Order #" + order._id,
-        amount: (order.total + order.totalTax + order.processingFee) * 100,
-        application_fee: 100
 
-      };
-      // The default handler API is enhanced by having open()
-      // return a promise. This promise can be used in lieu of or
-      // in addition to the token callback (or you can just ignore
-      // it if you like the default API).
-      //
-      // The rejection callback doesn't work in IE6-7.
-      handler.open(options)
-          .then(function(result) {
-          },function() {
-            //alert("Stripe Checkout closed without making a sale :(");
-          });
+        OrdersService.query(function(orders) {
+            var now = Date.Now();
+            var options = {
+                description: "Order #" + order._id,
+                amount: (order.total + order.totalTax + order.processingFee) * 100,
+                application_fee: 100
+
+            };
+            // The default handler API is enhanced by having open()
+            // return a promise. This promise can be used in lieu of or
+            // in addition to the token callback (or you can just ignore
+            // it if you like the default API).
+            //
+            // The rejection callback doesn't work in IE6-7.
+            handler.open(options)
+                .then(function(result) {
+                },function() {
+                    //alert("Stripe Checkout closed without making a sale :(");
+                });
+        });
+
     };
 
       $scope.closeSummary = function() {

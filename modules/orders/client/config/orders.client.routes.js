@@ -9,16 +9,17 @@
 
   function routeConfig($stateProvider, StripeCheckoutProvider) {
     $stateProvider
-      .state('orders', {
+      .state('admin.orders', {
         abstract: true,
         url: '/orders',
         template: '<ui-view/>'
       })
-      .state('orders.list', {
-        url: 'list',
+      .state('admin.orders.list', {
+        url: '/list',
         templateUrl: 'modules/orders/client/views/list-orders.client.view.html',
         controller: 'OrdersListController',
         data: {
+          roles: ['admin'],
           pageTitle: 'Orders List'
         }
       })
@@ -45,15 +46,15 @@
           pageTitle: 'Edit Order {{ orderResolve.name }}'
         }
       })
-      .state('orders.view', {
+      .state('admin.orders.view', {
         url: '/:orderId',
         templateUrl: 'modules/orders/client/views/view-order.client.view.html',
         controller: 'OrdersController',
-        controllerAs: 'vm',
         resolve: {
           orderResolve: getOrder
         },
         data:{
+          roles: ['admin'],
           pageTitle: 'Order {{ articleResolve.name }}'
         }
       }).state('order', {
