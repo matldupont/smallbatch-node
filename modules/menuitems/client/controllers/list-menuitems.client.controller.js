@@ -11,6 +11,7 @@
     $scope.currentFilter = null;
     $scope.menuItems = MenuItemsService.query();
     $scope.meals = MealsService.query();
+
     $scope.addons = [];
     $scope.courses = CoursesService.query(function(courses) {
       var matches = courses.filter(function(course) {

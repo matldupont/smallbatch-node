@@ -112,10 +112,10 @@
       <h2>A Meal Option for any Occasion!</h2>
     </div>
     <div class="row">
-      <div class="col span-1-of-3" ng-repeat="meal in meals | filter: meal.enabled === true | orderBy: 'ordinal'">
+      <div class="col span-1-of-3" ng-repeat="meal in meals | orderBy: 'ordinal'">
         <div class="plan-box">
           <div>
-            <h3>{{meal.name}}</h3>
+            <h3>{{meal.name}} {{meal.enabled}}</h3>
             <p class="plan-price">{{meal.price}}<span>xx</span></p>
             <p class="plan-price-meal">{{meal.description}}</p>
           </div>
